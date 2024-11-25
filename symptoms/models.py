@@ -21,6 +21,7 @@ class Symptom(models.Model):
         ('pain', 'Abdominal Pain'),
         ('blood', 'Blood in Stool'),
         ('urgency', 'Urgency'),
+        ('diarrhoea', 'Diarrhoea'),
         ('fatigue', 'Fatigue'),
         ('joint_pain', 'Joint Pain'),
         ('other', 'Other'),

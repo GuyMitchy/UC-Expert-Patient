@@ -1,10 +1,11 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from datetime import date
 from .models import Symptom
 
-class SymptomListView(ListView):
+class SymptomListView(LoginRequiredMixin, ListView):
     model = Symptom
     template_name = 'symptoms/list.html'
     context_object_name = 'symptoms'
@@ -12,7 +13,7 @@ class SymptomListView(ListView):
     def get_queryset(self):
         return Symptom.objects.filter(user=self.request.user)
 
-class SymptomCreateView(CreateView):
+class SymptomCreateView(LoginRequiredMixin, CreateView):
     model = Symptom
     template_name = 'symptoms/add.html'
     fields = ['date', 'type', 'severity', 'description']
@@ -28,7 +29,7 @@ class SymptomCreateView(CreateView):
         messages.success(self.request, 'Symptom added successfully.')
         return super().form_valid(form)
 
-class SymptomUpdateView(UpdateView):
+class SymptomUpdateView(LoginRequiredMixin, UpdateView):
     model = Symptom
     template_name = 'symptoms/edit.html'
     fields = ['date', 'type', 'severity', 'description']
@@ -42,7 +43,7 @@ class SymptomUpdateView(UpdateView):
         messages.success(self.request, 'Symptom updated successfully.')
         return super().form_valid(form)
 
-class SymptomDeleteView(DeleteView):
+class SymptomDeleteView(LoginRequiredMixin, DeleteView):
     model = Symptom
     template_name = 'symptoms/delete.html'
     success_url = reverse_lazy('symptoms:list')

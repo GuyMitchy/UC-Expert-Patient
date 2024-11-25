@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    {% if user.is_authenticated %}
+    <div class="mb-12">
+        <p class="text-xl text-gray-600 mb-8">Track your symptoms - Log your medication - Become an expert patient</p>
+    </div>
+        
+        
+    {% else %}
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-8">
+                Welcome to UC Expert
+            </h1>
+            
+            <p class="text-xl text-gray-600 mb-8">
+                Your personal Ulcerative Colitis management companion
+            </p>
+            
+            <div class="space-x-4">
+                <!-- <a href="{% url 'account_login' %}"
+                class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                    Login
+                </a>
+                <a href="{% url 'account_signup' %}"
+                class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700">
+                    Register
+                </a> -->
+            {% endif %}
+        </div>
+    </div>
+    
+    
+    
+
+</div>
+{% endblock %} 

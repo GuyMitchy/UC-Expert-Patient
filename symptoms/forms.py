@@ -1,5 +1,4 @@
 from django import forms
-from django_summernote.widgets import SummernoteWidget
 from crispy_forms.helper import FormHelper
 from .models import Symptom
 
@@ -8,7 +7,6 @@ class SymptomForm(forms.ModelForm):
         model = Symptom
         fields = ['date', 'severity', 'description', 'location']
         widgets = {
-            'description': SummernoteWidget(),
             'date': forms.DateInput(attrs={'type': 'date'}),
         }
 

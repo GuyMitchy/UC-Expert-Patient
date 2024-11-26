@@ -3,11 +3,12 @@ from django_summernote.widgets import SummernoteWidget
 from crispy_forms.helper import FormHelper
 from .models import Food
 from django.utils.html import format_html
+from django.utils import timezone
 
 class FoodForm(forms.ModelForm):
     food_name = forms.CharField(
         widget=forms.TextInput(attrs={
-            'class': 'form-control',
+            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500',
             'placeholder': 'Enter food'
         })
     )
@@ -15,22 +16,23 @@ class FoodForm(forms.ModelForm):
     meal_type = forms.ChoiceField(
         choices=Food.MEAL_CHOICES,
         widget=forms.Select(attrs={
-            'class': 'form-select',
+            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500',
             'id': 'meal-select'
         })
     )
     
     eaten_at = forms.DateField(
-        widget=forms.DateTimeInput(attrs={
-            'type': 'datetime-local',
-            'class': 'form-control'
+        widget=forms.DateInput(attrs={
+            'type': 'date',
+            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500',
+            'max': timezone.now().strftime('%Y-%m-%d')
         }),
-        input_formats=['%Y-%m-%dT%H:%M']
+        
     )
 
     portion_size = forms.CharField(
         widget=forms.TextInput(attrs={
-            'class': 'form-control',
+            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500',
             'placeholder': 'Enter portion size (e.g., small, med, large)'
         })
     )
@@ -46,7 +48,7 @@ class FoodForm(forms.ModelForm):
     notes = forms.CharField(
         required=False,
         widget=forms.Textarea(attrs={
-            'class': 'form-control',
+            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500',
             'rows': 3,
             'placeholder': 'Any additional notes about this meal'
         })

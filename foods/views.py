@@ -9,7 +9,7 @@ from django.utils import timezone
 
 class FoodListView(LoginRequiredMixin, ListView):
     model = Food
-    template_name = 'food/list.html'
+    template_name = 'foods/list.html'
     context_object_name = 'foods'
     
     def get_queryset(self):
@@ -18,8 +18,8 @@ class FoodListView(LoginRequiredMixin, ListView):
 class FoodCreateView(LoginRequiredMixin, CreateView):
     model = Food
     form_class = FoodForm
-    template_name = 'food/add.html'
-    success_url = reverse_lazy('food:list')
+    template_name = 'foods/add.html'
+    success_url = reverse_lazy('foods:list')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -34,8 +34,8 @@ class FoodCreateView(LoginRequiredMixin, CreateView):
 class FoodUpdateView(LoginRequiredMixin, UpdateView):
     model = Food
     form_class = FoodForm
-    template_name = 'food/edit.html'
-    success_url = reverse_lazy('food:list')
+    template_name = 'foods/edit.html'
+    success_url = reverse_lazy('foods:list')
 
     def get_queryset(self):
         return Food.objects.filter(user=self.request.user)
@@ -46,8 +46,8 @@ class FoodUpdateView(LoginRequiredMixin, UpdateView):
 
 class FoodDeleteView(LoginRequiredMixin, DeleteView):
     model = Food
-    template_name = 'food/delete.html'
-    success_url = reverse_lazy('food:list')
+    template_name = 'foods/delete.html'
+    success_url = reverse_lazy('foods:list')
 
     def get_queryset(self):
         return Food.objects.filter(user=self.request.user)

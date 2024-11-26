@@ -1,6 +1,7 @@
 from django import forms
 from .models import Medication
 from django.utils.html import format_html
+from django.utils import timezone
 
 class MedicationForm(forms.ModelForm):
     name = forms.ChoiceField(
@@ -22,7 +23,8 @@ class MedicationForm(forms.ModelForm):
     start_date = forms.DateField(
         widget=forms.DateInput(attrs={
             'type': 'date',
-            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500',
+            'max': timezone.now().strftime('%Y-%m-%d')
         })
     )
 

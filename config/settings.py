@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'home',
     'symptoms',
     'medications',
+    'foods',
 ]
 
 SITE_ID = 1

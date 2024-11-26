@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from datetime import date
 from .models import Symptom
+from .forms import SymptomForm
 
 class SymptomListView(LoginRequiredMixin, ListView):
     model = Symptom
@@ -15,8 +16,9 @@ class SymptomListView(LoginRequiredMixin, ListView):
 
 class SymptomCreateView(LoginRequiredMixin, CreateView):
     model = Symptom
+    form_class = SymptomForm
     template_name = 'symptoms/add.html'
-    fields = ['date', 'type', 'severity', 'description']
+    
     success_url = reverse_lazy('symptoms:list')
     
     def get_context_data(self, **kwargs):
@@ -31,8 +33,9 @@ class SymptomCreateView(LoginRequiredMixin, CreateView):
 
 class SymptomUpdateView(LoginRequiredMixin, UpdateView):
     model = Symptom
+    form_class = SymptomForm
     template_name = 'symptoms/edit.html'
-    fields = ['date', 'type', 'severity', 'description']
+    
     success_url = reverse_lazy('symptoms:list')
 
     def get_queryset(self):

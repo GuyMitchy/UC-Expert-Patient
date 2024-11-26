@@ -30,7 +30,7 @@
                     <select name="{{ form.type.name }}" id="{{ form.type.id_for_label }}"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         {% for value, label in form.fields.type.choices %}
-                        <option value="{{ value }}" {% if form.type.value == value %}selected{% endif %}>
+                        <option value="{{ value }}" {% if form.severity.value == value %}selected{% endif %}>
                             {{ label }}
                         </option>
                         {% endfor %}

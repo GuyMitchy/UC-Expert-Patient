@@ -27,9 +27,9 @@
                         <h3 class="text-lg font-medium text-gray-900">
                             {{ medication.get_name_display }}
                             {% if not medication.active %}
-                            <span class="text-sm text-gray-500">(Discontinued)</span>
+                            <span class="text-sm text-gray-500">(Not Currently Prescribed)</span>
                             {% else %}
-                            <span class="text-sm text-gray-500">(Currently taking)</span>
+                            <span class="text-sm text-gray-500">(Currently Prescribed)</span>
                             {% endif %}
                         </h3>
                         <p class="text-sm text-gray-500">

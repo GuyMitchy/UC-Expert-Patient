@@ -19,7 +19,8 @@ class Food(models.Model):
     ]
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    eaten_at = models.DateTimeField(validators=[validate_past_date], default=timezone.now)
+    date = models.DateTimeField(validators=[validate_past_date], default=timezone.now)
+    eaten_at = models.TimeField(default=timezone.now)
     meal_type = models.CharField(max_length=50, choices=MEAL_CHOICES)
     food_name = models.CharField(max_length=50)
     portion_size = models.CharField(max_length=50)
@@ -32,4 +33,4 @@ class Food(models.Model):
         return f"{self.meal_type} - {self.food_name}"
 
     class Meta:
-        ordering = ['-eaten_at',]
+        ordering = ['-date','-eaten_at',]

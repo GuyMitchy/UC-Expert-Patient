@@ -11,8 +11,11 @@
 
         <div class="bg-gray-50 p-4 rounded-md mb-6">
             <p class="font-medium">{{ object.get_type_display }}</p>
+            {% if object.description %}
             <p class="text-sm text-gray-600 mt-2">{{ object.description }}</p>
             {% endif %}
+            
+            
         </div>
 
         <form method="POST">

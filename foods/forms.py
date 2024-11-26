@@ -21,14 +21,22 @@ class FoodForm(forms.ModelForm):
         })
     )
     
-    eaten_at = forms.DateField(
+    date = forms.DateField(
         widget=forms.DateInput(attrs={
             'type': 'date',
             'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500',
             'max': timezone.now().strftime('%Y-%m-%d')
-        }),
-        
+        })
     )
+    
+    eaten_at = forms.TimeField(
+                widget=forms.TimeInput(attrs={
+            'type': 'time',
+            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500',
+            
+        })
+    )        
+    
 
     portion_size = forms.CharField(
         widget=forms.TextInput(attrs={
@@ -56,7 +64,7 @@ class FoodForm(forms.ModelForm):
 
     class Meta:
         model = Food
-        fields = ['food_name', 'meal_type', 'eaten_at', 'portion_size']
+        fields = ['food_name', 'meal_type', 'date', 'eaten_at', 'portion_size']
         widgets = {
             'description': SummernoteWidget(),
             'date': forms.DateInput(attrs={'type': 'date'}),

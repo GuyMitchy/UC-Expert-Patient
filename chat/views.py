@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
@@ -53,6 +53,18 @@ class ConversationDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['messages'] = self.object.message_set.all()
         return context
+    
+class ConversationDeleteView(LoginRequiredMixin, DeleteView):
+    model = Conversation
+    template_name = 'chat/delete.html'
+    success_url = reverse_lazy('chat:list')
+
+    def get_queryset(self):
+        return Conversation.objects.filter(user=self.request.user)
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Conversation deleted successfully.')
+        return super().delete(request, *args, **kwargs)
 
 @login_required
 def send_message(request, conversation_id):
@@ -78,7 +90,7 @@ def send_message(request, conversation_id):
         
         # Try to get symptoms if they exist
         try:
-            recent_symptoms = request.user.symptom_set.all()[:5]
+            recent_symptoms = request.user.symptom_set.all()
             if recent_symptoms:
                 user_context += "\nRecent Symptoms:\n"
                 for symptom in recent_symptoms:
@@ -96,9 +108,9 @@ def send_message(request, conversation_id):
         except AttributeError:
             user_context += "\nNo medications recorded.\n"
             
-        # Try to get recent food entries if they exist
+        # Try to get food entries if they exist
         try:
-            recent_foods = request.user.food_set.all()[:5]  # Get 5 most recent entries
+            recent_foods = request.user.food_set.all()
             if recent_foods:
                 user_context += "\nRecent Food Entries:\n"
                 for food in recent_foods:

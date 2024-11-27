@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["8000-guymitchy-capstonepract-7912tbi7ced.ws.codeinstitute-ide.net",'.herokuapp.com']
+ALLOWED_HOSTS = ['8000-guymitchy-ucexpertpatie-sv6c12l37dh.ws.codeinstitute-ide.net','.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",

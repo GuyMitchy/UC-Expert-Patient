@@ -126,9 +126,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# ALLOWS EMAIL LOGIN AS IVE REMOVED USERNAME FROM LOG IN TEMPLATE -------------------------
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-
+# -------------------------------------------------------------
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

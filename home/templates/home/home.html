@@ -6,6 +6,19 @@
     <div class="mb-12">
         <p class="text-xl text-gray-600 mb-8">Track your symptoms - Log your medication - Become an expert patient</p>
     </div>
+    <!-- Chat Card -->
+    <div class="bg-white p-6 my-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Chat with UC companion </h2>
+        <ul class="text-gray-600 mb-4">
+            <li class="mb-1">- Get answers to your UC-related questions.</li>
+            <li class="mb-1">- Talk about your symptoms and medications.</li>
+            <li class="mb-3">- Become an expert on your condition.</li>
+        </ul>
+        <a href="{% url 'chat:list' %}" class=" mt-2 inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            Start Chat
+        </a>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Symptoms Card -->
         <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">

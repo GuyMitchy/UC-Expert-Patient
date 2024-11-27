@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'symptoms',
     'medications',
     'foods',
+    'chat',
+    'knowledge',
 ]
 
 SITE_ID = 1
@@ -107,6 +109,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
 }
+
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

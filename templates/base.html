@@ -18,7 +18,7 @@
                     <a class="px-4" href="{% url 'symptoms:list' %}">Symptoms</a>
                     <a class="px-4" href="{% url 'medications:list' %}">Medications</a>
                     <a class="px-4" href="{% url 'foods:list' %}">Foods</a>
-                    <a class="px-4">Chat</a>
+                    <a class="px-4" href="{% url 'chat:list' %}">Chat</a>
                 </div>
                 {% if user.is_authenticated %}
                 <div class="flex items-center space-x-4">

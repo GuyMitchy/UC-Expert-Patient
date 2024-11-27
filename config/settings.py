@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'symptoms',
     'medications',
     'foods',
+    'chat',
 ]
 
 SITE_ID = 1

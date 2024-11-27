@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-900">Conversations</h1>
+        <a href="{% url 'chat:new' %}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            New Conversation
+        </a>
+    </div>
+
+    {% if conversations %}
+    <div class="bg-white shadow overflow-hidden sm:rounded-md">
+        <ul class="divide-y divide-gray-200">
+            {% for conversation in conversations %}
+            <li>
+                <a href="{% url 'chat:detail' conversation.pk %}" class="block hover:bg-gray-50">
+                    <div class="px-4 py-4 sm:px-6">
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm font-medium text-blue-600 truncate">
+                                {{ conversation.title }}
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                {{ conversation.updated_at|date:"F j, Y, g:i a" }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <div class="text-center py-12 bg-white rounded-lg shadow">
+        <p class="text-gray-500">No conversations yet.</p>
+        <a href="{% url 'chat:new' %}"
+            class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            Start a New Conversation
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

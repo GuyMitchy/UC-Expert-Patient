@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s81_!x_54s**uunww@l=!*l5sd32d@*3w)ieagv34z5=(==x89
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-guymitchy-ucexpertpatie-sv6c12l37dh.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-guymitchy-ucexpertpatie-sv6c12l37dh.ws.codeinstitute-ide.net','https://uc-expert-test-db68875ea2a5.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = ['https://*.codeinstitute-ide.net', 'https://*.herokuapp.com']
 # Application definition

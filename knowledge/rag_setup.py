@@ -1,8 +1,8 @@
 from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain_community.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import Document
 from typing import List
@@ -123,8 +123,8 @@ class UCExpertRAG:
             )
 
             # Use ChatOpenAI instead of Ollama
-            response = self.llm.predict(formatted_prompt)
-            return ' '.join(response.split())
+            response = self.llm.invoke(formatted_prompt)
+            return ' '.join(response.content.split())
 
         except Exception as e:
             print(f"Error in get_response: {str(e)}")

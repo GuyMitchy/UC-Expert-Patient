@@ -28,13 +28,14 @@
                     <i data-lucide="activity" class="w-6 h-6"></i>
                     <span class="text-xl font-bold">Expert Patient</span>
                 </a>
+                {% if user.is_authenticated %}
                 <nav class="hidden md:flex space-x-4">
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'symptoms:list' %}">Symptoms</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'medications:list' %}">Medications</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'foods:list' %}">Foods</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'chat:list' %}">Chat</a>
                 </nav>
-                {% if user.is_authenticated %}
+                
                 <div class="flex items-center space-x-4">
                     <span class="text-sm">Welcome, {{ user.username }}</span>
                     <a href="{% url 'account_logout' %}"

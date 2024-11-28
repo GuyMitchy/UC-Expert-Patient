@@ -8,7 +8,71 @@
         <p class="text-xl text-gray-600">Study your symptoms - Mange your medication - Track your trigger foods - Become
             an expert patient</p>
     </div>
-    
+    <!-- Dashboard Content -->
+    <div class="bg-white p-6 mb-12 shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+        <div class="grid gap-8 md:grid-cols-3">
+            <!-- Symptoms -->
+            <div class="md:border-r md:border-gray-200 md:pr-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Recent Symptoms</h3>
+                {% if dashboard.recent_symptoms %}
+                <div class="space-y-2">
+                    {% for symptom in dashboard.recent_symptoms %}
+                    <div class="flex items-center text-sm">
+                        <span class="text-gray-600 mr-2">{{ symptom.get_type_display }}</span>
+                        <span class="{% if symptom.severity >= 4 %}px-2 py-0.5 text-xs bg-red-100 text-red-800 rounded
+                            {% elif symptom.severity >= 3 %}px-2 py-0.5 text-xs bg-yellow-100 text-yellow-800 rounded
+                            {% else %}px-2 py-0.5 text-xs bg-green-100 text-green-800 rounded{% endif %}">
+                            {{ symptom.get_severity_display }}
+                        </span>
+                        <span class="text-gray-500 ml-auto">{{ symptom.date|date:"M d" }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-sm text-gray-500">No recent symptoms</p>
+                {% endif %}
+            </div>
+
+            <!-- Medications -->
+            <div class="md:border-r md:border-gray-200 md:px-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Active Medications</h3>
+                {% if dashboard.active_medications %}
+                <div class="space-y-2">
+                    {% for med in dashboard.active_medications %}
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">{{ med.name }}</span>
+                        <span class="text-gray-500">{{ med.dosage }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-sm text-gray-500">No active medications</p>
+                {% endif %}
+            </div>
+
+            <!-- Foods -->
+            <div class="md:pl-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Recent Foods</h3>
+                {% if dashboard.recent_foods %}
+                <div class="space-y-2">
+                    {% for food in dashboard.recent_foods %}
+                    <div class="flex items-center text-sm">
+                        <span class="text-gray-600 mr-2">{{ food.food_name }}</span>
+                        {% if food.is_trigger %}
+                        <span class="px-2 py-0.5 text-xs bg-red-100 text-red-800 rounded">Trigger</span>
+                        {% else %}
+                        <span class="px-2 py-0.5 text-xs bg-green-100 text-green-800 rounded">Safe</span>
+                        {% endif %}
+                        <span class="text-gray-500 ml-auto">{{ food.date|date:"M d" }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-sm text-gray-500">No recent food entries</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
     <div class="grid gap-6 md:grid-cols-2">
         <!-- Chat Card -->

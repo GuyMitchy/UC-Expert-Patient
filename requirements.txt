@@ -9,8 +9,6 @@ bcrypt==4.2.1
 build==1.2.2.post1
 cachetools==5.5.0
 chardet==5.2.0
-chroma-hnswlib==0.7.6
-chromadb==0.5.20
 click==8.1.7
 coloredlogs==15.0.1
 dataclasses-json==0.6.7

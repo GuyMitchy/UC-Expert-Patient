@@ -1,41 +1,64 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expert Patient</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#10b981',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-
-<body class="bg-gray-100">
-    <nav class="bg-blue-600 text-white">
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-blue-600 text-white sticky top-0 z-10 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <a href="{% url 'home:home' %}" class="text-xl font-bold">Expert Patient</a>
-                <div class="flex justify-center">
-                    <a class="px-4" href="{% url 'symptoms:list' %}">Symptoms</a>
-                    <a class="px-4" href="{% url 'medications:list' %}">Medications</a>
-                    <a class="px-4" href="{% url 'foods:list' %}">Foods</a>
-                    <a class="px-4" href="{% url 'chat:list' %}">Chat</a>
-                </div>
+                <a href="{% url 'home:home' %}" class="flex items-center space-x-2">
+                    <i data-lucide="activity" class="w-6 h-6"></i>
+                    <span class="text-xl font-bold">Expert Patient</span>
+                </a>
+                <nav class="hidden md:flex space-x-4">
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'symptoms:list' %}">Symptoms</a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'medications:list' %}">Medications</a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'foods:list' %}">Foods</a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'chat:list' %}">Chat</a>
+                </nav>
                 {% if user.is_authenticated %}
                 <div class="flex items-center space-x-4">
                     <span class="text-sm">Welcome, {{ user.username }}</span>
                     <a href="{% url 'account_logout' %}"
-                        class="text-sm bg-blue-700 px-3 py-2 rounded hover:bg-blue-800">
+                        class="text-sm bg-blue-700 px-3 py-2 rounded hover:bg-blue-800 transition">
                         Logout
                     </a>
                 </div>
                 {% endif %}
             </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="min-h-screen">
+    <main class="flex-grow">
         {% block content %}{% endblock %}
     </main>
-</body>
 
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2023 Expert Patient. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
 </html>

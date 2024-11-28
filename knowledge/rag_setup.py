@@ -2,6 +2,7 @@ from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_pinecone import PineconeVectorStore
+from pinecone import Pinecone
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import Document
 from typing import List

@@ -76,7 +76,7 @@
 
     <div class="grid gap-6 md:grid-cols-2">
         <!-- Chat Card -->
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+        <div class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-blue-100 opacity-50">
                 <i data-lucide="message-square" class="w-12 h-12 md:w-20 h-20"></i>
             </div>
@@ -96,20 +96,20 @@
                 </li>
             </ul>
             <a href="{% url 'chat:list' %}"
-                class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition mt-auto">
                 Start Chat
             </a>
         </div>
 
         <!-- Symptoms Card -->
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+        <div class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-green-100 opacity-80">
                 <i data-lucide="activity" class="w-12 h-12 md:w-20 h-20"></i>
             </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">Symptom Tracker</h2>
             <p class="text-gray-600 mb-4">Log and monitor your symptoms to identify patterns and triggers</p>
             <a href="{% url 'symptoms:list' %}"
-                class="inline-block w-full text-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                class="inline-block w-full text-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition mt-auto">
                 Track Symptoms
             </a>
         </div>
@@ -117,29 +117,31 @@
 
 
         <!-- Medications Card -->
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+        <div class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-purple-100 opacity-80">
                 <i data-lucide="pill" class="w-12 h-12 md:w-20 h-20"></i>
             </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">Medication Log</h2>
             <p class="text-gray-600 mb-4">Track your medication schedule and set reminders</p>
             <a href="{% url 'medications:list' %}"
-                class="inline-block w-full text-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                class="inline-block w-full text-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition mt-auto">
                 Manage Medications
             </a>
         </div>
 
         <!-- Food Diary Card -->
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+        <div class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-yellow-100 opacity-80">
                 <i data-lucide="utensils" class="w-12 h-12 md:w-20 h-20"></i>
             </div>
+            <div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">Food Diary</h2>
             <p class="text-gray-600 mb-4">Keep track of your meals and identify food triggers. Get personalized
                 recommendations based on your dietary patterns.</p>
-            <div class="flex flex-wrap gap-4">
+            </div>
+                <div class="flex flex-wrap gap-4">
                 <a href="{% url 'foods:list' %}"
-                    class="inline-block w-full text-center bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition">
+                    class="inline-block w-full text-center bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition mt-auto">
                     Manage Your Diet
                 </a>
             </div>

@@ -7,18 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3b82f6',
-                        secondary: '#10b981',
-                    }
-                }
-            }
-        }
-    </script>
+    
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
     <header class="bg-blue-600 text-white sticky top-0 z-10 shadow-md">
@@ -28,13 +17,14 @@
                     <i data-lucide="activity" class="w-6 h-6"></i>
                     <span class="text-xl font-bold">Expert Patient</span>
                 </a>
+                {% if user.is_authenticated %}
                 <nav class="hidden md:flex space-x-4">
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'symptoms:list' %}">Symptoms</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'medications:list' %}">Medications</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'foods:list' %}">Foods</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'chat:list' %}">Chat</a>
                 </nav>
-                {% if user.is_authenticated %}
+                
                 <div class="flex items-center space-x-4">
                     <span class="text-sm">Welcome, {{ user.username }}</span>
                     <a href="{% url 'account_logout' %}"
@@ -51,7 +41,7 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="bg-gray-800 text-white py-4">
+    <footer class="bg-blue-600 text-white py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p>&copy; 2023 Expert Patient. All rights reserved.</p>
         </div>

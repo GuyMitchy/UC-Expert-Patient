@@ -11,12 +11,15 @@ import gc
 class UCExpertRAG:
     def __init__(self):
         self.docs_path = os.path.join('knowledge', 'docs')
-        self.embeddings = OpenAIEmbeddings()
+        self.embeddings = OpenAIEmbeddings(openai_api_key=os.getenv('OPENAI_API_KEY'))
         self.llm = ChatOpenAI(model="gpt-4")
         
         self.fetch_k = 10
         self.final_k = 5
         self.lambda_mult = 0.7
+        
+        pc = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
+        
         
         # Initialize vector store directly
         self.vector_store = PineconeVectorStore(

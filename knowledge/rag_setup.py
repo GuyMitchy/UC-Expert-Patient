@@ -1,27 +1,31 @@
 from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
-from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_pinecone import PineconeVectorStore
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import Document
 from typing import List
 import os
+import gc
 
 class UCExpertRAG:
     def __init__(self):
         self.docs_path = os.path.join('knowledge', 'docs')
         self.embeddings = OpenAIEmbeddings()
         self.llm = ChatOpenAI(model="gpt-4")
-        self.vector_store = None
         
-        # Search parameters
         self.fetch_k = 10
         self.final_k = 5
         self.lambda_mult = 0.7
         
-        # Initialize vector store
-        self.initialize_vector_store()
+        # Initialize vector store directly
+        self.vector_store = PineconeVectorStore(
+            index_name="ucexpert",
+            embedding=self.embeddings
+        )
+        
+        # Initialize documents if vector store is empty
+        self.initialize_documents()
         
         # Define the prompt template
         template = """You are a medical professional assistant specializing in Ulcerative Colitis.
@@ -57,10 +61,10 @@ class UCExpertRAG:
         
         self.prompt = ChatPromptTemplate.from_template(template)
 
-    def initialize_vector_store(self):
+    def initialize_documents(self):
+        """Initialize documents in vector store if needed"""
         try:
-            print(f"Looking for documents in: {self.docs_path}")
-            
+            # Load and process documents
             loader = DirectoryLoader(self.docs_path, glob="*.md")
             documents = loader.load()
             print(f"Found {len(documents)} documents")
@@ -73,58 +77,64 @@ class UCExpertRAG:
             splits = text_splitter.split_documents(documents)
             print(f"Created {len(splits)} text chunks")
             
-            self.vector_store = Chroma.from_documents(
-                documents=splits,
-                embedding=self.embeddings,
-                persist_directory="knowledge/db"
-            )
-            print("Vector store initialized successfully")
+            # Add documents to vector store
+            self.vector_store.add_documents(splits)
+            
+            # Clean up
+            del documents
+            del splits
+            gc.collect()
+                
+            print("Documents initialized successfully")
             
         except Exception as e:
-            print(f"Error initializing vector store: {str(e)}")
+            print(f"Error initializing documents: {str(e)}")
+            raise
+
+    def cleanup(self):
+        """Cleanup resources"""
+        try:
+            self.vector_store = None
+            gc.collect()
+        except Exception as e:
+            print(f"Error during cleanup: {str(e)}")
 
     def get_diverse_documents(self, question: str) -> List[Document]:
-        """Get diverse relevant documents using Chroma's built-in MMR."""
+        """Get relevant documents using similarity search"""
         try:
-            return self.vector_store.max_marginal_relevance_search(
+            return self.vector_store.similarity_search(
                 question,
-                k=self.final_k,
-                fetch_k=self.fetch_k,
-                lambda_mult=self.lambda_mult
+                k=self.final_k
             )
         except Exception as e:
             print(f"Error in get_diverse_documents: {str(e)}")
             return []
 
     def get_response(self, question: str, user_info: str) -> str:
+        """Get response with improved memory management"""
         try:
             print(f"\nProcessing question: {question}")
-            
-            if self.vector_store is None:
-                self.initialize_vector_store()
-                
-            if self.vector_store is None:
-                raise ValueError("Failed to initialize vector store")
 
-            # Get diverse documents
             relevant_docs = self.get_diverse_documents(question)
-            
             if not relevant_docs:
                 return "I'm sorry, I don't have enough information to answer that question."
                 
-            # Combine contexts
-            context = "\n\n".join([doc.page_content for doc in relevant_docs])
-            
-            # Format prompt and get response
-            formatted_prompt = self.prompt.format(
-                context=context,
-                user_info=user_info,
-                question=question
-            )
+            try:
+                context = "\n\n".join([doc.page_content for doc in relevant_docs])
+                formatted_prompt = self.prompt.format(
+                    context=context,
+                    user_info=user_info,
+                    question=question
+                )
 
-            # Use ChatOpenAI instead of Ollama
-            response = self.llm.invoke(formatted_prompt)
-            return ' '.join(response.content.split())
+                response = self.llm.invoke(formatted_prompt)
+                result = ' '.join(response.content.split())
+                
+                return result
+            finally:
+                # Clean up
+                del relevant_docs
+                gc.collect()
 
         except Exception as e:
             print(f"Error in get_response: {str(e)}")

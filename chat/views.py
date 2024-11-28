@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
@@ -6,10 +6,8 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from .models import Conversation, Message
-from knowledge.rag_setup import UCExpertRAG
+from knowledge.manager import with_rag
 
-# Initialize RAG system
-rag_system = UCExpertRAG()
 
 class ConversationListView(LoginRequiredMixin, ListView):
     model = Conversation
@@ -55,7 +53,9 @@ class ConversationDetailView(LoginRequiredMixin, DetailView):
         return context
 
 @login_required
-def send_message(request, conversation_id):
+@with_rag
+def send_message(request, conversation_id, rag=None):
+    """Handle message sending with managed RAG instance"""
     if request.method != 'POST':
         return HttpResponse('Method not allowed', status=405)
 
@@ -66,19 +66,19 @@ def send_message(request, conversation_id):
         return HttpResponse('Message is required', status=400)
 
     try:
-        # Save user message first
+        # Save user message
         user_message_obj = Message.objects.create(
             conversation=conversation,
             content=user_message,
             is_bot=False
         )
 
-        # Initialize user context
+        # Build user context
         user_context = "User Context:\n"
         
-        # Try to get symptoms if they exist
+        # Get symptoms
         try:
-            recent_symptoms = request.user.symptom_set.all()[:5]
+            recent_symptoms = request.user.symptom_set.all()
             if recent_symptoms:
                 user_context += "\nRecent Symptoms:\n"
                 for symptom in recent_symptoms:
@@ -86,7 +86,7 @@ def send_message(request, conversation_id):
         except AttributeError:
             user_context += "\nNo symptoms recorded.\n"
 
-        # Try to get medications if they exist
+        # Get medications
         try:
             active_medications = request.user.medication_set.filter(active=True)
             if active_medications:
@@ -96,9 +96,9 @@ def send_message(request, conversation_id):
         except AttributeError:
             user_context += "\nNo medications recorded.\n"
             
-        # Try to get recent food entries if they exist
+        # Get food entries
         try:
-            recent_foods = request.user.food_set.all()[:5]  # Get 5 most recent entries
+            recent_foods = request.user.food_set.all()
             if recent_foods:
                 user_context += "\nRecent Food Entries:\n"
                 for food in recent_foods:
@@ -109,23 +109,20 @@ def send_message(request, conversation_id):
         except AttributeError:
             user_context += "\nNo food entries recorded.\n"
 
-        # Get response using RAG system
-        response = rag_system.get_response(
+        # Get response using managed RAG instance
+        response = rag.get_response(
             question=user_message,
             user_info=user_context
         )
 
-        # Clean up the response
-        cleaned_response = ' '.join(response.split())
-
         # Save bot message
         bot_message = Message.objects.create(
             conversation=conversation,
-            content=cleaned_response,
+            content=response,
             is_bot=True
         )
 
-        # Render both messages
+        # Render messages
         messages_html = render_to_string('chat/message.html', {'message': user_message_obj})
         messages_html += render_to_string('chat/message.html', {'message': bot_message})
         

@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
+import atexit
+
 
 load_dotenv()
 
@@ -30,7 +32,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+
+DEBUG = os.path.exists('.env')
+print(f"Debug mode is set to: {DEBUG}")
 
 ALLOWED_HOSTS = ['8000-guymitchy-ucexpertpatie-sv6c12l37dh.ws.codeinstitute-ide.net','.herokuapp.com']
 

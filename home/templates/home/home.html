@@ -4,14 +4,16 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     {% if user.is_authenticated %}
     <div class="mb-12 text-center">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Your Health Journey Partner</h1>
-        <p class="text-xl text-gray-600">Track your symptoms - Log your medication - Become an expert patient</p>
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Your UC Diagnoses Dashboard</h1>
+        <p class="text-xl text-gray-600">Study your symptoms - Mange your medication - Track your trigger foods - Become
+            an expert patient</p>
     </div>
+    
 
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-6 md:grid-cols-2">
         <!-- Chat Card -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
-            <div class="absolute right-2 top-2 text-blue-100 opacity-10">
+            <div class="absolute right-2 top-2 text-blue-100 opacity-50">
                 <i data-lucide="message-square" class="w-20 h-20"></i>
             </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">Chat with UC Companion</h2>
@@ -29,14 +31,15 @@
                     Become an expert on your condition
                 </li>
             </ul>
-            <a href="{% url 'chat:list' %}" class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            <a href="{% url 'chat:list' %}"
+                class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
                 Start Chat
             </a>
         </div>
 
         <!-- Symptoms Card -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
-            <div class="absolute right-2 top-2 text-green-100 opacity-10">
+            <div class="absolute right-2 top-2 text-green-100 opacity-80">
                 <i data-lucide="activity" class="w-20 h-20"></i>
             </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">Symptom Tracker</h2>
@@ -47,34 +50,41 @@
             </a>
         </div>
 
+
+
         <!-- Medications Card -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
-            <div class="absolute right-2 top-2 text-purple-100 opacity-10">
+            <div class="absolute right-2 top-2 text-purple-100 opacity-80">
                 <i data-lucide="pill" class="w-20 h-20"></i>
             </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">Medication Log</h2>
             <p class="text-gray-600 mb-4">Track your medication schedule and set reminders</p>
-            <a href="{% url 'medications:list' %}" class="inline-block w-full text-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+            <a href="{% url 'medications:list' %}"
+                class="inline-block w-full text-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
                 Manage Medications
             </a>
         </div>
 
         <!-- Food Diary Card -->
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden md:col-span-2 lg:col-span-3">
-            <div class="absolute right-2 top-2 text-yellow-100 opacity-10">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+            <div class="absolute right-2 top-2 text-yellow-100 opacity-80">
                 <i data-lucide="utensils" class="w-20 h-20"></i>
             </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">Food Diary</h2>
-            <p class="text-gray-600 mb-4">Keep track of your meals and identify food triggers. Get personalized recommendations based on your dietary patterns.</p>
+            <p class="text-gray-600 mb-4">Keep track of your meals and identify food triggers. Get personalized
+                recommendations based on your dietary patterns.</p>
             <div class="flex flex-wrap gap-4">
-                <a href="{% url 'foods:list' %}" class="inline-block bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition">
+                <a href="{% url 'foods:list' %}"
+                    class="inline-block bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition">
                     Manage Your Diet
                 </a>
-                <a href="#" class="inline-block bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+                <a href="#"
+                    class="inline-block bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
                     View History
                 </a>
             </div>
         </div>
+
     </div>
 
     {% else %}

@@ -7,18 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3b82f6',
-                        secondary: '#10b981',
-                    }
-                }
-            }
-        }
-    </script>
+    
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
     <header class="bg-blue-600 text-white sticky top-0 z-10 shadow-md">
@@ -52,7 +41,7 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="bg-gray-800 text-white py-4">
+    <footer class="bg-blue-600 text-white py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p>&copy; 2023 Expert Patient. All rights reserved.</p>
         </div>

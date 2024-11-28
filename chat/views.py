@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, DetailView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
@@ -51,6 +51,18 @@ class ConversationDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['messages'] = self.object.message_set.all()
         return context
+    
+class ConversationDeleteView(LoginRequiredMixin, DeleteView):
+    model = Conversation
+    template_name = 'chat/delete.html'
+    success_url = reverse_lazy('chat:list')
+
+    def get_queryset(self):
+        return Conversation.objects.filter(user=self.request.user)
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Conversation deleted successfully.')
+        return super().delete(request, *args, **kwargs)
 
 @login_required
 @with_rag
@@ -96,7 +108,7 @@ def send_message(request, conversation_id, rag=None):
         except AttributeError:
             user_context += "\nNo medications recorded.\n"
             
-        # Get food entries
+        # Try to get food entries if they exist
         try:
             recent_foods = request.user.food_set.all()
             if recent_foods:

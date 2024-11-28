@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col h-screen bg-gray-100">
+    <!-- Chat Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-semibold text-gray-900">{{ conversation.title }}</h1>
+                <a href="{% url 'chat:list' %}" class="text-blue-600 hover:text-blue-800">
+                    Back to Conversations
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Messages -->
+    <div class="flex-1 overflow-y-auto px-4 py-6" id="chat-messages">
+        {% for message in messages %}
+        {% include "chat/message.html" %}
+        {% endfor %}
+    </div>
+
+    <!-- Message Input -->
+    <div class="bg-white border-t border-gray-200 px-4 py-4">
+        <div class="max-w-7xl mx-auto">
+            <form hx-post="{% url 'chat:send_message' conversation.id %}" hx-target="#chat-messages" hx-swap="beforeend"
+                class="flex space-x-4">
+                {% csrf_token %}
+                <input type="text" name="message" placeholder="Type your message..."
+                    class="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    required>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Send
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.body.addEventListener('htmx:afterRequest', function (evt) {
+        if (evt.detail.successful) {
+            // Clear the input field
+            evt.detail.elt.querySelector('input[name="message"]').value = '';
+
+            // Scroll to bottom
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    });
+
+    // Initial scroll to bottom
+    window.onload = function () {
+        const chatMessages = document.getElementById('chat-messages');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+</script>
+{% endblock %}

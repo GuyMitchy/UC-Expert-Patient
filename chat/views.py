@@ -122,7 +122,7 @@ def send_message(request, conversation_id, rag=None):
             if recent_foods:
                 user_context += "\nRecent Food Entries:\n"
                 for food in recent_foods:
-                    user_context += f"- Food diary entry:{food.eaten_at.strftime('%Y-%m-%d %H:%M')}: {food.get_meal_type_display()} - {food.food_name} ({food.portion_size})"
+                    user_context += f"- Food diary entry:{food.eaten_at.strftime('%Y-%m-%d %H:%M')}: {food.get_meal_type_display()} - {food.food_name} ({food.portion_size}) is_trigger:{food.is_trigger}"
                     if food.notes:
                         user_context += f" Notes: {food.notes}"
                     user_context += "\n"

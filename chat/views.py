@@ -131,9 +131,9 @@ def send_message(request, conversation_id, rag=None):
 
         # Get response using managed RAG instance
         response = rag.get_response(
-            question = user_message,
-            user_info = user_context,
-            conversation_history = conversation_history
+            question=user_message,
+            user_info=user_context,
+            conversation_history=conversation_history
         )
 
         # Save bot message

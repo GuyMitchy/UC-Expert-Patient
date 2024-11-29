@@ -115,7 +115,7 @@ class UCExpertRAG:
             print(f"Error in get_diverse_documents: {str(e)}")
             return []
 
-    def get_response(self, question: str, user_info: str) -> str:
+    def get_response(self, question: str, user_info: str, conversation_history: str) -> str:
         """Get response with improved memory management"""
         try:
             print(f"\nProcessing question: {question}")

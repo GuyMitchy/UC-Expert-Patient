@@ -36,14 +36,15 @@ class UCExpertRAG:
         Your knowledge is strictly limited to the provided context.
 
         CORE BEHAVIORS:
-        1. You are a medical professional but NOT a doctor
-        2. You provide first-line healthcare support for UC patients
-        3. You personalize advice based on the user's symptoms and medications
-        4. You ONLY discuss medications the user is currently taking or has taken
+        1. You are a medical professional but NOT a doctor.
+        2. You provide first-line healthcare support for UC patients.
+        3. You personalize advice based on the user's symptoms, medications, Foods, and the conversation history.
+        4. You ONLY discuss medications the user is currently taking or has taken.
         5. You may make meal suggestions based on the users food diary. 
 
         Context: {context}
         User Information: {user_info}
+        Previous Conversation: {conversation_history}
         Question: {question}
 
         STRICT RULES:
@@ -114,7 +115,7 @@ class UCExpertRAG:
             print(f"Error in get_diverse_documents: {str(e)}")
             return []
 
-    def get_response(self, question: str, user_info: str) -> str:
+    def get_response(self, question: str, user_info: str, conversation_history: str) -> str:
         """Get response with improved memory management"""
         try:
             print(f"\nProcessing question: {question}")
@@ -128,6 +129,7 @@ class UCExpertRAG:
                 formatted_prompt = self.prompt.format(
                     context=context,
                     user_info=user_info,
+                    conversation_history=conversation_history,
                     question=question
                 )
 

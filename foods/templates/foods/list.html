@@ -31,7 +31,7 @@
                             {{ food.food_name }} - {{ food.portion_size }}
                         </p>
                         <p class="text-sm text-gray-500">
-                            Ate: {{ food.eaten_at|date:"F j, Y g:i A" }}
+                            Ate: {{ food.date }}: {{ food.eaten_at }}
                         </p>
                         {% if food.notes %}
                         <p class="mt-2 text-gray-600">{{ food.notes }}</p>

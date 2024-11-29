@@ -88,6 +88,14 @@ def send_message(request, conversation_id, rag=None):
         # Build user context
         user_context = "User Context:\n"
         
+        # Add Convesation History - last 10 messages
+        
+        previous_messages = conversation.message_set.order_by('-created_at')[:10][::-1]
+        conversation_history = "\nConversation History:\n"
+        for msg in previous_messages:
+            role = "User" if not msg.is_bot else "Assistant"
+            conversation_history += f"{role}: {msg.content}\n"
+        
         # Get symptoms
         try:
             recent_symptoms = request.user.symptom_set.all()
@@ -114,7 +122,7 @@ def send_message(request, conversation_id, rag=None):
             if recent_foods:
                 user_context += "\nRecent Food Entries:\n"
                 for food in recent_foods:
-                    user_context += f"- Food diary entry:{food.eaten_at.strftime('%Y-%m-%d %H:%M')}: {food.get_meal_type_display()} - {food.food_name} ({food.portion_size})"
+                    user_context += f"- Food diary entry:{food.eaten_at.strftime('%Y-%m-%d %H:%M')}: {food.get_meal_type_display()} - {food.food_name} ({food.portion_size}) is_trigger:{food.is_trigger}"
                     if food.notes:
                         user_context += f" Notes: {food.notes}"
                     user_context += "\n"
@@ -124,7 +132,8 @@ def send_message(request, conversation_id, rag=None):
         # Get response using managed RAG instance
         response = rag.get_response(
             question=user_message,
-            user_info=user_context
+            user_info=user_context,
+            conversation_history=conversation_history
         )
 
         # Save bot message

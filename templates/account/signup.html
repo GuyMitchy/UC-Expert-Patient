@@ -14,7 +14,7 @@
             </h2>
             <p class="mt-2 text-center text-sm text-gray-600">
                 {% blocktrans %}
-                Already have an account? 
+                Already have an account?
                 <a href="{{ login_url }}" class="font-medium text-blue-600 hover:text-blue-500">
                     Sign in
                 </a>
@@ -28,15 +28,15 @@
 
             <!-- Error Messages -->
             {% if form.errors %}
-                <div class="rounded-md bg-red-50 p-4 mb-4">
-                    <div class="flex">
-                        <div class="text-sm text-red-700">
-                            {% for error in form.non_field_errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
-                        </div>
+            <div class="rounded-md bg-red-50 p-4 mb-4">
+                <div class="flex">
+                    <div class="text-sm text-red-700">
+                        {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
                     </div>
                 </div>
+            </div>
             {% endif %}
 
             <!-- Signup Fields -->
@@ -45,10 +45,10 @@
                 <div>
                     <label for="id_email" class="sr-only">{% trans "Email" %}</label>
                     <input id="id_email" name="email" type="email" required
-                          class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                          placeholder="{% trans 'Email address' %}">
+                        class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                        placeholder="{% trans 'Email address' %}">
                     {% if form.email.errors %}
-                        <p class="text-red-500 text-xs mt-1">{{ form.email.errors.0 }}</p>
+                    <p class="text-red-500 text-xs mt-1">{{ form.email.errors.0 }}</p>
                     {% endif %}
                 </div>
 
@@ -56,10 +56,10 @@
                 <div>
                     <label for="id_username" class="sr-only">{% trans "Username" %}</label>
                     <input id="id_username" name="username" type="text" required
-                          class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                          placeholder="{% trans 'Username' %}">
+                        class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                        placeholder="{% trans 'Username' %}">
                     {% if form.username.errors %}
-                        <p class="text-red-500 text-xs mt-1">{{ form.username.errors.0 }}</p>
+                    <p class="text-red-500 text-xs mt-1">{{ form.username.errors.0 }}</p>
                     {% endif %}
                 </div>
 
@@ -67,10 +67,10 @@
                 <div>
                     <label for="id_password1" class="sr-only">{% trans "Password" %}</label>
                     <input id="id_password1" name="password1" type="password" required
-                          class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                          placeholder="{% trans 'Password' %}">
+                        class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                        placeholder="{% trans 'Password' %}">
                     {% if form.password1.errors %}
-                        <p class="text-red-500 text-xs mt-1">{{ form.password1.errors.0 }}</p>
+                    <p class="text-red-500 text-xs mt-1">{{ form.password1.errors.0 }}</p>
                     {% endif %}
                 </div>
 
@@ -78,23 +78,23 @@
                 <div>
                     <label for="id_password2" class="sr-only">{% trans "Password (again)" %}</label>
                     <input id="id_password2" name="password2" type="password" required
-                          class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                          placeholder="{% trans 'Confirm Password' %}">
+                        class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                        placeholder="{% trans 'Confirm Password' %}">
                     {% if form.password2.errors %}
-                        <p class="text-red-500 text-xs mt-1">{{ form.password2.errors.0 }}</p>
+                    <p class="text-red-500 text-xs mt-1">{{ form.password2.errors.0 }}</p>
                     {% endif %}
                 </div>
             </div>
 
 
             {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
 
             <!-- Submit Button -->
             <div>
-                <button type="submit" 
-                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <button type="submit"
+                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     <span class="absolute left-0 inset-y-0 flex items-center pl-3"></span>
                     {% trans "Sign Up" %}
                 </button>

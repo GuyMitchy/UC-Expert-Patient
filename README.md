@@ -1502,9 +1502,9 @@ ADD GUIDELINE TESTS HERE
 </details>
 
 
-## Issues and Current Limitations
+## Bugs, Issues, and Current Limitations
 <details>
-<summary>Issues and Resolutions</summary>
+<summary>Bugs, Issues and Resolutions</summary>
 <br>
 
 1. Form handling optimization
@@ -1522,6 +1522,11 @@ ADD GUIDELINE TESTS HERE
    - Solution: Moved database intialisation to send message function.
    - Result: Improved code organization, seperation of concerns, maintainability and readabilty.
    - Future improvement: Move RAG initialisation to chat window load to decrease wait time for first message response.
+
+4. Bug - "Midnight"  
+  - Intital issue: "midnight shows as time for all food entries, followed by the correct user entered time"
+  - Solution: Altered datetime field in model to date fieled only
+  - Result: Only user entered time appears
 <br>
 <br>
 </details>

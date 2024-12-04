@@ -1538,7 +1538,7 @@ ADD GUIDELINE TESTS HERE
 
 #### Current Limitations
 
-1. Tailwind cdn for development only
+1. Tailwind cdn for development only.
   - Talwind cdn is not reccomended for production purposes. Since this is a development project I haven't installed tailwind using the CLI or set up the tailwind config.js, I will continue using the CDN for now.
 
 </details>

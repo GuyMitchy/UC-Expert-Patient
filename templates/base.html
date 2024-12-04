@@ -73,9 +73,34 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="bg-blue-600 text-white py-4">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; 2023 Expert Patient. All rights reserved.</p>
+    <footer class="bg-blue-600 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center md:text-left">
+                    <h3 class="font-semibold mb-2">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'privacy' %}" class="hover:text-blue-200 transition">Privacy Policy</a></li>
+                        <li><a href="{% url 'terms' %}" class="hover:text-blue-200 transition">Terms of Use</a></li>
+                        <li><a href="{% url 'disclaimer' %}" class="hover:text-blue-200 transition">Medical Disclaimer</a></li>
+                        <li><a href="{% url 'data-protection' %}" class="hover:text-blue-200 transition">Data Protection Information</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="font-semibold mb-2">Help & Information</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'about' %}" class="hover:text-blue-200 transition">About</a></li>
+                        <li><a href="{% url 'guide' %}" class="hover:text-blue-200 transition">User Guide</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="font-semibold mb-2">Contact</h3>
+                    <p>Email: support@ucexpert.com</p>
+                    <p>Emergency: Call your healthcare provider</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-blue-500 text-center text-sm">
+                <p>&copy; {% now "Y" %} UC Expert. Expert Patient is for informational purposes only and is not a substitute for medical advice.</p>
+            </div>
         </div>
     </footer>
 

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-white shadow rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Data Protection Information</h1>
+
+        <div class="space-y-6 text-gray-700">
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">1. Data Storage and Security</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>All health data is encrypted at rest using AES-256 encryption</li>
+                    <li>Data is stored in secure servers within the European Economic Area</li>
+                    <li>Regular security audits and penetration testing</li>
+                    <li>Multi-factor authentication for system access</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">2. Data Retention</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Active account data: Retained while account is active</li>
+                    <li>Inactive accounts: Data deleted after 12 months of inactivity</li>
+                    <li>Chat logs: Retained for 6 months</li>
+                    <li>Backup data: Encrypted and retained for 30 days</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">3. Data Processing Procedures</h2>
+                <p>Your data is processed for:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Symptom tracking and analysis</li>
+                    <li>Medication management</li>
+                    <li>Food diary correlation</li>
+                    <li>AI-powered chat support</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">4. GDPR Rights Implementation</h2>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <p class="font-medium mb-2">You can exercise these rights at any time:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Right to access your data (Subject Access Request)</li>
+                        <li>Right to rectification of inaccurate data</li>
+                        <li>Right to erasure ("right to be forgotten")</li>
+                        <li>Right to data portability</li>
+                        <li>Right to restrict processing</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">5. Data Processors</h2>
+                <p>We use these processors to deliver our service:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Heroku (hosting)</li>
+                    <li>PostgreSQL (database)</li>
+                    <li>OpenAI (chat functionality)</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">6. Data Breach Response</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>24/7 monitoring for security incidents</li>
+                    <li>72-hour notification policy for affected users</li>
+                    <li>Incident response team on standby</li>
+                    <li>Regular breach simulation exercises</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">7. International Transfers</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Data primarily stored in EU servers</li>
+                    <li>Standard Contractual Clauses in place with processors</li>
+                    <li>Regular compliance audits</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">8. Contact Information</h2>
+                <p>For data protection inquiries:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Data Protection Officer: dpo@ucexpert.com</li>
+                    <li>Response time: Within 72 hours</li>
+                </ul>
+            </section>
+
+            <section class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-sm text-gray-600">Last updated: {% now "F j, Y" %}</p>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

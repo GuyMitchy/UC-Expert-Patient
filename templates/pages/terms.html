@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-white shadow rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Terms of Use</h1>
+
+        <div class="space-y-6 text-gray-700">
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">1. Agreement to Terms</h2>
+                <p>By accessing UC Expert, you agree to these Terms of Use. If you disagree with any part of these terms, you may not access the service.</p>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">2. Medical Disclaimer</h2>
+                <p>UC Expert is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or qualified healthcare provider.</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Never disregard professional medical advice because of something you read on UC Expert</li>
+                    <li>Do not delay seeking medical treatment because of information on this platform</li>
+                    <li>If you think you have a medical emergency, call your doctor or emergency services immediately</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">3. User Accounts</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>You are responsible for maintaining account confidentiality</li>
+                    <li>You must be 18 years or older to use this service</li>
+                    <li>You agree to provide accurate and complete information</li>
+                    <li>You are responsible for all activities under your account</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">4. Acceptable Use</h2>
+                <p>You agree not to:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Use the service for any unlawful purpose</li>
+                    <li>Share false or misleading information</li>
+                    <li>Attempt to access other users' accounts</li>
+                    <li>Upload malicious content or code</li>
+                    <li>Interfere with the service's functionality</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">5. Data and Privacy</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>We collect and process your data as described in our Privacy Policy</li>
+                    <li>You retain ownership of your personal data</li>
+                    <li>We may anonymize and aggregate data for service improvement</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">6. Service Modifications</h2>
+                <p>We reserve the right to:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Modify or discontinue any part of the service</li>
+                    <li>Update these terms at any time</li>
+                    <li>Suspend or terminate accounts for violations</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">7. Limitation of Liability</h2>
+                <p>UC Expert and its operators are not liable for:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Actions taken based on the service's information</li>
+                    <li>Service interruptions or data loss</li>
+                    <li>Third-party actions or content</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">8. Contact</h2>
+                <p>For questions about these terms, contact: terms@ucexpert.com</p>
+            </section>
+
+            <section class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-sm text-gray-600">Last updated: {% now "F j, Y" %}</p>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

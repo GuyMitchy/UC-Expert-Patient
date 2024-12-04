@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-white shadow rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Medical Disclaimer</h1>
+
+        <div class="space-y-6 text-gray-700">
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">General Information Only</h2>
+                <p>The content on UC Expert is for general informational purposes only. All information is provided in good faith, however, we make no representation or warranty regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information.</p>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">Not Medical Advice</h2>
+                <div class="bg-red-50 border-l-4 border-red-400 p-4 my-4">
+                    <p class="text-red-700">UC Expert is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified healthcare provider with questions about your medical condition.</p>
+                </div>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">Emergency Situations</h2>
+                <p>Do not use UC Expert for medical emergencies. If you have a medical emergency:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Call your local emergency services immediately</li>
+                    <li>Contact your healthcare provider</li>
+                    <li>Visit the nearest emergency room</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">AI Chat Support</h2>
+                <p>Our AI chat support:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Provides general information only</li>
+                    <li>Cannot diagnose conditions</li>
+                    <li>Cannot prescribe medications</li>
+                    <li>Should not be used for medical decisions</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">Your Responsibility</h2>
+                <p>By using UC Expert, you acknowledge and agree that:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>You will consult healthcare professionals for medical advice</li>
+                    <li>You will not delay seeking medical treatment based on content from this platform</li>
+                    <li>You understand the limitations of our service</li>
+                </ul>
+            </section>
+
+            <section class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-sm text-gray-600">Last updated: {% now "F j, Y" %}</p>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

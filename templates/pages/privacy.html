@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-white shadow rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
+
+        <div class="space-y-6 text-gray-700">
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">1. Introduction</h2>
+                <p>UC Expert ("we", "our", or "us") is committed to protecting your privacy. This policy explains how we collect, use, and protect your personal information.</p>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">2. Information We Collect</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Personal information (name, email address)</li>
+                    <li>Health information (symptoms, medications, food diary entries)</li>
+                    <li>Usage data (how you interact with our service)</li>
+                    <li>Communications with our chat service</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">3. How We Use Your Information</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Provide personalized health tracking services</li>
+                    <li>Improve our chat assistance capabilities</li>
+                    <li>Monitor and analyze usage patterns</li>
+                    <li>Communicate important updates</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">4. Data Protection</h2>
+                <p>We implement robust security measures to protect your data, including:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Encryption of sensitive data</li>
+                    <li>Regular security audits</li>
+                    <li>Strict access controls</li>
+                    <li>Secure data storage practices</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">5. Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Access your personal data</li>
+                    <li>Correct inaccurate data</li>
+                    <li>Request data deletion</li>
+                    <li>Export your data</li>
+                    <li>Withdraw consent</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">6. Third-Party Services</h2>
+                <p>We use the following third-party services:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>OpenAI for chat functionality</li>
+                    <li>Heroku for hosting</li>
+                    <li>PostgreSQL for database management</li>
+                </ul>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-900">7. Contact Us</h2>
+                <p>For privacy-related inquiries, contact us at:</p>
+                <p>Email: privacy@ucexpert.com</p>
+            </section>
+
+            <section class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-sm text-gray-600">Last updated: {% now "F j, Y" %}</p>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

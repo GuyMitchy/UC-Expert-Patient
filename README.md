@@ -1446,14 +1446,18 @@ I used Git for version control. I protected the main branch and tried to only wo
 - symptom-app - For symptom app features
 - chat-and-rag - For RAG sytem development and chat app features
 
-##### Styling branches
+##### Styling Branches
 
 - Auth-Style-Branch - For styling the AllAuth templates
 - styling-branch - For overall styling once the mvp was complete
 
-##### Bug branches
+##### Bug Branches
 
 - deploy-proxy-bug - Branch made for particular proxy bug relating to pinecone on deploy.
+
+##### Cleanup Branch
+
+-cleanup - Branch for cleaning up elements across all features
 <br>
 <br>
 </details>
@@ -1498,9 +1502,9 @@ ADD GUIDELINE TESTS HERE
 </details>
 
 
-## Issues and Current Limitations
+## Bugs, Issues, and Current Limitations
 <details>
-<summary>Issues and Resolutions</summary>
+<summary>Bugs, Issues and Resolutions</summary>
 <br>
 
 1. Form handling optimization
@@ -1518,6 +1522,13 @@ ADD GUIDELINE TESTS HERE
    - Solution: Moved database intialisation to send message function.
    - Result: Improved code organization, seperation of concerns, maintainability and readabilty.
    - Future improvement: Move RAG initialisation to chat window load to decrease wait time for first message response.
+
+4. Bug - "Midnight"  
+  - Intital issue: "midnight" shows as time for all food entries, followed by the correct user entered time"
+  - Solution: Altered datetime field in model to date field only
+  - Result: Only user entered time appears
+
+
 <br>
 <br>
 </details>
@@ -1526,7 +1537,9 @@ ADD GUIDELINE TESTS HERE
 <summary>Current Limitations</summary>
 
 #### Current Limitations
-- [To be added based on testing]
+
+1. Tailwind cdn for development only.
+  - Talwind cdn is not reccomended for production purposes. Since this is a development project I haven't installed tailwind using the CLI or set up the tailwind config.js, I will continue using the CDN for now.
 
 </details>
 

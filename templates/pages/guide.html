@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-white shadow rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">User Guide</h1>
+
+        <div class="space-y-8 text-gray-700">
+            <section>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Getting Started</h2>
+                <div class="bg-blue-50 rounded-lg p-4 space-y-2">
+                    <p class="font-medium">Quick Start Steps:</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Create your account</li>
+                        <li>Complete your profile</li>
+                        <li>Add current medications</li>
+                        <li>Log your first symptom</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Tracking Symptoms</h2>
+                <div class="space-y-4">
+                    <p>Record symptoms through the Symptoms tab:</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Click "Add Symptom"</li>
+                        <li>Select symptom type</li>
+                        <li>Rate severity (1-5)</li>
+                        <li>Add description (optional)</li>
+                        <li>Set date</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Managing Medications</h2>
+                <div class="space-y-4">
+                    <p>Keep track of your medications:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Add medications with dosage and frequency</li>
+                        <li>Mark medications as active/inactive</li>
+                        <li>Update medication details as needed</li>
+                        <li>View medication history</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Food Diary</h2>
+                <div class="space-y-4">
+                    <p>Track your diet and identify triggers:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Log meals with date and time</li>
+                        <li>Note portion sizes</li>
+                        <li>Mark trigger foods</li>
+                        <li>Add notes about reactions</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Using the AI Chat</h2>
+                <div class="bg-yellow-50 rounded-lg p-4">
+                    <p class="font-medium mb-2">The AI Assistant can help with:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Understanding UC symptoms</li>
+                        <li>Medication information</li>
+                        <li>Diet suggestions</li>
+                        <li>General UC management</li>
+                    </ul>
+                    <p class="mt-4 text-yellow-800">Note: AI chat is not a substitute for medical advice.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Emergency Information</h2>
+                <div class="bg-red-50 border-l-4 border-red-400 p-4">
+                    <p class="text-red-700 font-medium">For severe symptoms:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-2">
+                        <li>Contact your healthcare provider immediately</li>
+                        <li>Visit emergency services if needed</li>
+                        <li>Do not rely on the app for emergency guidance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Tips for Best Use</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-green-50 rounded-lg">
+                        <h3 class="font-medium text-green-900 mb-2">Regular Tracking</h3>
+                        <p>Log symptoms and meals daily for better insights.</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <h3 class="font-medium text-blue-900 mb-2">Detailed Notes</h3>
+                        <p>Add specific descriptions to track patterns.</p>
+                    </div>
+                    <div class="p-4 bg-purple-50 rounded-lg">
+                        <h3 class="font-medium text-purple-900 mb-2">Data Review</h3>
+                        <p>Review your logs before medical appointments.</p>
+                    </div>
+                    <div class="p-4 bg-yellow-50 rounded-lg">
+                        <h3 class="font-medium text-yellow-900 mb-2">Regular Updates</h3>
+                        <p>Keep medication information current.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-sm text-gray-600">Need help? Contact support@ucexpert.com</p>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

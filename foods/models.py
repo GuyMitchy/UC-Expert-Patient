@@ -19,7 +19,7 @@ class Food(models.Model):
     ]
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    date = models.DateTimeField(validators=[validate_past_date], default=timezone.now)
+    date = models.DateField(validators=[validate_past_date])
     eaten_at = models.TimeField(default=timezone.now)
     meal_type = models.CharField(max_length=50, choices=MEAL_CHOICES)
     food_name = models.CharField(max_length=50)

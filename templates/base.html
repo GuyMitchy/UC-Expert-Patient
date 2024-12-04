@@ -19,6 +19,7 @@
                 </a>
                 {% if user.is_authenticated %}
                 <nav class="hidden md:flex space-x-4">
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'home:home' %}">Dashboard</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'symptoms:list' %}">Symptoms</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'medications:list' %}">Medications</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'foods:list' %}">Foods</a>

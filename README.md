@@ -4,16 +4,11 @@ UC Expert is a comprehensive Django-based web application designed to help patie
 
 ![Responsive Mockup](placeholder for mockup image)
 
-## Table of Contents
-
-
-
 ## Pre-Development
+
 <details>
-<summary>The idea</summary>
-
-### The Idea
-
+<summary>The Idea</summary>
+<br>
 I settled on a challenging goal: create a comprehensive Ulcerative Colitis management tool incorporating advanced AI chat capabilities through a RAG (Retrieval Augmented Generation) system. While RAG might seem "overkill" for the initial scope, it was chosen for:
 
 - Learning opportunity in AI integration
@@ -21,58 +16,84 @@ I settled on a challenging goal: create a comprehensive Ulcerative Colitis manag
 - Potential for modular reuse
 - Enhanced user support capabilities
 - Control over LLM responses
-
-### Why UC Expert?
-
-After having conversation with the medical director of InVita intellignece, Mark Sullivan, I noticed a misalignment between doctors and their patients on a particular idea. Mark explained to me how doctors value "Expert Patients". Having a patient who understands their condition well is beneficial to the doctor, as what is reported to them tends to be more accurate and relevant. I did some research among family, friends and peers, and learned that this notion is not realised by many people suffering from some form of affliction that is regularly monitored by their doctor. They feel as though, if anything, they are pushed away from understsnding the exact workings of their condition, and are simply told what to monitor and how to do it. This can work fine for many dilligent patients, but some stated thay feel a disconnect. They want to understand their illness in depth, but may feel "stupid" when speaking to a doctor regarding recent developments in symptoms or things they may think are of note. UC expert was born of my own experience in this area and response I received from others. It aims to create expert UC patients by allowing them to interact with an AI, regarding not just general information on the disease, but specific information relating to their current symptoms and state of their condition. They can ask the "stupid" questions they may prefer not to ask their doctor, gain re-assurance on particular issues, gain a deeper understanding of what may be causing them and have a record of symptoms they can then talk more confidently with their doctor about. The AI must re-direct to a mecical professional when the users interaction warrants it.
-
+<br>
+<br>
 </details>
 
 <details>
+<summary>Why UC Expert?</summary>
+<br>
+After having conversation with the medical director of InVita intellignece, Mark Sullivan, I noticed a misalignment between doctors and their patients on a particular idea. Mark explained to me how doctors value "Expert Patients". Having a patient who understands their condition well is beneficial to the doctor, as what is reported to them tends to be more accurate and relevant. I did some research among family, friends and peers, and learned that this notion is not realised by many people suffering from some form of affliction that is regularly monitored by their doctor. They feel as though, if anything, they are pushed away from understsnding the exact workings of their condition, and are simply told what to monitor and how to do it. This can work fine for many dilligent patients, but some stated thay feel a disconnect. They want to understand their illness in depth, but may feel "stupid" when speaking to a doctor regarding recent developments in symptoms or things they may think are of note. UC expert was born of my own experience in this area and response I received from others. It aims to create expert UC patients by allowing them to interact with an AI, regarding not just general information on the disease, but specific information relating to their current symptoms and state of their condition. They can ask the "stupid" questions they may prefer not to ask their doctor, gain re-assurance on particular issues, gain a deeper understanding of what may be causing them and have a record of symptoms they can then talk more confidently with their doctor about. The AI must re-direct to a mecical professional when the users interaction warrants it.
+<br>
+<br>
+</details>
 
-<summary>Prototype</summary>
 
-### Prototype Introduction
-
+<details>
+<summary>The Prototype Introduction</summary>
+<br>
  Before I started the real project I decided to build a prototype using AI. This is a methodology I have adopted that allows me to ideate, validate, and test in a rapid and cutting edge manner. The new capabilities of LLM's and IDE's with native LLM integration allow for a this novel approach, which provides many advantages. I do initial research on the technologies required to build the app I have in mind, as you would expect. However, I then use this research to develop a comprehensive pseudocode style plan that will prompt an IDE native LLM to build the app. Once the prototype is complete I can quickly alter elements, iterate on possible features or improve existing ones, all while testing it's capabilities to see if it is performing as I expect. This allows me to interact with any product idea I have very quickly. It leads to rapid itterations and more detailed plans including refactoring before I have even written a line of code. I can then use the prototype as a basis to develop the app with minimal AI assitance, as I did with this project. It is a great way to learn a new technology. You gain an understanding of it's architecture and core pinciples without worrying about having to learn the detailed syntax of a particular function, that upon later testing turns out to be reduntant or unused by the user. 
- 
- The following is an overview of how I applied this methedology prior to starting this project.
+<br>
+<br>
+</details>
 
 
-### Prototype Development Approach
-
-#### Research Phase
+<details>
+<summary>The Research Phase</summary>
+<br>
 
 - Studied RAG system implementations by watching videos and reading langchain documentation.
 - Explored Django best practices and watched tutorials on django architecture and implementation.
 - Investigated AI integration options (Local/API and Model choice).
+<br>
+<br>
+</details>
 
-#### AI-Assisted Learning
+
+<details>
+<summary>AI-Assisted Learning</summary>
+<br>
 
 - Used Claude AI for development planning.
 - Leveraged Cursor.directory for Django best practice prompts.
 - Created comprehensive prompts covering:
 
-- Django architecture
-- LangChain integration
-- RAG system implementation
-- Tailwind CSS styling
-- Database ERD
+    - Django architecture
+    - LangChain integration
+    - RAG system implementation
+    - Tailwind CSS styling
+    - Database ERD
+<br>
+<br>
+</details>
 
-#### AI development
 
+<details>
+<summary>AI development</summary>
+<br>
 Used AI native Cursor IDE to develop the prototype. The main body of this took around an hour. I then developed it further by adding features and refinements until I was happy with it as a proof of concept. 
 
 It can be found here https://github.com/GuyMitchy/Expert-Patient
+<br>
+<br>
+</details>
 
-#### Technical Validation
+<details>
+<summary>Technical Validation</summary>
+<br>
 
 - Tested RAG using Ollama locally
 - Verified basic Django structure
 - Validated database relationships
 - Assessed UX/UI concepts
+<br>
+<br>
+</details>
 
-#### Outcomes
+
+<details>
+<summary>The Outcomes</summary>
+<br>
 
 - Gained a deeper understanding of django project architecture
 - Vaildated proof of concept and viabilty as a potential capstone project candidate.
@@ -82,54 +103,56 @@ It can be found here https://github.com/GuyMitchy/Expert-Patient
 - Deeper understanding of the importance of comprehensive planning, realisation that "It's all in the planning"
 
 Once the prototype was complete and my assemment on viabilty was made I chose to proceed with the project.
-
+<br>
+<br>
 </details>
 
-## Core Development Plan
+
+## Development Plan
+
+### Strategy
 
 <details>
-<summary>STRATEGY</summary>
+<summary>Primary goals</summary>
 
-### STRATEGY
+<br>
 
-- Primary goal: Help UC patients track and manage their condition effectively by tracking symptoms, medications and Foods.
-- Allow users to interact with a chatbot regarding their condition in order to become an expert patient
+- Help UC patients track and manage their condition effectively by tracking symptoms, medications and Foods.
+- Allow users to interact with a chatbot regarding their condition in order to become an expert patient.
 - Focus on creating a reliable, easy-to-use health management tool.
-- Enable data-driven conversations with healthcare providers by having a record of their condition, in-place of on the spot memory recall which creates the potential for innacurate data.
+- Enable data-driven conversations with healthcare providers by having a record of their condition.
+<br>
+<br>
+</details>
 
-#### User Needs
+<details>
+<summary>User Needs</summary>
+<br>
 
-#### Newly Diagnosed Patients
+- Record and track my symptoms
+- Manage my medication regimen
+- Get reliable information about my condition
+- Track my food intake and understand how it affects my condition
+- Have secure access to my medical information
+- Have the AI understand my specific condition
+- Trust the AI's information
+- Have the AI to maintain conversation context
+<br>
+<br>
+</details>
 
-- Understanding UC basics and terminology
-- Learning to identify and track symptoms
-- Getting started with medication management
-- Understanding dietary impacts
-- Emergency guidance for severe symptoms
+<details>
+<summary>Project requirements</summary>
+<br>
+The project requirements were taken from the assesment criteria located here (https://docs.google.com/document/d/1hqYa0lJszFtzzyRbjH-BKj2ng5XkNX7oukh9kXo-UM4/edit?tab=t.0)
+<br>
+<br>
+</details>
 
-#### Experienced Patients
+<details>
+<summary>User Stories</summary>
 
-- Detailed symptom tracking and pattern recognition
-- Long-term medication management
-- Food trigger identification
-- Historical data analysis
-- Personalized insights about their condition
-
-#### Active Flare Management
-
-- Immediate symptom logging
-- Emergency guidance
-- Dietary adjustment tracking
-- Quick access to historical data
-
-#### Remission Maintenance
-
-- Preventive tracking
-- Early warning sign identification
-- Lifestyle management
-- Diet optimization
-
-### User Stories and Development Management
+#### GitHub User Story Populator Utility
 To efficiently manage the user story development process, I created a utility to automatically generate GitHub issues from user stories in .yaml format (https://github.com/GuyMitchy/github-user-story-populator).
 
 This automated approach allowed for:
@@ -139,145 +162,423 @@ This automated approach allowed for:
 - Creation of task checkboxes for acceptance criteria
 - Improved development workflow
 
-### Must Have Features
-Symptom Logging
-"As a UC patient, I need to record and track my symptoms, so that I can monitor my condition's progression and share accurate information with my healthcare providers."
-Assessment Criteria:
+#### User Stories
+<details>
+<summary> user_stories.yaml</summary>
 
-Can select from predefined symptom types
-Can rate severity on a 1-5 scale
-Can add descriptive notes about symptoms
-Can set the date of symptoms
-Can view a list of recorded symptoms
-Can edit or delete existing symptom entries
+```yaml
+stories:
+  - type: Feature
+    title: "Symptom Logging System"
+    as_a: "UC patient"
+    i_want: "to record and track my symptoms"
+    so_that: "I can monitor my condition's progression and share accurate information with my healthcare providers"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can select from predefined symptom types (pain, blood, urgency, fatigue, joint pain, diarrhoea, other)"
+      - "Can rate severity on a 1-5 scale"
+      - "Can add descriptive notes about symptoms"
+      - "Can set the date of symptoms"
+      - "Can view a list of recorded symptoms"
+      - "Can edit or delete existing symptom entries"
 
-#### Medication Management
-"As a UC patient, I need to manage my medication regimen, so that I can maintain consistent treatment and track the effectiveness of different medications."
-Assessment Criteria:
+  - type: Feature
+    title: "Medication Management System"
+    as_a: "UC patient"
+    i_want: "to manage my medication regimen"
+    so_that: "I can maintain consistent treatment and track the effectiveness of different medications"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can add new medications with name, dosage, and frequency"
+      - "Can specify medication start date"
+      - "Can mark medications as active/inactive"
+      - "Can add notes about medications"
+      - "Can view complete medication history"
+      - "Can edit medication details"
+      - "Can delete medication entries"
 
-Can add new medications with name, dosage, and frequency
-Can specify medication start date
-Can mark medications as active/inactive
-Can add notes about medications
-Can view complete medication history
-Can edit medication details
-Can delete medication entries
+  - type: Feature
+    title: "Basic AI Chat Support"
+    as_a: "UC patient"
+    i_want: "to get reliable information about my condition"
+    so_that: "I can make informed decisions about my daily health management"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can start new conversations with custom titles"
+      - "Can receive responses based on verified UC information"
+      - "Can view chat history"
+      - "Receives emergency guidance for severe symptoms"
+      - "Gets redirected to healthcare providers when appropriate"
+      - "Can access previous conversations"
 
-#### Basic AI Chat Support
-"As a UC patient, I need to get reliable information about my condition, so that I can make informed decisions about my daily health management."
-Assessment Criteria:
+  - type: Feature
+    title: "Personalized AI Responses"
+    as_a: "UC patient"
+    i_want: "the AI to understand my specific condition"
+    so_that: "I can receive relevant and personalized guidance for my unique situation"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "AI references user's current medications in responses"
+      - "AI considers user's symptom history when giving advice"
+      - "AI provides personalized recommendations based on user data"
+      - "AI maintains medical context throughout conversation"
+      - "AI flags concerning symptom patterns"
+      - "AI avoids contradicting user's current treatment plan"
 
-Can start new conversations with custom titles
-Can receive responses based on verified UC information
-Can view chat history
-Receive emergency guidance for severe symptoms
-Get redirected to healthcare providers when appropriate
-Can access previous conversations
+  - type: Feature
+    title: "Food Diary Management"
+    as_a: "UC patient"
+    i_want: "to track my food intake and its effects"
+    so_that: "I can identify trigger foods and maintain a diet that minimizes flare-ups"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can log meals with date and time"
+      - "Can specify food items consumed"
+      - "Can mark foods as 'safe' or 'trigger'"
+      - "Can note specific reactions to foods"
+      - "Can view food diary history"
+      - "Can identify trigger foods through history"
+      - "Can edit or delete food diary entries"
 
-#### Food Diary Management
-"As a UC patient, I need to track my food intake and its effects, so that I can identify trigger foods and maintain a diet that minimizes flare-ups."
-Assessment Criteria:
+  - type: Feature
+    title: "User Authentication System"
+    as_a: "UC patient"
+    i_want: "secure access to my medical information"
+    so_that: "I can maintain privacy and confidentiality of my health data"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can register for an account"
+      - "Can log in securely"
+      - "Can log out"
+      - "Can only access own medical data"
+      - "Has persistent data across sessions"
 
-Can log meals with date and time
-Can specify food items consumed
-Can note specific reactions to foods
-Can view food diary history
-Can identify trigger foods through history
-Can edit or delete food diary entries
+  - type: Feature
+    title: "Conversation Management"
+    as_a: "UC patient"
+    i_want: "to organize and review my AI conversations"
+    so_that: "I can easily reference previous advice and track my health-related questions over time"
+    priority: "Should Have"
+    labels: ["Should Have", "User"]
+    acceptance_criteria:
+      - "Can create titled conversations"
+      - "Can view list of all conversations"
+      - "Can navigate between different conversations"
+      - "Can see timestamp for each message"
+      - "Can identify bot vs user messages"
 
-#### User Authentication
-"As a UC patient, I need secure access to my medical information, so that I can maintain privacy and confidentiality of my health data."
-Assessment Criteria:
+  - type: Feature
+    title: "AI Knowledge Verification"
+    as_a: "UC patient"
+    i_want: "to trust the AI's information"
+    so_that: "I can confidently use its guidance in managing my condition"
+    priority: "Should Have"
+    labels: ["Should Have", "User"]
+    acceptance_criteria:
+      - "AI clearly indicates when information is not available"
+      - "AI provides consistent answers to similar questions"
+      - "AI acknowledges medical disclaimer when appropriate"
+      - "AI maintains professional medical terminology"
+      - "AI correctly categorizes symptom severity"
 
-Can register for an account
-Can log in securely
-Can log out
-Can only access own medical data
-Has persistent data across sessions
+  - type: Feature
+    title: "AI Chat Context Management"
+    as_a: "UC patient"
+    i_want: "the AI to maintain conversation context"
+    so_that: "I can have more meaningful and coherent discussions about my health concerns"
+    priority: "Could Have"
+    labels: ["Could Have", "User"]
+    acceptance_criteria:
+      - "AI remembers previous questions in conversation"
+      - "AI can reference earlier parts of conversation"
+      - "AI maintains consistent advice throughout chat"
+      - "AI can clarify previous responses"
+      - "AI can update responses based on new information"
 
-### Should Have Features
+  - type: Feature
+    title: "Out of Scope Features"
+    as_a: "Developer"
+    i_want: "to document features that won't be implemented"
+    so_that: "we can maintain clear project boundaries"
+    priority: "Wont Have"
+    labels: ["Wont Have", "Developer"]
+    acceptance_criteria:
+      - "Medication reminders/scheduling"
+      - "Direct healthcare provider communication"
+      - "File upload for medical documents"
+      - "Medication interaction checking"
+      - "Integration with medical devices/apps"
+      - "Real-time symptom alerts"
+      - "Automated meal planning"
+      - "Social features or community support"
+      - "Integration with electronic health records"
 
-#### Personalized AI Responses
-"As a UC patient, I need the AI to understand my specific condition, so that I can receive relevant and personalized guidance for my unique situation."
-Assessment Criteria:
 
-AI references user's current medications in responses
-AI considers user's symptom history when giving advice
-AI provides personalized recommendations based on user data
-AI maintains medical context throughout conversation
-AI flags concerning symptom patterns
-AI avoids contradicting user's current treatment plan
+     
+  # LO1: Agile Planning and Design
+  - type: Feature
+    title: "Front-End Design Implementation"
+    as_a: "Developer"
+    i_want: "to implement accessible and responsive front-end design"
+    so_that: "the application meets WCAG guidelines and provides a consistent user experience"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement semantic HTML5 elements throughout (header, nav, main, footer, etc.)"
+      - "Pass WCAG validation with no errors"
+      - "Implement responsive design using CSS Grid/Flexbox/Media Queries"
+      - "Ensure consistent styling across all pages"
+      - "Verify functionality across different screen sizes (mobile, tablet, desktop)"
+      - "Implement clear navigation structure"
+      - "Use Bootstrap or custom CSS framework consistently"
 
-#### AI Knowledge Verification
-"As a UC patient, I need to trust the AI's information, so that I can confidently use its guidance in managing my condition."
-Assessment Criteria:
+  - type: Feature
+    title: "Database Structure Implementation"
+    as_a: "Developer"
+    i_want: "to implement a Django database-backed application"
+    so_that: "data can be efficiently managed and stored"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Configure Django application with PostgreSQL database"
+      - "Create at least one custom model meeting project requirements"
+      - "Implement proper field types and relationships"
+      - "Configure model constraints and validation"
+      - "Implement efficient database queries using Django's ORM"
+      - "Document model relationships in README"
 
-AI clearly indicates when information is not available
-AI provides consistent answers to similar questions
-AI acknowledges medical disclaimer when appropriate
-AI maintains professional medical terminology
-AI correctly categorizes symptom severity
+  - type: Feature
+    title: "Agile Project Management Implementation"
+    as_a: "Developer"
+    i_want: "to maintain an active Agile project management system"
+    so_that: "project progress is tracked and documented"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Set up project board (GitHub Projects or similar)"
+      - "Create and maintain user stories with clear acceptance criteria"
+      - "Link all stories to project goals"
+      - "Update board regularly showing sprint progress"
+      - "Document Agile process in README"
+      - "Include screenshots of board progression"
 
-#### Could Have Features
-Food Pattern Analysis
-"As a UC patient, I need to understand how food affects my condition, so that I can make better dietary choices and prevent symptom flare-ups."
-Assessment Criteria:
+  - type: Feature
+    title: "Code Quality Standards"
+    as_a: "Developer"
+    i_want: "to implement high-quality Python code"
+    so_that: "the application is maintainable and reliable"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement custom Python logic with compound statements"
+      - "Follow PEP 8 style guidelines"
+      - "Use consistent naming conventions (snake_case for Python)"
+      - "Include comprehensive docstrings for all functions/classes"
+      - "Add explanatory comments for complex logic"
+      - "Maintain consistent indentation"
+      - "Use descriptive variable and function names"
 
-Can view foods grouped by reaction severity
-Can see correlation between foods and symptoms
-Can mark foods as "safe" or "trigger"
-Can add notes about food interactions and effects
-Can track portion sizes and their effects
+  - type: Feature
+    title: "UX Design Documentation"
+    as_a: "Developer"
+    i_want: "to document the UX design process"
+    so_that: "design decisions are clearly understood"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Create wireframes for all pages (mobile and desktop)"
+      - "Develop visual mockups showing color schemes"
+      - "Document user stories and acceptance criteria"
+      - "Include design process reasoning in README"
+      - "Document all major design changes and rationale"
+      - "Include sitemap or information architecture diagram"
 
-#### AI Chat Context Management
-"As a UC patient, I need the AI to maintain conversation context, so that I can have more meaningful and coherent discussions about my health concerns."
-Assessment Criteria:
+  # LO2: Data Model and Business Logic
+  - type: Feature
+    title: "Database Development"
+    as_a: "Developer"
+    i_want: "to implement a consistent database structure"
+    so_that: "data integrity is maintained"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Design normalized database schema"
+      - "Document table relationships with ERD"
+      - "Implement appropriate data types and constraints"
+      - "Create and maintain database migrations"
+      - "Document database schema in README"
+      - "Implement proper indexes for performance"
 
-AI "remembers" previous messages in conversation
-AI can reference earlier parts of conversation
-AI maintains consistent advice throughout chat
-AI can clarify previous responses
-AI can update responses based on new information
+  - type: Feature
+    title: "Enhanced CRUD Implementation"
+    as_a: "Developer"
+    i_want: "to implement comprehensive CRUD functionality"
+    so_that: "users can effectively manage data"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement Create operations with validation"
+      - "Implement Read operations with filtering/search"
+      - "Implement Update operations with validation"
+      - "Implement Delete operations with confirmation"
+      - "Add success/error messages for all operations"
+      - "Implement proper access controls for each operation"
+      - "Add defensive programming checks"
 
-#### Won't Have Features
+  - type: Feature
+    title: "User Notification System"
+    as_a: "Developer"
+    i_want: "to implement a comprehensive notification system"
+    so_that: "users are informed of relevant changes"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement real-time/near-real-time notifications"
+      - "Show success messages for all CRUD operations"
+      - "Implement error notifications"
+      - "Create notification queue system"
+      - "Allow users to manage notification preferences"
+      - "Ensure notifications are user-specific"
+      - "Document notification types in README"
 
-Medication reminders/scheduling
-Direct healthcare provider communication
-File upload for medical documents
-Medication interaction checking
-Integration with medical devices/apps
-Automated meal planning
-Social features or community support
-Integration with electronic health records
+  - type: Feature
+    title: "Form Implementation"
+    as_a: "Developer"
+    i_want: "to implement validated forms"
+    so_that: "data integrity is maintained"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement Django forms for all data entry"
+      - "Add client-side validation where appropriate"
+      - "Implement server-side validation"
+      - "Show clear error messages"
+      - "Style forms consistently"
+      - "Make forms accessible (ARIA labels, etc.)"
+      - "Handle form submission errors gracefully"
+
+  # LO3: Authentication and Authorization
+  - type: Feature
+    title: "Enhanced Authentication System"
+    as_a: "Developer"
+    i_want: "to implement a secure authentication system"
+    so_that: "user access is properly controlled"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement secure user registration"
+      - "Create role-based login system"
+      - "Add password reset functionality"
+      - "Implement email verification"
+      - "Show clear login state indicators"
+      - "Protect routes based on authentication"
+      - "Implement proper session management"
+      - "Add secure password handling"
+      - "Document authentication flow in README"
+
+  # LO4: Testing
+  - type: Feature
+    title: "Comprehensive Testing Implementation"
+    as_a: "Developer"
+    i_want: "to implement thorough testing"
+    so_that: "application reliability is verified"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Write Python unit tests for models"
+      - "Create view tests for all CRUD operations"
+      - "Implement form validation tests"
+      - "Add integration tests for key workflows"
+      - "Create JavaScript tests (if applicable)"
+      - "Document manual testing procedures"
+      - "Include testing coverage report"
+      - "Document all testing in README"
+
+  # LO5: Version Control
+  - type: Feature
+    title: "Enhanced Version Control"
+    as_a: "Developer"
+    i_want: "to maintain proper version control"
+    so_that: "code changes are tracked securely"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Write meaningful commit messages"
+      - "Make regular, atomic commits"
+      - "Use feature branches for development"
+      - "Implement proper .gitignore"
+      - "Secure sensitive information"
+      - "Document branching strategy"
+      - "Maintain clean commit history"
+
+  # LO6: Deployment
+  - type: Feature
+    title: "Enhanced Deployment Process"
+    as_a: "Developer"
+    i_want: "to implement secure deployment procedures"
+    so_that: "the application runs correctly in production"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Deploy successfully to cloud platform"
+      - "Configure production database"
+      - "Set up environment variables"
+      - "Disable Debug mode in production"
+      - "Implement proper error handling"
+      - "Document deployment process"
+      - "Configure static file serving"
+      - "Set up proper logging"
+      - "Implement backup procedures"
+
+  # LO7: Custom Data Models
+  - type: Feature
+    title: "Enhanced Custom Data Model"
+    as_a: "Developer"
+    i_want: "to implement custom data models"
+    so_that: "specific project requirements are met"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Design models to fit project needs"
+      - "Implement proper model relationships"
+      - "Add custom model methods"
+      - "Create model managers where needed"
+      - "Document model architecture"
+      - "Implement proper validation"
+      - "Add custom querysets if required"
+```
+<br>
+<br>
+</details>
 
 </details>
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### Scope
 
 <details>
-<summary>SCOPE</summary>
+<summary>Authentication System</summary>
+<br>
 
-### SCOPE
-
-#### Core Features Based on User Stories
-
-#### Authentication System
-- Email-based registration and login
-- Password validation and security
+- Django AllAuth Authentication
+- Email-based registration and login (remove username)
+- Password validation
 - Session management
 - Access control to personal data
+<br>
+<br>
+</details>
 
-#### Dashboard Requirements
-- Overview panel showing recent entries
-- Quick access cards to main features:
-  - Symptom logging
-  - Medication management
-  - Food diary
-  - Chat system
-- Latest entries from each tracking system
-- Only shows active medications
 
-#### Symptom Tracking System
+<details>
+<summary>Symptom Tracking System</summary>
+<br>
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -298,8 +599,14 @@ Required Fields:
     - Very Severe
 - Description (TextField)
 ```
+<br>
+<br>
+</details>
 
-#### Medication Management System
+<details>
+<summary>Medication Management System</summary>
+<br>
+ 
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -323,8 +630,15 @@ Required Fields:
 - Active Status (BooleanField)
 - Notes (TextField)
 ```
+<br>
+<br>
+</details>
 
-#### Food Diary System
+
+<details>
+<summary>Food Diary System</summary>
+<br>
+ 
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -340,8 +654,14 @@ Required Fields:
 - Is Trigger (BooleanField)
 - Notes (TextField)
 ```
+<br>
+<br>
+</details>
 
-### AI Chat System Requirements
+
+<details>
+<summary>AI Chat System Requirements</summary>
+
 
 #### Conversation Management
 ```python
@@ -380,7 +700,13 @@ Required Fields:
   - Recent food entries
   - Conversation history
 
-### UI/UX Requirements
+<br>
+<br>
+</details>
+
+
+<details>
+<summary>UI/UX Requirements</summary>
 
 #### Navigation
 - Fixed top navigation bar
@@ -404,9 +730,13 @@ Required Fields:
 - Mobile-first approach
 - Tailwind breakpoints:
   - md: 768px
+<br>
+<br>
+</details>
 
 
-### Content Requirements
+<details>
+<summary>Content Requirements</summary>
 
 #### Medical Knowledge Base
 - Markdown format for reliable vector storage and retrieval
@@ -429,25 +759,30 @@ Required Fields:
 - Error notifications
 - Success feedback
 
-#### Future Content/Features:
+<br>
+<br>
+</details>
+
+
+<details>
+<summary>Future Content/Features</summary>
+<br>
+
 - Medication reminders
 - Direct healthcare provider communication
 - Medical document upload
 - Automated meal planning
 - Community support features
 - Disease state report creation
-
+<br>
+<br>
 </details>
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+### Structure
 <details>
-<summary>STRUCTURE</summary> 
+<summary>Overview</summary> 
+<br>
 
-### STRUCTURE
-
-### Overview
 - Dashboard-centered design for quick access to all features.
 - Cards to decribe and navigate to each feature.
 - Clear navigation to each section always available via navbar.
@@ -456,8 +791,13 @@ Required Fields:
 - Data entry forms(add, delete and edit) for each feature
 - Historical list pages for each feature.
 - Chat windows for each conversation with persistent chat history.
+<br>
+<br>
+</details>
 
-### Site Map
+
+<details>
+<summary>Site Map</summary>
 
 #### Non-Authenticated
 - Landing Page
@@ -520,11 +860,15 @@ Required Fields:
   - Message History
   - Message Input Area
   - Back to conversations button - links to list view
+<br>
+<br>
+</details>
 
-  
-## Information Architecture
 
-### Database Relationships
+<details>
+<summary>Database Relationships</summary>
+<br>
+
 ```
 User
 └── Symptoms (One-to-Many)
@@ -533,69 +877,15 @@ User
 └── Conversations (One-to-Many)
     └── Messages (One-to-Many)
 ```
+<br>
+<br>
+</details>
 
-### View Structure
-```
-Views/
-├── Base Views (LoginRequiredMixin)
-│   ├── ListView
-│   ├── CreateView
-│   ├── UpdateView
-│   └── DeleteView
-├── Home
-│   └── Dashboard View
-├── Symptoms
-│   ├── List
-│   ├── Create
-│   ├── Update
-│   └── Delete
-├── Medications
-│   ├── List
-│   ├── Create
-│   ├── Update
-│   └── Delete
-├── Foods
-│   ├── List
-│   ├── Create
-│   ├── Update
-│   └── Delete
-└── Chat
-    ├── Conversation List
-    ├── Conversation Detail
-    ├── Create
-    └── Delete
-```
 
-### Template Structure
-```
-Templates/
-├── base.html
-├── home/
-│   └── dashboard.html
-├── symptoms/
-│   ├── list.html
-│   ├── add.html
-│   ├── edit.html
-│   └── delete.html
-├── medications/
-│   ├── list.html
-│   ├── add.html
-│   ├── edit.html
-│   └── delete.html
-├── foods/
-│   ├── list.html
-│   ├── add.html
-│   ├── edit.html
-│   └── delete.html
-└── chat/
-    ├── list.html
-    ├── detail.html
-    ├── new_conversation.html
-    ├── delete.html
-    └── message.html
-```
+<details>
+<summary>RAG System Architecture</summary>
+<br>
 
-### RAG System Architecture
 ```
 knowledge/
 ├── manager.py (Singleton Pattern)
@@ -744,9 +1034,15 @@ graph TD
    except Exception as e:
        # Error handling and logging
    ```
+<br>
+<br>
+</details>
 
 
-### User Flow
+<details>
+<summary>User Flow</summary>
+<br>
+
 1. Authentication
    - Register/Login
    - Redirect to Dashboard
@@ -765,26 +1061,25 @@ graph TD
    - Start/Continue Conversation
    - Receive Contextual Responses
    - Emergency Guidance When Needed
-
-
-
+<br>
+<br>
 </details>
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+### Skeleton
 <details>
-
-<summary>SKELETON</summary>
-
-## SKELETON
-
-### Wireframes
+<summary>Wireframes</summary>
+<br>
 
 ![Desktop](static/readme_images/desktop_wireframe.png)
 
 ![Mobile](static/readme_images/mobile_wireframe.png)
+<br>
+<br>
+</details>
 
-### ERD
+<details>
+<summary>ERD</summary>
+
 
 ```mermaid
 erDiagram
@@ -852,8 +1147,12 @@ erDiagram
         datetime created_at
     }
    ```
+<br>
+<br>
+</details>
 
-### Interactive Elements
+<details>
+<summary>Interactive Elements</summary>
 
 #### Buttons
 - Primary Actions (Add, edit, save)
@@ -874,17 +1173,15 @@ erDiagram
 - Loading States
 - Confirmation Dialogs
 
+<br>
+<br>
 </details>
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### Surface
 
 <details>
-
-<summary>SURFACE</summary>
-
-## SURFACE
-
-### Overview
+<summary>Overview</summary>
+<br>
 
 - Medical-inspired blue color scheme for professionalism and trust
 - High contrast for readability
@@ -892,7 +1189,10 @@ erDiagram
 - Consistent use of Tailwind CSS for styling
 - Familiar chat window with colour coded message boxes
 
-### Visual Design Elements
+</details>
+
+<details>
+<summary>Visual Design Elements</summary>
 
 #### Color Palette
 ```css
@@ -921,8 +1221,12 @@ Using Tailwind's default font stack:
 - Navigation: font-medium
 - Form Labels: font-medium
 ```
+<br>
+<br>
+</details>
 
-#### Component Styling
+<details>
+<summary>Component Styling</summary>
 
 ##### Cards
 - White background
@@ -955,21 +1259,12 @@ Destructive:
 - White text
 - Hover darkening
 
+<br>
+<br>
+</details>
 
-#### Feedback Design
-
-##### Success Messages
-- Green background
-- Check icon
-- Temporary display
-- Fade transition
-
-
-##### Error Messages
-- Red text
-
-
-### Responsive Behavior
+<details>
+<summary>Responsive Behavior</summary> 
 
 #### Mobile Adaptations
 - Stack layouts vertically
@@ -979,8 +1274,13 @@ Destructive:
 - Multi-column layouts
 - Hover effects
 - Extended navigation
+<br>
+<br>
+</details>
 
-### Accessibility Considerations
+<details>
+<summary>Accessibility Considerations</summary>
+
 
 #### Color Contrast
 - All text meets WCAG 2.1 requirements
@@ -996,49 +1296,76 @@ Destructive:
 - Sufficient font sizes
 - Adequate line spacing
 - Proper contrast ratios
-
-
+<br>
+<br>
 </details>
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Deployed
-
-<details>
-<summary>Existing Features</summary>
+## Deployed Project 
 
 ### Existing Features
 
-#### Authentication and user accounts
+<details>
+<summary>Authentication and user accounts</summary>
+
+<br>
 
 - Persistent user accounts with authentication
+- Styled login page 
 - Register as a new user with password verification
-- Sign out page with confirmation
+- Styled register page
+- Styled sign out page with confirmation
 
-#### Navigation Bar
+ADD IMAGE HERE
+<br>
+<br>
+</details>
+
+<details>
+<summary>Navigation Bar</summary>
+<br> 
 
 - Permanent navigation bar with links to dashboard and all list pages for each feature.
 
-#### Dashboard
-- Overview of recent symptoms, medications, and food entries
-- Quick access cards to main features
-- Status indicators for active medications and recent symptoms
+ADD IMAGE HERE
 
-#### Symptom Tracking
+<br>
+</details>
+
+<details>
+<summary>Symptom Tracking</summary>
+<br>
+
 - Log symptoms with type, severity, and description
 - Date-based tracking
 - Visual severity indicators
 - Edit and delete functionality
 - Historical list view of symptoms
 
-#### Medication Management
+ADD IMAGE HERE
+<br>
+<br>
+</details>
+
+<details>
+<summary>Medication Management</summary>
+<br>
+ 
 - Comprehensive medication database
 - Track active and previous medications
 - Record dosage and frequency
 - Medication history view
 - Edit and delete functionality
 
-#### Food Diary
+ADD IMAGE HERE
+<br>
+<br>
+</details>
+
+<details>
+<summary>Food Diary</summary>
+<br>
+
 - Log meals with date and time
 - Identify trigger foods
 - Track portion sizes
@@ -1046,20 +1373,46 @@ Destructive:
 - View food history
 - Edit and delete functionality
 
-#### AI Chat Support
+ADD IMAGE HERE
+<br>
+<br>
+</details>
+
+<details>
+<summary>AI Chat Support</summary>
+<br>
+
 - UC-specific knowledge base
 - Context-aware responses
 - Emergency guidance for severe symptoms
 - Conversation history as context
 - Personalized responses based on user data
 
+ADD IMAGE HERE
+<br>
+<br>
 </details>
 
+### Added Features
+
 <details>
+<summary>Dashboard</summary>
 
-<summary>Features Left to Implement</summary>
+This was an additional feature added towards the end of development. I did not identify the need for it in my plan, but decided to add it as it allows users to quickly view their recent data.
 
-### Features Left to Implement
+- Overview of recent symptoms, medications, and food entries
+- Quick access cards to main features
+- Status indicators for active medications and recent symptoms
+
+ADD IMAGE HERE
+<br>
+<br>
+</details>
+
+### Future Features
+
+<details>
+<summary>All</summary>
 
 - Medication reminders/scheduling (Rag system can currently work out when medication should be taken based on frequency and start date)
 - Direct healthcare provider communication
@@ -1069,49 +1422,87 @@ Destructive:
 - Social features/community support
 - Integration with electronic health records
 - Symtom report creation
-
+<br>
+<br>
 </details>
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+## Version Control
 
 <details>
-<summary>Version Control</summary>
+<summary>Git</summary>
 
-### Version Control
+I used Git for version control. I protected the main branch and tried to only work on feature branches to aid in maintaining a clean commit history.
 
 #### Branching Strategy
 
-LIST BRANCHES HERE
+##### Feature Branches
 
+- Main - Set up intial Django prject structure, Urls and settings
+- Database-and-deploy - For switching from sqlLite to Postgres and intial deploy
+- home-branch - For home app features
+- foods-app - For foods app features
+- medication-app - For medication app features
+- symptom-app - For symptom app features
+- chat-and-rag - For RAG sytem development and chat app features
+
+##### Styling branches
+
+- Auth-Style-Branch - For styling the AllAuth templates
+- styling-branch - For overall styling once the mvp was complete
+
+##### Bug branches
+
+- deploy-proxy-bug - Branch made for particular proxy bug relating to pinecone on deploy.
+<br>
+<br>
 </details>
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Agile
 
 <details>
-<summary>Agile Methedology<summary>
+<summary>Methodology</summary>
 
-TALK ABOUT HOW AGILE WAS USED HERE
-
+TALK ABOUT HOW AGILE WAS USED HERE - Project board etc.
+<br>
+<br>
 </details>
-
 
 
 
 ## Testing
 
-### Manual Testing
-Comprehensive testing is planned to include:
+<details>
+<summary>Manual Testing</summary>
+<br>
+
+Comprehensive manual testing was carried out, it included:
 - Cross-browser compatibility
 - Responsive design verification
 - Form validation
 - Data persistence
 - AI chat functionality
 - Security testing
+<br>
+<br>
+</details>
 
-### Known Issues and Resolutions
+<details>
+<summary>Guideline Complaince Testing</summary>
 
-#### Resolved Issues
+ADD GUIDELINE TESTS HERE
+
+<br>
+<br>
+</details>
+
+
+## Issues and Current Limitations
+<details>
+<summary>Issues and Resolutions</summary>
+<br>
+
 1. Form handling optimization
    - Initial issue: Form logic in templates was messy and causing type errors where choices were used in database fields
    - Solution: Implemented "fat models, skinny views, stupid templates" pattern. Moving logic from templates into forms.py
@@ -1127,13 +1518,24 @@ Comprehensive testing is planned to include:
    - Solution: Moved database intialisation to send message function.
    - Result: Improved code organization, seperation of concerns, maintainability and readabilty.
    - Future improvement: Move RAG initialisation to chat window load to decrease wait time for first message response.
+<br>
+<br>
+</details>
 
+<details>
+<summary>Current Limitations</summary>
 
 #### Current Limitations
 - [To be added based on testing]
 
+</details>
+
+
 ## Deployment
 
+<details>
+<summary>Method</summary>
+<br>
 The application was deployed on Heroku using the following method:
 
 1. Prerequisites:
@@ -1176,10 +1578,19 @@ The application was deployed on Heroku using the following method:
    # Deploy
    git push heroku main
    ```
-
+<details>
+<summary>Live Link</summary>
+<br>
 The live site can be found here: [Link to be added]
+<br>
+<br>
+</details>
+
 
 ## Credits
+
+<details>
+<summary>All</summary>
 
 ### Technical Implementation
 - Django web framework
@@ -1200,25 +1611,10 @@ The live site can be found here: [Link to be added]
 - dj-database-url for database configuration
 - python-dotenv for environment management
 
-## Planning and Development Process
 
-The development followed an iterative approach:
+</details>
 
-1. Initial Prototype
-   - Built using Ollama for RAG testing
-   - Validated core functionality
-   - Identified potential challenges
 
-2. Production Development
-   - Migrated to OpenAI for improved reliability
-   - Implemented user authentication
-   - Developed core tracking features
-   - Integrated Pinecone for vector storage
-
-3. Deployment Optimization
-   - Resolved hosting challenges
-   - Optimized database interactions
-   - Implemented security best practices
 
 The project uses Django's "fat models, skinny views, stupid templates" philosophy for clean, maintainable code.
 
@@ -1226,3 +1622,4 @@ The project uses Django's "fat models, skinny views, stupid templates" philosoph
 Bugs/future 
 
 When you edit any entry all of the original data isnt shown in form so you have to add fields again. Edit should show all current data then allow user to edit any part they want. 
+

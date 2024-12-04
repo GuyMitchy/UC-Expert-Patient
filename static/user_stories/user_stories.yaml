@@ -1,0 +1,413 @@
+stories:
+  - type: Feature
+    title: "Symptom Logging System"
+    as_a: "UC patient"
+    i_want: "to record and track my symptoms"
+    so_that: "I can monitor my condition's progression and share accurate information with my healthcare providers"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can select from predefined symptom types (pain, blood, urgency, fatigue, joint pain, other)"
+      - "Can rate severity on a 1-5 scale"
+      - "Can add descriptive notes about symptoms"
+      - "Can set the date of symptoms"
+      - "Can view a list of recorded symptoms"
+      - "Can edit or delete existing symptom entries"
+
+  - type: Feature
+    title: "Medication Management System"
+    as_a: "UC patient"
+    i_want: "to manage my medication regimen"
+    so_that: "I can maintain consistent treatment and track the effectiveness of different medications"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can add new medications with name, dosage, and frequency"
+      - "Can specify medication start date"
+      - "Can mark medications as active/inactive"
+      - "Can add notes about medications"
+      - "Can view complete medication history"
+      - "Can edit medication details"
+      - "Can delete medication entries"
+
+  - type: Feature
+    title: "Basic AI Chat Support"
+    as_a: "UC patient"
+    i_want: "to get reliable information about my condition"
+    so_that: "I can make informed decisions about my daily health management"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can start new conversations with custom titles"
+      - "Can receive responses based on verified UC information"
+      - "Can view chat history"
+      - "Receives emergency guidance for severe symptoms"
+      - "Gets redirected to healthcare providers when appropriate"
+      - "Can access previous conversations"
+
+  - type: Feature
+    title: "Personalized AI Responses"
+    as_a: "UC patient"
+    i_want: "the AI to understand my specific condition"
+    so_that: "I can receive relevant and personalized guidance for my unique situation"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "AI references user's current medications in responses"
+      - "AI considers user's symptom history when giving advice"
+      - "AI provides personalized recommendations based on user data"
+      - "AI maintains medical context throughout conversation"
+      - "AI flags concerning symptom patterns"
+      - "AI avoids contradicting user's current treatment plan"
+
+  - type: Feature
+    title: "Food Diary Management"
+    as_a: "UC patient"
+    i_want: "to track my food intake and its effects"
+    so_that: "I can identify trigger foods and maintain a diet that minimizes flare-ups"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can log meals with date and time"
+      - "Can specify food items consumed"
+      - "Can rate digestive comfort after meals (1-5 scale)"
+      - "Can note specific reactions to foods"
+      - "Can view food diary history"
+      - "Can identify trigger foods through history"
+      - "Can edit or delete food diary entries"
+
+  - type: Feature
+    title: "User Authentication System"
+    as_a: "UC patient"
+    i_want: "secure access to my medical information"
+    so_that: "I can maintain privacy and confidentiality of my health data"
+    priority: "Must Have"
+    labels: ["Must Have", "User"]
+    acceptance_criteria:
+      - "Can register for an account"
+      - "Can log in securely"
+      - "Can log out"
+      - "Can only access own medical data"
+      - "Has persistent data across sessions"
+
+  - type: Feature
+    title: "Conversation Management"
+    as_a: "UC patient"
+    i_want: "to organize and review my AI conversations"
+    so_that: "I can easily reference previous advice and track my health-related questions over time"
+    priority: "Should Have"
+    labels: ["Should Have", "User"]
+    acceptance_criteria:
+      - "Can create titled conversations"
+      - "Can view list of all conversations"
+      - "Can navigate between different conversations"
+      - "Can see timestamp for each message"
+      - "Can identify bot vs user messages"
+
+  - type: Feature
+    title: "AI Knowledge Verification"
+    as_a: "UC patient"
+    i_want: "to trust the AI's information"
+    so_that: "I can confidently use its guidance in managing my condition"
+    priority: "Should Have"
+    labels: ["Should Have", "User"]
+    acceptance_criteria:
+      - "AI clearly indicates when information is not available"
+      - "AI provides consistent answers to similar questions"
+      - "AI acknowledges medical disclaimer when appropriate"
+      - "AI maintains professional medical terminology"
+      - "AI correctly categorizes symptom severity"
+
+  - type: Feature
+    title: "Food Pattern Analysis"
+    as_a: "UC patient"
+    i_want: "to understand how food affects my condition"
+    so_that: "I can make better dietary choices and prevent symptom flare-ups"
+    priority: "Could Have"
+    labels: ["Could Have", "User"]
+    acceptance_criteria:
+      - "Can view foods grouped by reaction severity"
+      - "Can see correlation between foods and symptoms"
+      - "Can mark foods as 'safe' or 'trigger'"
+      - "Can add notes about food combinations"
+      - "Can track portion sizes and their effects"
+
+  - type: Feature
+    title: "Food Diary Reports"
+    as_a: "UC patient"
+    i_want: "to share my food diary with healthcare providers"
+    so_that: "they can better understand my dietary triggers and adjust treatment plans accordingly"
+    priority: "Could Have"
+    labels: ["Could Have", "User"]
+    acceptance_criteria:
+      - "Can generate food diary summaries"
+      - "Can filter diary entries by date range"
+      - "Can highlight problematic foods"
+      - "Can include symptom correlations"
+      - "Can export diary in readable format"
+
+  - type: Feature
+    title: "AI Chat Context Management"
+    as_a: "UC patient"
+    i_want: "the AI to maintain conversation context"
+    so_that: "I can have more meaningful and coherent discussions about my health concerns"
+    priority: "Could Have"
+    labels: ["Could Have", "User"]
+    acceptance_criteria:
+      - "AI remembers previous questions in conversation"
+      - "AI can reference earlier parts of conversation"
+      - "AI maintains consistent advice throughout chat"
+      - "AI can clarify previous responses"
+      - "AI can update responses based on new information"
+
+  - type: Feature
+    title: "Out of Scope Features"
+    as_a: "Developer"
+    i_want: "to document features that won't be implemented"
+    so_that: "we can maintain clear project boundaries"
+    priority: "Wont Have"
+    labels: ["Wont Have", "Developer"]
+    acceptance_criteria:
+      - "Medication reminders/scheduling"
+      - "Direct healthcare provider communication"
+      - "File upload for medical documents"
+      - "Medication interaction checking"
+      - "Integration with medical devices/apps"
+      - "Real-time symptom alerts"
+      - "Automated meal planning"
+      - "Social features or community support"
+      - "Integration with electronic health records"
+
+
+     
+  # LO1: Agile Planning and Design
+  - type: Feature
+    title: "Front-End Design Implementation"
+    as_a: "Developer"
+    i_want: "to implement accessible and responsive front-end design"
+    so_that: "the application meets WCAG guidelines and provides a consistent user experience"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement semantic HTML5 elements throughout (header, nav, main, footer, etc.)"
+      - "Pass WCAG validation with no errors"
+      - "Implement responsive design using CSS Grid/Flexbox/Media Queries"
+      - "Ensure consistent styling across all pages"
+      - "Verify functionality across different screen sizes (mobile, tablet, desktop)"
+      - "Implement clear navigation structure"
+      - "Use Bootstrap or custom CSS framework consistently"
+
+  - type: Feature
+    title: "Database Structure Implementation"
+    as_a: "Developer"
+    i_want: "to implement a Django database-backed application"
+    so_that: "data can be efficiently managed and stored"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Configure Django application with PostgreSQL database"
+      - "Create at least one custom model meeting project requirements"
+      - "Implement proper field types and relationships"
+      - "Configure model constraints and validation"
+      - "Implement efficient database queries using Django's ORM"
+      - "Document model relationships in README"
+
+  - type: Feature
+    title: "Agile Project Management Implementation"
+    as_a: "Developer"
+    i_want: "to maintain an active Agile project management system"
+    so_that: "project progress is tracked and documented"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Set up project board (GitHub Projects or similar)"
+      - "Create and maintain user stories with clear acceptance criteria"
+      - "Link all stories to project goals"
+      - "Update board regularly showing sprint progress"
+      - "Document Agile process in README"
+      - "Include screenshots of board progression"
+
+  - type: Feature
+    title: "Code Quality Standards"
+    as_a: "Developer"
+    i_want: "to implement high-quality Python code"
+    so_that: "the application is maintainable and reliable"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement custom Python logic with compound statements"
+      - "Follow PEP 8 style guidelines"
+      - "Use consistent naming conventions (snake_case for Python)"
+      - "Include comprehensive docstrings for all functions/classes"
+      - "Add explanatory comments for complex logic"
+      - "Maintain consistent indentation"
+      - "Use descriptive variable and function names"
+
+  - type: Feature
+    title: "UX Design Documentation"
+    as_a: "Developer"
+    i_want: "to document the UX design process"
+    so_that: "design decisions are clearly understood"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Create wireframes for all pages (mobile and desktop)"
+      - "Develop visual mockups showing color schemes"
+      - "Document user stories and acceptance criteria"
+      - "Include design process reasoning in README"
+      - "Document all major design changes and rationale"
+      - "Include sitemap or information architecture diagram"
+
+  # LO2: Data Model and Business Logic
+  - type: Feature
+    title: "Database Development"
+    as_a: "Developer"
+    i_want: "to implement a consistent database structure"
+    so_that: "data integrity is maintained"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Design normalized database schema"
+      - "Document table relationships with ERD"
+      - "Implement appropriate data types and constraints"
+      - "Create and maintain database migrations"
+      - "Document database schema in README"
+      - "Implement proper indexes for performance"
+
+  - type: Feature
+    title: "Enhanced CRUD Implementation"
+    as_a: "Developer"
+    i_want: "to implement comprehensive CRUD functionality"
+    so_that: "users can effectively manage data"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement Create operations with validation"
+      - "Implement Read operations with filtering/search"
+      - "Implement Update operations with validation"
+      - "Implement Delete operations with confirmation"
+      - "Add success/error messages for all operations"
+      - "Implement proper access controls for each operation"
+      - "Add defensive programming checks"
+
+  - type: Feature
+    title: "User Notification System"
+    as_a: "Developer"
+    i_want: "to implement a comprehensive notification system"
+    so_that: "users are informed of relevant changes"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement real-time/near-real-time notifications"
+      - "Show success messages for all CRUD operations"
+      - "Implement error notifications"
+      - "Create notification queue system"
+      - "Allow users to manage notification preferences"
+      - "Ensure notifications are user-specific"
+      - "Document notification types in README"
+
+  - type: Feature
+    title: "Form Implementation"
+    as_a: "Developer"
+    i_want: "to implement validated forms"
+    so_that: "data integrity is maintained"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement Django forms for all data entry"
+      - "Add client-side validation where appropriate"
+      - "Implement server-side validation"
+      - "Show clear error messages"
+      - "Style forms consistently"
+      - "Make forms accessible (ARIA labels, etc.)"
+      - "Handle form submission errors gracefully"
+
+  # LO3: Authentication and Authorization
+  - type: Feature
+    title: "Enhanced Authentication System"
+    as_a: "Developer"
+    i_want: "to implement a secure authentication system"
+    so_that: "user access is properly controlled"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Implement secure user registration"
+      - "Create role-based login system"
+      - "Add password reset functionality"
+      - "Implement email verification"
+      - "Show clear login state indicators"
+      - "Protect routes based on authentication"
+      - "Implement proper session management"
+      - "Add secure password handling"
+      - "Document authentication flow in README"
+
+  # LO4: Testing
+  - type: Feature
+    title: "Comprehensive Testing Implementation"
+    as_a: "Developer"
+    i_want: "to implement thorough testing"
+    so_that: "application reliability is verified"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Write Python unit tests for models"
+      - "Create view tests for all CRUD operations"
+      - "Implement form validation tests"
+      - "Add integration tests for key workflows"
+      - "Create JavaScript tests (if applicable)"
+      - "Document manual testing procedures"
+      - "Include testing coverage report"
+      - "Document all testing in README"
+
+  # LO5: Version Control
+  - type: Feature
+    title: "Enhanced Version Control"
+    as_a: "Developer"
+    i_want: "to maintain proper version control"
+    so_that: "code changes are tracked securely"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Write meaningful commit messages"
+      - "Make regular, atomic commits"
+      - "Use feature branches for development"
+      - "Implement proper .gitignore"
+      - "Secure sensitive information"
+      - "Document branching strategy"
+      - "Maintain clean commit history"
+
+  # LO6: Deployment
+  - type: Feature
+    title: "Enhanced Deployment Process"
+    as_a: "Developer"
+    i_want: "to implement secure deployment procedures"
+    so_that: "the application runs correctly in production"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Deploy successfully to cloud platform"
+      - "Configure production database"
+      - "Set up environment variables"
+      - "Disable Debug mode in production"
+      - "Implement proper error handling"
+      - "Document deployment process"
+      - "Configure static file serving"
+      - "Set up proper logging"
+      - "Implement backup procedures"
+
+  # LO7: Custom Data Models
+  - type: Feature
+    title: "Enhanced Custom Data Model"
+    as_a: "Developer"
+    i_want: "to implement custom data models"
+    so_that: "specific project requirements are met"
+    priority: "Must Have"
+    labels: ["Must Have", "Developer"]
+    acceptance_criteria:
+      - "Design models to fit project needs"
+      - "Implement proper model relationships"
+      - "Add custom model methods"
+      - "Create model managers where needed"
+      - "Document model architecture"
+      - "Implement proper validation"
+      - "Add custom querysets if required"

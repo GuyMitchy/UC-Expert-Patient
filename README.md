@@ -1446,14 +1446,18 @@ I used Git for version control. I protected the main branch and tried to only wo
 - symptom-app - For symptom app features
 - chat-and-rag - For RAG sytem development and chat app features
 
-##### Styling branches
+##### Styling Branches
 
 - Auth-Style-Branch - For styling the AllAuth templates
 - styling-branch - For overall styling once the mvp was complete
 
-##### Bug branches
+##### Bug Branches
 
 - deploy-proxy-bug - Branch made for particular proxy bug relating to pinecone on deploy.
+
+##### Cleanup Branch
+
+-cleanup - Branch for cleaning up elements across all features
 <br>
 <br>
 </details>

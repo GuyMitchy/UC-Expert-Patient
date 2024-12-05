@@ -1,15 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     {% if user.is_authenticated %}
-    <div class="mb-12 text-center">
-        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">UC Diagnoses Dashboard</h1>
-        <p class="text-xl text-gray-600">Study your symptoms - Manage your medications - Track your trigger foods -
-            Become
-            an expert patient</p>
+    <div class="mb-6 text-center">
+        <h1 class="text-4xl font-semibold text-gray-900">UC Diagnosis Dashboard</h1>
     </div>
-
     <div class="flex-grow">
         {% if messages %}
         {% for message in messages %}
@@ -104,7 +101,7 @@
         <div
             class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-blue-100 opacity-50">
-                <i data-lucide="message-square" class="w-12 h-12 md:w-20 h-20"></i>
+                <i data-lucide="message-square" class="w-12 h-12 md:w-16 h-16"></i>
             </div>
             <div class="flex-grow">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Chat with UC Companion</h2>
@@ -139,7 +136,7 @@
         <div
             class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-green-100 opacity-80">
-                <i data-lucide="activity" class="w-12 h-12 md:w-20 h-20"></i>
+                <i data-lucide="activity" class="w-12 h-12 md:w-16 h-16"></i>
             </div>
             <div class="flex-grow">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Symptom Tracker</h2>
@@ -165,7 +162,7 @@
                 </a>
                 <a href="{% url 'symptoms:add' %}"
                     class="text-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex-1">
-                    Track Symptoms
+                    Add Symptom
                 </a>
             </div>
         </div>
@@ -174,7 +171,7 @@
         <div
             class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-purple-100 opacity-80">
-                <i data-lucide="pill" class="w-12 h-12 md:w-20 h-20"></i>
+                <i data-lucide="pill" class="w-12 h-12 md:w-16 h-16"></i>
             </div>
             <div class="flex-grow">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Medication Log</h2>
@@ -209,7 +206,7 @@
         <div
             class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-yellow-100 opacity-80">
-                <i data-lucide="utensils" class="w-12 h-12 md:w-20 h-20"></i>
+                <i data-lucide="utensils" class="w-12 h-12 md:w-16 h-16"></i>
             </div>
             <div class="flex-grow">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Food Diary</h2>

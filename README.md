@@ -1507,26 +1507,33 @@ ADD GUIDELINE TESTS HERE
 <summary>Bugs, Issues and Resolutions</summary>
 <br>
 
-1. Form handling optimization
+1. Form handling optimization:
    - Initial issue: Form logic in templates was messy and causing type errors where choices were used in database fields
    - Solution: Implemented "fat models, skinny views, stupid templates" pattern. Moving logic from templates into forms.py
    - Result: Improved code organization, seperation of concerns, maintainability and readabilty.
 
-2. Vector Database Migration
+2. Vector Database Migration:
    - Initial issue: ChromaDB performance on Heroku was casuing multiple instances of the database to be created, increasing memory usage for each site access.
    - Solution: Migrated to Pinecone and vector database cleanup.
    - Result: Improved reliability and scalability
 
-3. Slow inital load time
+3. Slow inital load time:
    - Initial issue: Website was slow to load home page due to vector database intialisition on access.
    - Solution: Moved database intialisation to send message function.
    - Result: Improved code organization, seperation of concerns, maintainability and readabilty.
    - Future improvement: Move RAG initialisation to chat window load to decrease wait time for first message response.
 
-4. Bug - "Midnight"  
+4. Bug - "Midnight":  
   - Intital issue: "midnight" shows as time for all food entries, followed by the correct user entered time"
   - Solution: Altered datetime field in model to date field only
   - Result: Only user entered time appears
+
+5. Memory Usage Optimization:
+  - Initial issue: Memory usage exceeding Heroku's 500MB limit (reaching ~650-680MB) during chat interactions, with memory increasing after each message despite cleanup.
+  - Problem identified: Documents were being reinitialized on every message, causing memory accumulation.
+  - Solution: Modified RAG system to initialize documents only once when vector store is empty, moved template initialization to correct location in init, and implemented more aggressive cleanup.
+  - Result: Proper cleanup after each message, prevention of document reinitialization, better memory management.
+  - Future improvement:  Implement batch processing for document chunks or add a timeout mechanism to reinitialize RAG system after periods of inactivity.
 
 
 <br>

@@ -5,18 +5,20 @@
     {% if user.is_authenticated %}
     <div class="mb-12 text-center">
         <h1 class="text-4xl font-extrabold text-gray-900 mb-4">UC Diagnoses Dashboard</h1>
-        <p class="text-xl text-gray-600">Study your symptoms - Manage your medications - Track your trigger foods - Become
+        <p class="text-xl text-gray-600">Study your symptoms - Manage your medications - Track your trigger foods -
+            Become
             an expert patient</p>
     </div>
 
     <div class="flex-grow">
         {% if messages %}
         {% for message in messages %}
-            {% if message.tags == 'success'%}
-            <div class="message mb-4 p-4 rounded-md bg-green-100 text-green-700 transition-opacity duration-500 text-center">
-                {{ message }}
-            </div>
-            {% endif %}
+        {% if message.tags == 'success'%}
+        <div
+            class="message mb-4 p-4 rounded-md bg-green-100 text-green-700 transition-opacity duration-500 text-center">
+            {{ message }}
+        </div>
+        {% endif %}
         {% endfor %}
         {% endif %}
     </div>
@@ -70,7 +72,7 @@
                     {% for food in dashboard.recent_foods %}
                     <div class="flex items-center text-sm">
                         <span class="text-gray-600 mr-2">{{ food.food_name }}</span>
-                        
+
                         <!-- Trigger Status -->
                         {% if food.is_trigger == 'yes' %}
                         <span class="px-2 py-0.5 text-xs bg-red-100 text-red-800 rounded">Trigger</span>
@@ -79,12 +81,13 @@
                         {% else %}
                         <span class="px-2 py-0.5 text-xs bg-yellow-100 text-yellow-800 rounded">Unsure</span>
                         {% endif %}
-                        
+
                         <!-- Discomfort Level -->
-                        <span class="px-2 py-0.5 ml-2 text-xs {% if food.discomfort >= '3' %}bg-red-100 text-red-800{% elif food.discomfort >= '2' %}bg-yellow-100 text-yellow-800{% else %}bg-green-100 text-green-800{% endif %} rounded">
+                        <span
+                            class="px-2 py-0.5 ml-2 text-xs {% if food.discomfort >= '3' %}bg-red-100 text-red-800{% elif food.discomfort >= '2' %}bg-yellow-100 text-yellow-800{% else %}bg-green-100 text-green-800{% endif %} rounded">
                             Discomfort: {{ food.discomfort }}
                         </span>
-                        
+
                         <span class="text-gray-500 ml-auto">{{ food.date|date:"M d" }}</span>
                     </div>
                     {% endfor %}
@@ -98,73 +101,104 @@
 
     <div class="grid gap-6 md:grid-cols-2">
         <!-- Chat Card -->
-        <div class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+        <!-- Chat Card -->
+        <div
+            class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-blue-100 opacity-50">
                 <i data-lucide="message-square" class="w-12 h-12 md:w-20 h-20"></i>
             </div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Chat with UC Companion</h2>
-            <ul class="text-gray-600 mb-4 space-y-2">
-                <li class="flex items-center">
-                    <span class="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
-                    Get answers to your UC-related questions
-                </li>
-                <li class="flex items-center">
-                    <span class="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
-                    Talk about your symptoms and medications
-                </li>
-                <li class="flex items-center">
-                    <span class="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
-                    Become an expert on your condition
-                </li>
-            </ul>
-            <a href="{% url 'chat:list' %}"
-                class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition mt-auto">
-                Start Chat
-            </a>
+            <div class="flex-grow">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Chat with UC Companion</h2>
+                <ul class="text-gray-600 mb-4 space-y-2">
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
+                        Get answers to your UC-related questions
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
+                        Talk about your symptoms and medications
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
+                        Become an expert on your condition
+                    </li>
+                </ul>
+            </div>
+            <div class="flex flex-wrap gap-4 mt-auto">
+                <a href="{% url 'chat:list' %}"
+                    class="text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex-1">
+                    View Conversations
+                </a>
+                <a href="{% url 'chat:new' %}"
+                    class="text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex-1">
+                    New Conversation
+                </a>
+            </div>
         </div>
 
         <!-- Symptoms Card -->
-        <div class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+        <div
+            class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-green-100 opacity-80">
                 <i data-lucide="activity" class="w-12 h-12 md:w-20 h-20"></i>
             </div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Symptom Tracker</h2>
-            <p class="text-gray-600 mb-4">Log and monitor your symptoms to identify patterns and triggers</p>
-            <a href="{% url 'symptoms:list' %}"
-                class="inline-block w-full text-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition mt-auto">
-                Track Symptoms
-            </a>
+            <div class="flex-grow">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Symptom Tracker</h2>
+                <p class="text-gray-600 mb-4">Log and monitor your symptoms to identify patterns and triggers</p>
+            </div>
+            <div class="flex flex-wrap gap-4 mt-auto">
+                <a href="{% url 'symptoms:list' %}"
+                    class="text-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex-1">
+                    View Symptoms
+                </a>
+                <a href="{% url 'symptoms:add' %}"
+                    class="text-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex-1">
+                    Track Symptoms
+                </a>
+            </div>
         </div>
 
-
-
         <!-- Medications Card -->
-        <div class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+        <div
+            class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-purple-100 opacity-80">
                 <i data-lucide="pill" class="w-12 h-12 md:w-20 h-20"></i>
             </div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Medication Log</h2>
-            <p class="text-gray-600 mb-4">Track your medication schedule and set reminders</p>
-            <a href="{% url 'medications:list' %}"
-                class="inline-block w-full text-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition mt-auto">
-                Manage Medications
-            </a>
+            <div class="flex-grow">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Medication Log</h2>
+                <p class="text-gray-600 mb-4">Track your medication schedule and set reminders</p>
+            </div>
+            <div class="flex flex-wrap gap-4 mt-auto">
+                <a href="{% url 'medications:list' %}"
+                    class="text-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition flex-1">
+                    View Medications
+                </a>
+                <a href="{% url 'medications:add' %}"
+                    class="text-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition flex-1">
+                    Add Medication
+                </a>
+            </div>
         </div>
 
         <!-- Food Diary Card -->
-        <div class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+        <div
+            class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
             <div class="absolute right-2 top-2 text-yellow-100 opacity-80">
                 <i data-lucide="utensils" class="w-12 h-12 md:w-20 h-20"></i>
             </div>
-            <div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Food Diary</h2>
-            <p class="text-gray-600 mb-4">Keep track of your meals and identify food triggers. Get personalized
-                recommendations based on your dietary patterns.</p>
+            <div class="flex-grow">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Food Diary</h2>
+                <p class="text-gray-600 mb-4">Keep track of your meals and identify food triggers. Get personalized
+                    recommendations based on your dietary patterns.</p>
             </div>
-                <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4 mt-auto">
                 <a href="{% url 'foods:list' %}"
-                    class="inline-block w-full text-center bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition mt-auto">
-                    Manage Your Diet
+                    class="text-center bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition flex-1">
+                    View Foods
+                </a>
+                <a href="{% url 'foods:add' %}"
+                    class="text-center bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition flex-1">
+                    Add Food
                 </a>
             </div>
         </div>
@@ -176,11 +210,12 @@
     <div class="flex-grow">
         {% if messages %}
         {% for message in messages %}
-            {% if message.tags == 'success'%}
-            <div class="message mb-4 p-4 rounded-md bg-green-100 text-green-700 transition-opacity duration-500 text-center">
-                {{ message }}
-            </div>
-            {% endif %}
+        {% if message.tags == 'success'%}
+        <div
+            class="message mb-4 p-4 rounded-md bg-green-100 text-green-700 transition-opacity duration-500 text-center">
+            {{ message }}
+        </div>
+        {% endif %}
         {% endfor %}
         {% endif %}
     </div>
@@ -208,12 +243,12 @@
     {% endif %}
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var messages = document.getElementsByClassName('message');
-        setTimeout(function() {
+        setTimeout(function () {
             for (var message of messages) {
                 message.style.opacity = '0';
-                setTimeout(function() {
+                setTimeout(function () {
                     message.remove();
                 }, 500);
             }

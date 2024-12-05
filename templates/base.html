@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body class="bg-gray-100 min-h-screen flex flex-col">
@@ -21,23 +24,23 @@
                 {% if user.is_authenticated %}
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex space-x-4">
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition "
                         href="{% url 'home:home' %}">Dashboard</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                         href="{% url 'symptoms:list' %}">Symptoms</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                         href="{% url 'medications:list' %}">Medications</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                         href="{% url 'foods:list' %}">Foods</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                         href="{% url 'chat:list' %}">Chat</a>
                 </nav>
 
                 <!-- Welcome Message -->
                 <div class="hidden lg:flex items-center space-x-4">
-                    <span class="text-sm">Welcome, {{ user.username }}</span>
+                    <span class="text-sm font-medium">Welcome, {{ user.username }}</span>
                     <a href="{% url 'account_logout' %}"
-                        class="text-sm bg-blue-700 px-3 py-2 rounded hover:bg-blue-800 transition">
+                        class="text-sm bg-blue-700 px-3 py-2 rounded font-semibold hover:bg-blue-800 transition">
                         Logout
                     </a>
                 </div>
@@ -65,17 +68,17 @@
                             </button>
                         </div>
                         <nav class="px-4 space-y-2">
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                            <a class="block px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                                 href="{% url 'home:home' %}">Dashboard</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                            <a class="block px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                                 href="{% url 'symptoms:list' %}">Symptoms</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                            <a class="block px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                                 href="{% url 'medications:list' %}">Medications</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                            <a class="block px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                                 href="{% url 'foods:list' %}">Foods</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                            <a class="block px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                                 href="{% url 'chat:list' %}">Chat</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium bg-blue-700 hover:bg-blue-800 transition mt-4"
+                            <a class="block px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
                                 href="{% url 'account_logout' %}">Logout</a>
                         </nav>
                     </div>

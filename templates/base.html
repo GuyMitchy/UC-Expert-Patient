@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="bg-gray-100 min-h-screen flex flex-col">
     <header class="bg-blue-600 text-white sticky top-0 z-10 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,17 +21,23 @@
                 {% if user.is_authenticated %}
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex space-x-4">
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'home:home' %}">Dashboard</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'symptoms:list' %}">Symptoms</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'medications:list' %}">Medications</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'foods:list' %}">Foods</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'chat:list' %}">Chat</a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                        href="{% url 'home:home' %}">Dashboard</a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                        href="{% url 'symptoms:list' %}">Symptoms</a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                        href="{% url 'medications:list' %}">Medications</a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                        href="{% url 'foods:list' %}">Foods</a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                        href="{% url 'chat:list' %}">Chat</a>
                 </nav>
-                
+
                 <!-- Welcome Message -->
                 <div class="hidden lg:flex items-center space-x-4">
                     <span class="text-sm">Welcome, {{ user.username }}</span>
-                    <a href="{% url 'account_logout' %}" class="text-sm bg-blue-700 px-3 py-2 rounded hover:bg-blue-800 transition">
+                    <a href="{% url 'account_logout' %}"
+                        class="text-sm bg-blue-700 px-3 py-2 rounded hover:bg-blue-800 transition">
                         Logout
                     </a>
                 </div>
@@ -37,7 +45,8 @@
                 <!-- Mobile Menu Button -->
                 <div class="lg:hidden flex items-center space-x-4">
                     <span class="text-sm">Welcome, {{ user.username }}</span>
-                    <button type="button" onclick="toggleMobileMenu()" class="text-white hover:bg-blue-700 p-2 rounded-md">
+                    <button type="button" onclick="toggleMobileMenu()"
+                        class="text-white hover:bg-blue-700 p-2 rounded-md">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -46,21 +55,28 @@
                 <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 z-50">
                     <!-- Backdrop -->
                     <div class="fixed inset-0 bg-black bg-opacity-50" onclick="toggleMobileMenu()"></div>
-                    
+
                     <!-- Menu Content -->
-                    <div class="fixed right-0 top-0 h-full w-64 bg-blue-600 shadow-lg transform transition-transform duration-300">
+                    <div
+                        class="fixed right-0 top-0 h-full w-64 bg-blue-600 shadow-lg transform transition-transform duration-300">
                         <div class="flex justify-end p-4">
                             <button onclick="toggleMobileMenu()" class="text-white hover:bg-blue-700 p-2 rounded-md">
                                 <i data-lucide="x" class="w-6 h-6"></i>
                             </button>
                         </div>
                         <nav class="px-4 space-y-2">
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'home:home' %}">Dashboard</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'symptoms:list' %}">Symptoms</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'medications:list' %}">Medications</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'foods:list' %}">Foods</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition" href="{% url 'chat:list' %}">Chat</a>
-                            <a class="block px-3 py-2 rounded-md text-sm font-medium bg-blue-700 hover:bg-blue-800 transition mt-4" href="{% url 'account_logout' %}">Logout</a>
+                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                                href="{% url 'home:home' %}">Dashboard</a>
+                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                                href="{% url 'symptoms:list' %}">Symptoms</a>
+                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                                href="{% url 'medications:list' %}">Medications</a>
+                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                                href="{% url 'foods:list' %}">Foods</a>
+                            <a class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                                href="{% url 'chat:list' %}">Chat</a>
+                            <a class="block px-3 py-2 rounded-md text-sm font-medium bg-blue-700 hover:bg-blue-800 transition mt-4"
+                                href="{% url 'account_logout' %}">Logout</a>
                         </nav>
                     </div>
                 </div>
@@ -70,7 +86,8 @@
     </header>
 
     <main class="flex-grow">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
 
     <footer class="bg-blue-600 text-white py-6">
@@ -81,8 +98,10 @@
                     <ul class="space-y-2">
                         <li><a href="{% url 'privacy' %}" class="hover:text-blue-200 transition">Privacy Policy</a></li>
                         <li><a href="{% url 'terms' %}" class="hover:text-blue-200 transition">Terms of Use</a></li>
-                        <li><a href="{% url 'disclaimer' %}" class="hover:text-blue-200 transition">Medical Disclaimer</a></li>
-                        <li><a href="{% url 'data-protection' %}" class="hover:text-blue-200 transition">Data Protection Information</a></li>
+                        <li><a href="{% url 'disclaimer' %}" class="hover:text-blue-200 transition">Medical
+                                Disclaimer</a></li>
+                        <li><a href="{% url 'data-protection' %}" class="hover:text-blue-200 transition">Data Protection
+                                Information</a></li>
                     </ul>
                 </div>
                 <div class="text-center md:text-left">
@@ -99,18 +118,19 @@
                 </div>
             </div>
             <div class="mt-8 pt-4 border-t border-blue-500 text-center text-sm">
-                <p>&copy; {% now "Y" %} UC Expert. Expert Patient is for informational purposes only and is not a substitute for medical advice.</p>
+                <p>&copy; {% now "Y" %} UC Expert. Expert Patient is for informational purposes only and is not a
+                    substitute for medical advice.</p>
             </div>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
-        
+
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             const menuContent = mobileMenu.querySelector('div:last-child');
-            
+
             if (mobileMenu.classList.contains('hidden')) {
                 // Show menu
                 mobileMenu.classList.remove('hidden');
@@ -127,4 +147,5 @@
         }
     </script>
 </body>
+
 </html>

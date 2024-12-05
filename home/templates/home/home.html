@@ -8,6 +8,18 @@
         <p class="text-xl text-gray-600">Study your symptoms - Manage your medications - Track your trigger foods - Become
             an expert patient</p>
     </div>
+
+    <div class="flex-grow">
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success'%}
+            <div class="mb-4 p-4 rounded-md bg-blue-100 text-blue-700">
+                {{ message }}
+            </div>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
     <!-- Dashboard Content -->
     <div class="bg-white p-6 mb-12 shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
         <div class="grid gap-8 md:grid-cols-3">

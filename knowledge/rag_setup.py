@@ -99,8 +99,18 @@ class UCExpertRAG:
     def cleanup(self):
         """Cleanup resources"""
         try:
-            self.vector_store = None
+            if hasattr(self, 'vector_store'):
+                # Clear any cached data
+                self.vector_store = None
+            if hasattr(self, 'embeddings'):
+                self.embeddings = None
+            if hasattr(self, 'llm'):
+                self.llm = None
+            # Force cleanup of references
             gc.collect()
+            # Additional garbage collection passes
+            for _ in range(3):
+                gc.collect()
         except Exception as e:
             print(f"Error during cleanup: {str(e)}")
 

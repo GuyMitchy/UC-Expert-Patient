@@ -30,7 +30,10 @@ def with_rag(func):
     def wrapper(*args, **kwargs):
         try:
             rag = RAGManager.get_instance()
-            return func(*args, **kwargs, rag=rag)
+            result = func(*args, **kwargs, rag=rag)
+            # Clean up after the function completes
+            RAGManager.cleanup()
+            return result
         except Exception as e:
             print(f"RAG error: {str(e)}")
             raise

@@ -34,40 +34,61 @@
             {% endfor %}
         </div>
 
+        <!-- Loading Spinner -->
+
+        <div id="loading-spinner" class="htmx-indicator flex justify-center items-center p-4">
+            <div class="animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent"></div>
+        </div>
+
         <!-- Message Input -->
         <div class="bg-white border-t border-gray-200 px-4 py-4">
             <div class="max-w-4xl mx-auto">
-                <form hx-post="{% url 'chat:send_message' conversation.id %}" hx-target="#chat-messages"
-                    hx-swap="beforeend" class="flex space-x-4">
+                
+                <form hx-post="{% url 'chat:send_message' conversation.id %}" 
+                    hx-target="#chat-messages"
+                    hx-swap="beforeend"
+                    hx-indicator="#loading-spinner"
+                    class="flex space-x-4">
                     {% csrf_token %}
-                    <input type="text" name="message" placeholder="Type your message..."
+                    <input type="text" 
+                        name="message" 
+                        placeholder="Type your message..."
                         class="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         required>
-                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    <button type="submit" 
+                            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
                         Send
                     </button>
                 </form>
             </div>
         </div>
-    </div>
-</div>
 
-<script>
-    document.body.addEventListener('htmx:afterRequest', function (evt) {
-        if (evt.detail.successful) {
-            // Clear the input field
-            evt.detail.elt.querySelector('input[name="message"]').value = '';
+        <script>
+            document.body.addEventListener('htmx:beforeRequest', function(evt) {
+                const input = evt.detail.elt.querySelector('input[name="message"]');
+                input.disabled = true;
+            });
 
-            // Scroll to bottom
-            const chatMessages = document.getElementById('chat-messages');
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-    });
+            document.body.addEventListener('htmx:afterRequest', function(evt) {
+                if (evt.detail.successful) {
+                    // Clear and re-enable the input field
+                    const input = evt.detail.elt.querySelector('input[name="message"]');
+                    input.value = '';
+                    input.disabled = false;
+                    input.focus();
 
-    // Initial scroll to bottom
-    window.onload = function () {
-        const chatMessages = document.getElementById('chat-messages');
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    };
-</script>
+                    // Scroll to bottom
+                    const chatMessages = document.getElementById('chat-messages');
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            });
+
+            // Initial scroll to bottom
+            window.onload = function() {
+                const chatMessages = document.getElementById('chat-messages');
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            };
+        </script>
+
+
 {% endblock %}

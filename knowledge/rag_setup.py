@@ -15,6 +15,11 @@ class UCExpertRAG:
         self.embeddings = OpenAIEmbeddings(openai_api_key=os.getenv('OPENAI_API_KEY'))
         self.llm = ChatOpenAI(model="gpt-4")
         
+        # Set search parameters
+        self.fetch_k = 10
+        self.final_k = 5 
+        self.lambda_mult = 0.7
+        
         # Initialize Pinecone once
         pc = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
         

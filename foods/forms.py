@@ -45,11 +45,17 @@ class FoodForm(forms.ModelForm):
         })
     )
     
-    is_trigger = forms.BooleanField(
-        required=False,
-        initial=False,
-        widget=forms.CheckboxInput(attrs={
-            'class': 'h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500'
+    discomfort = forms.ChoiceField(
+        choices=Food.DISCOMFORT_CHOICES,
+        widget=forms.Select(attrs={
+            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+        })
+    )
+    
+    is_trigger = forms.ChoiceField(
+        choices=Food.IS_TRIGGER_CHOICES,
+        widget=forms.Select(attrs={
+            'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
         })
     )
 
@@ -64,7 +70,7 @@ class FoodForm(forms.ModelForm):
 
     class Meta:
         model = Food
-        fields = ['food_name', 'meal_type', 'date', 'eaten_at', 'portion_size']
+        fields = ['food_name', 'meal_type', 'date', 'eaten_at', 'portion_size', 'discomfort', 'is_trigger', 'notes']
         widgets = {
             'description': SummernoteWidget(),
             'date': forms.DateInput(attrs={'type': 'date'}),
@@ -76,4 +82,4 @@ class FoodForm(forms.ModelForm):
         self.helper.form_class = 'space-y-4'
         
         if self.instance.pk and self.instance.eaten_at:
-            self.initial['eaten_at'] = self.instance.eaten_at.strftime('%Y-%m-%dT%H:%M')
+            self.initial['eaten_at'] = self.instance.eaten_at.strftime('%H:%M')

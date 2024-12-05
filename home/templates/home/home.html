@@ -13,7 +13,7 @@
         {% if messages %}
         {% for message in messages %}
             {% if message.tags == 'success'%}
-            <div class="mb-4 p-4 rounded-md bg-blue-100 text-blue-700">
+            <div class="message mb-4 p-4 rounded-md bg-green-100 text-green-700 transition-opacity duration-500 text-center">
                 {{ message }}
             </div>
             {% endif %}
@@ -70,11 +70,21 @@
                     {% for food in dashboard.recent_foods %}
                     <div class="flex items-center text-sm">
                         <span class="text-gray-600 mr-2">{{ food.food_name }}</span>
-                        {% if food.is_trigger %}
+                        
+                        <!-- Trigger Status -->
+                        {% if food.is_trigger == 'yes' %}
                         <span class="px-2 py-0.5 text-xs bg-red-100 text-red-800 rounded">Trigger</span>
-                        {% else %}
+                        {% elif food.is_trigger == 'no' %}
                         <span class="px-2 py-0.5 text-xs bg-green-100 text-green-800 rounded">Safe</span>
+                        {% else %}
+                        <span class="px-2 py-0.5 text-xs bg-yellow-100 text-yellow-800 rounded">Unsure</span>
                         {% endif %}
+                        
+                        <!-- Discomfort Level -->
+                        <span class="px-2 py-0.5 ml-2 text-xs {% if food.discomfort >= '3' %}bg-red-100 text-red-800{% elif food.discomfort >= '2' %}bg-yellow-100 text-yellow-800{% else %}bg-green-100 text-green-800{% endif %} rounded">
+                            Discomfort: {{ food.discomfort }}
+                        </span>
+                        
                         <span class="text-gray-500 ml-auto">{{ food.date|date:"M d" }}</span>
                     </div>
                     {% endfor %}
@@ -162,6 +172,19 @@
     </div>
 
     {% else %}
+    <!-- Messages check for sign out -->
+    <div class="flex-grow">
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success'%}
+            <div class="message mb-4 p-4 rounded-md bg-green-100 text-green-700 transition-opacity duration-500 text-center">
+                {{ message }}
+            </div>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+
     <div class="text-center">
         <h1 class="text-4xl font-bold text-gray-900 mb-8">
             Welcome to UC Expert
@@ -184,4 +207,17 @@
     </div>
     {% endif %}
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var messages = document.getElementsByClassName('message');
+        setTimeout(function() {
+            for (var message of messages) {
+                message.style.opacity = '0';
+                setTimeout(function() {
+                    message.remove();
+                }, 500);
+            }
+        }, 3000);
+    });
+</script>
 {% endblock %}

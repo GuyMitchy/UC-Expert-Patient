@@ -71,13 +71,13 @@ def send_message(request, conversation_id, rag=None):
     if request.method != 'POST':
         return HttpResponse('Method not allowed', status=405)
 
-    conversation = get_object_or_404(Conversation, id=conversation_id, user=request.user)
-    user_message = request.POST.get('message', '').strip()
-
-    if not user_message:
-        return HttpResponse('Message is required', status=400)
-
     try:
+        conversation = get_object_or_404(Conversation, id=conversation_id, user=request.user)
+        user_message = request.POST.get('message', '').strip()
+
+        if not user_message:
+            return HttpResponse('Message is required', status=400)
+
         # Save user message
         user_message_obj = Message.objects.create(
             conversation=conversation,
@@ -88,8 +88,7 @@ def send_message(request, conversation_id, rag=None):
         # Build user context
         user_context = "User Context:\n"
         
-        # Add Convesation History - last 10 messages
-        
+        # Add Conversation History - last 10 messages
         previous_messages = conversation.message_set.order_by('-created_at')[:10][::-1]
         conversation_history = "\nConversation History:\n"
         for msg in previous_messages:
@@ -136,14 +135,13 @@ def send_message(request, conversation_id, rag=None):
             conversation_history=conversation_history
         )
 
-        # Save bot message
+        # Save bot message and render response
         bot_message = Message.objects.create(
             conversation=conversation,
             content=response,
             is_bot=True
         )
 
-        # Render messages
         messages_html = render_to_string('chat/message.html', {'message': user_message_obj})
         messages_html += render_to_string('chat/message.html', {'message': bot_message})
         

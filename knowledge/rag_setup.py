@@ -15,21 +15,27 @@ class UCExpertRAG:
         self.embeddings = OpenAIEmbeddings(openai_api_key=os.getenv('OPENAI_API_KEY'))
         self.llm = ChatOpenAI(model="gpt-4")
         
-        self.fetch_k = 10
-        self.final_k = 5
-        self.lambda_mult = 0.7
-        
+        # Initialize Pinecone once
         pc = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
         
-        
-        # Initialize vector store directly
+        # Initialize vector store
         self.vector_store = PineconeVectorStore(
             index_name="ucexpert",
             embedding=self.embeddings
         )
         
-        # Initialize documents if vector store is empty
-        self.initialize_documents()
+        # Only initialize documents if vector store is empty
+        if not self._check_if_documents_exist():
+            self.initialize_documents()
+
+    def _check_if_documents_exist(self):
+        """Check if documents are already in the vector store"""
+        try:
+            # Try to get one document to check if store is populated
+            docs = self.vector_store.similarity_search("test", k=1)
+            return len(docs) > 0
+        except Exception:
+            return False
         
         # Define the prompt template
         template = """You are a medical professional assistant specializing in Ulcerative Colitis.
@@ -100,17 +106,19 @@ class UCExpertRAG:
         """Cleanup resources"""
         try:
             if hasattr(self, 'vector_store'):
-                # Clear any cached data
                 self.vector_store = None
             if hasattr(self, 'embeddings'):
                 self.embeddings = None
             if hasattr(self, 'llm'):
                 self.llm = None
-            # Force cleanup of references
+            
+            # Force garbage collection multiple times
+            import gc
+            gc.collect(generation=2)  # Force full collection
             gc.collect()
-            # Additional garbage collection passes
-            for _ in range(3):
-                gc.collect()
+            gc.collect()
+            
+            print("Memory cleanup completed")
         except Exception as e:
             print(f"Error during cleanup: {str(e)}")
 

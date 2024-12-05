@@ -98,9 +98,8 @@
             </div>
         </div>
     </div>
-
+    <!-- Cards -->
     <div class="grid gap-6 md:grid-cols-2">
-        <!-- Chat Card -->
         <!-- Chat Card -->
         <div
             class="flex flex-col h-full bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
@@ -116,7 +115,7 @@
                     </li>
                     <li class="flex items-center">
                         <span class="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
-                        Talk about your symptoms and medications
+                        Talk about your symptoms, medications and food diary entries
                     </li>
                     <li class="flex items-center">
                         <span class="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
@@ -144,7 +143,20 @@
             </div>
             <div class="flex-grow">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Symptom Tracker</h2>
-                <p class="text-gray-600 mb-4">Log and monitor your symptoms to identify patterns and triggers</p>
+                <ul class="text-gray-600 mb-4 space-y-2">
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-green-600 rounded-full mr-2"></span>
+                        Log and track symptom severity
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-green-600 rounded-full mr-2"></span>
+                        Monitor patterns over time
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-green-600 rounded-full mr-2"></span>
+                        Maintain detailed symptom history
+                    </li>
+                </ul>
             </div>
             <div class="flex flex-wrap gap-4 mt-auto">
                 <a href="{% url 'symptoms:list' %}"
@@ -166,7 +178,20 @@
             </div>
             <div class="flex-grow">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Medication Log</h2>
-                <p class="text-gray-600 mb-4">Track your medication schedule and set reminders</p>
+                <ul class="text-gray-600 mb-4 space-y-2">
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-purple-600 rounded-full mr-2"></span>
+                        Track active medications and dosages
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-purple-600 rounded-full mr-2"></span>
+                        Record medication effectiveness
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-purple-600 rounded-full mr-2"></span>
+                        Maintain medication history
+                    </li>
+                </ul>
             </div>
             <div class="flex flex-wrap gap-4 mt-auto">
                 <a href="{% url 'medications:list' %}"
@@ -188,8 +213,20 @@
             </div>
             <div class="flex-grow">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Food Diary</h2>
-                <p class="text-gray-600 mb-4">Keep track of your meals and identify food triggers. Get personalized
-                    recommendations based on your dietary patterns.</p>
+                <ul class="text-gray-600 mb-4 space-y-2">
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-yellow-600 rounded-full mr-2"></span>
+                        Log meals and portion sizes
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-yellow-600 rounded-full mr-2"></span>
+                        Identify food triggers and reactions
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1 h-1 bg-yellow-600 rounded-full mr-2"></span>
+                        Track digestive comfort levels
+                    </li>
+                </ul>
             </div>
             <div class="flex flex-wrap gap-4 mt-auto">
                 <a href="{% url 'foods:list' %}"

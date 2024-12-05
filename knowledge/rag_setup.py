@@ -28,20 +28,7 @@ class UCExpertRAG:
             index_name="ucexpert",
             embedding=self.embeddings
         )
-        
-        # Only initialize documents if vector store is empty
-        if not self._check_if_documents_exist():
-            self.initialize_documents()
 
-    def _check_if_documents_exist(self):
-        """Check if documents are already in the vector store"""
-        try:
-            # Try to get one document to check if store is populated
-            docs = self.vector_store.similarity_search("test", k=1)
-            return len(docs) > 0
-        except Exception:
-            return False
-        
         # Define the prompt template
         template = """You are a medical professional assistant specializing in Ulcerative Colitis.
         Your knowledge is strictly limited to the provided context.
@@ -76,6 +63,19 @@ class UCExpertRAG:
         Remember: You reflect ONLY the provided context - never add external information."""
         
         self.prompt = ChatPromptTemplate.from_template(template)
+        
+        # Only initialize documents if vector store is empty
+        if not self._check_if_documents_exist():
+            self.initialize_documents()
+
+    def _check_if_documents_exist(self):
+        """Check if documents are already in the vector store"""
+        try:
+            # Try to get one document to check if store is populated
+            docs = self.vector_store.similarity_search("test", k=1)
+            return len(docs) > 0
+        except Exception:
+            return False
 
     def initialize_documents(self):
         """Initialize documents in vector store if needed"""

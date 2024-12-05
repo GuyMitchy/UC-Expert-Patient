@@ -25,10 +25,10 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <h3 class="text-lg font-medium text-gray-900">
-                            {{ food.get_meal_type_display }}
+                            {{ food.food_name }}
                         </h3>
                         <p class="text-sm text-gray-500">
-                            {{ food.food_name }} - {{ food.portion_size }}
+                            {{ food.get_meal_type_display }} - {{ food.portion_size }}
                         </p>
                         <p class="text-sm text-gray-500">
                             Ate: {{ food.date }}: {{ food.eaten_at }}

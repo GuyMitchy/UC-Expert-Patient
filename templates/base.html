@@ -23,21 +23,21 @@
                 {% if user.is_authenticated %}
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex space-x-4">
-                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition "
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition "
                         href="{% url 'home:home' %}">Dashboard</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
                         href="{% url 'symptoms:list' %}">Symptoms</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
                         href="{% url 'medications:list' %}">Medications</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
                         href="{% url 'foods:list' %}">Foods</a>
-                    <a class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
                         href="{% url 'chat:list' %}">Chat</a>
                 </nav>
 
                 <!-- Welcome Message -->
                 <div class="hidden lg:flex items-center space-x-4">
-                    <span class="text-sm font-medium">Welcome, {{ user.username }}</span>
+                    <span class="text-sm">Welcome, {{ user.username }}</span>
                     <a href="{% url 'account_logout' %}"
                         class="text-sm bg-blue-700 px-3 py-2 rounded font-semibold hover:bg-blue-800 transition">
                         Logout

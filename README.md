@@ -496,7 +496,6 @@ stories:
       - "Write Python unit tests for models"
       - "Create view tests for all CRUD operations"
       - "Implement form validation tests"
-      - "Add integration tests for key workflows"
       - "Create JavaScript tests (if applicable)"
       - "Document manual testing procedures"
       - "Include testing coverage report"
@@ -1477,25 +1476,134 @@ TALK ABOUT HOW AGILE WAS USED HERE - Project board etc.
 
 
 
-## Testing
+## Testing and Validation
 
 <details>
 <summary>Manual Testing</summary>
 <br>
 
-Comprehensive manual testing was carried out, it included:
-- Cross-browser compatibility
-- Responsive design verification
-- Form validation
-- Data persistence
-- AI chat functionality
-- Security testing
+Manual testing was conducted on all features across different browsers:
+
+- Chrome
+- Firefox
+- Safari
+- Edge
+
+Test scenarios included:
+
+- Form submissions with valid/invalid data
+- Navigation and routing
+- User flow through medical/food data entry
+- Chat interface responsiveness
+- Error message display
+- Mobile responsiveness
+
+
+##### LLM Integration Testing
+For the chatbot functionality, which uses OpenAI's API:
+
+- Initial prototype testing was conducted using a local LLM to verify the conversation flow and context management
+- Production testing is conducted manually and selectively due to API costs
+
+- Regular manual testing is performed on key conversation paths to ensure:
+
+    - Appropriate medical advice is given
+    - Context from user's symptoms and medications is properly incorporated
+    - Emergency situations are correctly identified and handled
+    - Response formatting and presentation is consistent
 <br>
 <br>
 </details>
 
 <details>
-<summary>Guideline Complaince Testing</summary>
+<summary>Automated Testing</summary>
+<br>
+
+I implemented comprehensive automated testing using Django's testing framework. Each app has its own test suite focusing on specific functionality:
+
+
+##### User Authentication and Registration
+
+See tests/test_auth.py
+
+- Signup page functionality
+- User registration process
+- Login and logout functionality
+- Password validation rules
+- Email requirement validation
+- Authentication state redirects
+- Form validation messages
+<br>
+<br>
+
+![Auth Tests](./static/readme_images/test%20results/auth_test.png)
+
+##### Symptoms App
+
+See symptoms/tests.py
+
+- Model creation and validation
+- Future date prevention
+- CRUD operations (Create, Read, Update, Delete)
+- User-specific data access
+- Form submission handling
+<br>
+<br>
+
+![Symptom Tests](./static/readme_images/test%20results/symptom_test.png)
+
+##### Medications App
+
+See medications/tests.py
+
+- Model creation and validation
+- Medication choice field validation
+- Active/inactive status tracking
+- Future date prevention
+- CRUD operations
+- User data isolation
+- Form field validation
+<br>
+<br>
+
+![Medication Tests](./static/readme_images/test%20results/medications_test.png)
+
+##### Food Diary App
+
+See foods/tests.py
+
+- Model creation and validation
+- Meal type choice validation
+- Discomfort scale validation
+- Trigger food status tracking
+- Date/time field validation
+- CRUD operations
+- User data isolation
+<br>
+<br>
+
+![Food Tests](./static/readme_images/test%20results/foods_test.png)
+
+##### Chat App
+
+See chat/tests.py
+
+- Conversation model validation
+- Message ordering
+- User message creation
+- Bot message mocking
+- CRUD operations for conversations
+- User data isolation
+<br>
+<br>
+
+![Chat Tests](./static/readme_images/test%20results/chat_test.png)
+
+<br>
+</details>
+
+<details>
+<summary>Vaildation</summary>
 
 ADD GUIDELINE TESTS HERE
 

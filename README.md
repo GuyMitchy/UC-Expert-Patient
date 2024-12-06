@@ -1484,19 +1484,19 @@ TALK ABOUT HOW AGILE WAS USED HERE - Project board etc.
 
 Manual testing was conducted on all features across different browsers:
 
-Chrome
-Firefox
-Safari
-Edge
+- Chrome
+- Firefox
+- Safari
+- Edge
 
 Test scenarios included:
 
-Form submissions with valid/invalid data
-Navigation and routing
-User flow through medical/food data entry
-Chat interface responsiveness
-Error message display
-Mobile responsiveness
+- Form submissions with valid/invalid data
+- Navigation and routing
+- User flow through medical/food data entry
+- Chat interface responsiveness
+- Error message display
+- Mobile responsiveness
 
 
 ##### LLM Integration Testing
@@ -1519,46 +1519,63 @@ For the chatbot functionality, which uses OpenAI's API:
 <summary>Automated Testing</summary>
 <br>
 
-I implemented comprehensive automated testing for the core functionality of the application using Django's testing framework. The tests cover:
+I implemented comprehensive automated testing using Django's testing framework. Each app has its own test suite focusing on specific functionality:
 
 
 ##### User Authentication and Registration
 
-- User signup process
-- Login functionality
-- Password validation and management
-- Email-based authentication
-- Protected route access
-- Form validation
+- Signup page functionality
+- User registration process
+- Login and logout functionality
+- Password validation rules
+- Email requirement validation
+- Authentication state redirects
+- Form validation messages
+
+![Auth Tests](./static/readme_images/test%20results/auth_test.png)
 
 ##### Symptoms App
 
 - Model creation and validation
-- Date validation for symptoms
-- CRUD operations
+- Future date prevention
+- CRUD operations (Create, Read, Update, Delete)
 - User-specific data access
-- Form submissions
-- View access controls
+- Form submission handling
+
+![Symptom Tests](./static/readme_images/test%20results/symptom_test.png)
 
 ##### Medications App
 
-- Model relationships
-- Medication choices validation
+- Model creation and validation
+- Medication choice field validation
 - Active/inactive status tracking
-- Date validation
-- User permissions
-- Form validation for medication entries
+- Future date prevention
+- CRUD operations
+- User data isolation
+- Form field validation
+
+![Medication Tests](./static/readme_images/test%20results/medication_test.png)
 
 ##### Food Diary App
 
-- Food entry creation and validation
-- Meal type validation
-- Discomfort scale tracking
-- Trigger food identification
-- Date and time validation
+- Model creation and validation
+- Meal type choice validation
+- Discomfort scale validation
+- Trigger food status tracking
+- Date/time field validation
+- CRUD operations
 - User data isolation
 
+![Food Tests](./static/readme_images/test%20results/food_test.png)
 
+##### Chat App
+
+- Conversation model validation
+- Message ordering
+- User message creation
+- Bot message mocking
+- CRUD operations for conversations
+- User data isolation
 
 <br>
 </details>

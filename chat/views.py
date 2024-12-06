@@ -21,22 +21,22 @@ class ConversationCreateView(LoginRequiredMixin, CreateView):
     model = Conversation
     template_name = 'chat/new_conversation.html'
     fields = ['title']
-    
+
     def get_success_url(self):
         return reverse_lazy('chat:detail', kwargs={'pk': self.object.pk})
-    
+
     def form_valid(self, form):
         # Set the user before saving
         form.instance.user = self.request.user
         response = super().form_valid(form)
-        
+
         # Create welcome message
         Message.objects.create(
             conversation=self.object,
             content="Hello! I'm your UC Expert assistant. I can help answer questions about Ulcerative Colitis, your symptoms, and medications. What would you like to know?",
             is_bot=True
         )
-        
+
         return response
 
 class ConversationDetailView(LoginRequiredMixin, DetailView):
@@ -87,14 +87,14 @@ def send_message(request, conversation_id, rag=None):
 
         # Build user context
         user_context = "User Context:\n"
-        
+
         # Add Conversation History - last 10 messages
         previous_messages = conversation.message_set.order_by('-created_at')[:10][::-1]
         conversation_history = "\nConversation History:\n"
         for msg in previous_messages:
             role = "User" if not msg.is_bot else "Assistant"
             conversation_history += f"{role}: {msg.content}\n"
-        
+
         # Get symptoms
         try:
             recent_symptoms = request.user.symptom_set.all()
@@ -114,7 +114,7 @@ def send_message(request, conversation_id, rag=None):
                     user_context += f"- Started {med.start_date.strftime('%Y-%m-%d')}: {med.get_name_display()} ({med.dosage}, {med.get_frequency_display()}, {med.notes})\n"
         except AttributeError:
             user_context += "\nNo medications recorded.\n"
-            
+
         # Try to get food entries if they exist
         try:
             recent_foods = request.user.food_set.all()

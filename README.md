@@ -1524,6 +1524,8 @@ I implemented comprehensive automated testing using Django's testing framework. 
 
 ##### User Authentication and Registration
 
+See tests/test_auth.py
+
 - Signup page functionality
 - User registration process
 - Login and logout functionality
@@ -1531,20 +1533,28 @@ I implemented comprehensive automated testing using Django's testing framework. 
 - Email requirement validation
 - Authentication state redirects
 - Form validation messages
+<br>
+<br>
 
 ![Auth Tests](./static/readme_images/test%20results/auth_test.png)
 
 ##### Symptoms App
+
+See symptoms/tests.py
 
 - Model creation and validation
 - Future date prevention
 - CRUD operations (Create, Read, Update, Delete)
 - User-specific data access
 - Form submission handling
+<br>
+<br>
 
 ![Symptom Tests](./static/readme_images/test%20results/symptom_test.png)
 
 ##### Medications App
+
+See medications/tests.py
 
 - Model creation and validation
 - Medication choice field validation
@@ -1553,10 +1563,14 @@ I implemented comprehensive automated testing using Django's testing framework. 
 - CRUD operations
 - User data isolation
 - Form field validation
+<br>
+<br>
 
-![Medication Tests](./static/readme_images/test%20results/medication_test.png)
+![Medication Tests](./static/readme_images/test%20results/medications_test.png)
 
 ##### Food Diary App
+
+See foods/tests.py
 
 - Model creation and validation
 - Meal type choice validation
@@ -1565,10 +1579,14 @@ I implemented comprehensive automated testing using Django's testing framework. 
 - Date/time field validation
 - CRUD operations
 - User data isolation
+<br>
+<br>
 
-![Food Tests](./static/readme_images/test%20results/food_test.png)
+![Food Tests](./static/readme_images/test%20results/foods_test.png)
 
 ##### Chat App
+
+See chat/tests.py
 
 - Conversation model validation
 - Message ordering
@@ -1576,12 +1594,16 @@ I implemented comprehensive automated testing using Django's testing framework. 
 - Bot message mocking
 - CRUD operations for conversations
 - User data isolation
+<br>
+<br>
+
+![Chat Tests](./static/readme_images/test%20results/chat_test.png)
 
 <br>
 </details>
 
 <details>
-<summary>Guideline Complaince Testing</summary>
+<summary>Vaildation</summary>
 
 ADD GUIDELINE TESTS HERE
 

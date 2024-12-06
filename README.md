@@ -1605,7 +1605,9 @@ See chat/tests.py
 <details>
 <summary>Vaildation</summary>
 
-ADD GUIDELINE TESTS HERE
+#### PEP8
+
+I used flake8 to test PEP8 adherence. My code passes on all fronts apart from the RAG_setup.py template prompt. I chose not to split the strings here as the prompt readabilty suffers and makes edits cumbersome. 
 
 <br>
 <br>

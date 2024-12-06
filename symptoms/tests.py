@@ -26,7 +26,7 @@ class SymptomModelTests(TestCase):
     def test_symptom_creation(self):
         """Test symptom model creation and string representation"""
         self.assertEqual(str(self.symptom), 
-                       f"Abdominal Pain - Moderate ({self.symptom.date})")
+                    f"Abdominal Pain - Moderate ({self.symptom.date})")
         self.assertEqual(self.symptom.user, self.user)
         self.assertEqual(self.symptom.type, 'pain')
         self.assertEqual(self.symptom.severity, 3)

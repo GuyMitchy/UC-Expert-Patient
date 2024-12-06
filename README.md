@@ -496,7 +496,6 @@ stories:
       - "Write Python unit tests for models"
       - "Create view tests for all CRUD operations"
       - "Implement form validation tests"
-      - "Add integration tests for key workflows"
       - "Create JavaScript tests (if applicable)"
       - "Document manual testing procedures"
       - "Include testing coverage report"
@@ -1489,8 +1488,67 @@ Comprehensive manual testing was carried out, it included:
 - Form validation
 - Data persistence
 - AI chat functionality
-- Security testing
 <br>
+<br>
+</details>
+
+<details>
+<summary>Automated Testing</summary>
+<br>
+
+I implemented comprehensive automated testing for the core functionality of the application using Django's testing framework. The tests cover:
+
+
+### User Authentication and Registration
+
+- User signup process
+- Login functionality
+- Password validation and management
+- Email-based authentication
+- Protected route access
+- Form validation
+
+### Symptoms App
+
+- Model creation and validation
+- Date validation for symptoms
+- CRUD operations
+- User-specific data access
+- Form submissions
+- View access controls
+
+### Medications App
+
+- Model relationships
+- Medication choices validation
+- Active/inactive status tracking
+- Date validation
+- User permissions
+- Form validation for medication entries
+
+### Food Diary App
+
+- Food entry creation and validation
+- Meal type validation
+- Discomfort scale tracking
+- Trigger food identification
+- Date and time validation
+- User data isolation
+
+### LLM Integration Testing
+For the chatbot functionality, which uses OpenAI's API:
+
+- Initial prototype testing was conducted using a local LLM to verify the conversation flow and context management
+- Production testing is conducted manually and selectively due to API costs
+
+- Regular manual testing is performed on key conversation paths to ensure:
+
+    - Appropriate medical advice is given
+    - Context from user's symptoms and medications is properly incorporated
+    - Emergency situations are correctly identified and handled
+    - Response formatting and presentation is consistent
+
+
 <br>
 </details>
 

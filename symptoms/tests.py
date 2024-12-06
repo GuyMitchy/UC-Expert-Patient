@@ -7,6 +7,7 @@ from .models import Symptom
 from .forms import SymptomForm
 from datetime import date
 
+
 class SymptomModelTests(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(
@@ -14,7 +15,7 @@ class SymptomModelTests(TestCase):
             email='test@example.com',
             password='testpass123'
         )
-        
+
         self.symptom = Symptom.objects.create(
             user=self.user,
             type='pain',
@@ -25,8 +26,9 @@ class SymptomModelTests(TestCase):
 
     def test_symptom_creation(self):
         """Test symptom model creation and string representation"""
-        self.assertEqual(str(self.symptom), 
-                    f"Abdominal Pain - Moderate ({self.symptom.date})")
+        self.assertEqual(
+            str(self.symptom),
+            f"Abdominal Pain - Moderate ({self.symptom.date})")
         self.assertEqual(self.symptom.user, self.user)
         self.assertEqual(self.symptom.type, 'pain')
         self.assertEqual(self.symptom.severity, 3)
@@ -58,6 +60,7 @@ class SymptomModelTests(TestCase):
         with self.assertRaises(ValidationError):
             future_symptom.full_clean()
 
+
 class SymptomViewTests(TestCase):
     def setUp(self):
         self.client = Client()
@@ -82,13 +85,13 @@ class SymptomViewTests(TestCase):
         """Test all views require login"""
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, 302)  # Redirects to login
-        
+
         response = self.client.get(self.add_url)
         self.assertEqual(response.status_code, 302)
-        
+
         response = self.client.get(self.edit_url)
         self.assertEqual(response.status_code, 302)
-        
+
         response = self.client.get(self.delete_url)
         self.assertEqual(response.status_code, 302)
 
@@ -96,7 +99,7 @@ class SymptomViewTests(TestCase):
         """Test symptom list view"""
         self.client.login(username='testuser', password='testpass123')
         response = self.client.get(self.list_url)
-        
+
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'symptoms/list.html')
         self.assertContains(response, 'Test symptom description')
@@ -105,12 +108,12 @@ class SymptomViewTests(TestCase):
     def test_add_symptom(self):
         """Test adding a new symptom"""
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Test GET request
         response = self.client.get(self.add_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'symptoms/add.html')
-        
+
         # Test POST request
         response = self.client.post(self.add_url, {
             'type': 'blood',
@@ -118,7 +121,7 @@ class SymptomViewTests(TestCase):
             'date': date.today(),
             'description': 'New test symptom'
         })
-        
+
         self.assertEqual(response.status_code, 302)  # Redirects on success
         self.assertEqual(Symptom.objects.count(), 2)
         new_symptom = Symptom.objects.filter(type='blood').first()
@@ -129,12 +132,12 @@ class SymptomViewTests(TestCase):
     def test_edit_symptom(self):
         """Test editing an existing symptom"""
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Test GET request
         response = self.client.get(self.edit_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'symptoms/edit.html')
-        
+
         # Test POST request
         response = self.client.post(self.edit_url, {
             'type': 'fatigue',
@@ -142,7 +145,7 @@ class SymptomViewTests(TestCase):
             'date': date.today(),
             'description': 'Updated description'
         })
-        
+
         self.assertEqual(response.status_code, 302)  # Redirects on success
         updated_symptom = Symptom.objects.get(pk=self.symptom.pk)
         self.assertEqual(updated_symptom.type, 'fatigue')
@@ -152,16 +155,17 @@ class SymptomViewTests(TestCase):
     def test_delete_symptom(self):
         """Test deleting a symptom"""
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Test GET request (confirmation page)
         response = self.client.get(self.delete_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'symptoms/delete.html')
-        
+
         # Test POST request (actual deletion)
         response = self.client.post(self.delete_url)
         self.assertEqual(response.status_code, 302)  # Redirects on success
         self.assertEqual(Symptom.objects.count(), 0)
+
 
 class SymptomFormTests(TestCase):
     def test_valid_form(self):
@@ -186,11 +190,11 @@ class SymptomFormTests(TestCase):
         }
         form = SymptomForm(data=form_data)
         self.assertFalse(form.is_valid())
-        
+
         # Test with missing required fields
         form_data = {
             'description': 'Test description'
         }
         form = SymptomForm(data=form_data)
         self.assertFalse(form.is_valid())
-        self.assertEqual(len(form.errors), 3)  # type, severity, and date are required
+        self.assertEqual(len(form.errors), 3)

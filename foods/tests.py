@@ -5,7 +5,8 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 from .models import Food
 from .forms import FoodForm
-from datetime import date, time
+from datetime import date
+
 
 class FoodModelTests(TestCase):
     def setUp(self):
@@ -14,7 +15,7 @@ class FoodModelTests(TestCase):
             email='test@example.com',
             password='testpass123'
         )
-        
+
         self.food = Food.objects.create(
             user=self.user,
             date=date.today(),
@@ -43,8 +44,9 @@ class FoodModelTests(TestCase):
         yesterday = timezone.now().date() - timezone.timedelta(days=1)
         earlier_time = timezone.now().time().replace(hour=8, minute=0)
         later_time = timezone.now().time().replace(hour=9, minute=0)
-        
-        food1 = Food.objects.create(
+
+        # Create older food entry
+        Food.objects.create(
             user=self.user,
             date=yesterday,
             eaten_at=later_time,
@@ -54,8 +56,9 @@ class FoodModelTests(TestCase):
             discomfort='1',
             is_trigger='no'
         )
-        
-        food2 = Food.objects.create(
+
+        # Create newer food entry
+        Food.objects.create(
             user=self.user,
             date=date.today(),
             eaten_at=earlier_time,
@@ -65,7 +68,8 @@ class FoodModelTests(TestCase):
             discomfort='3',
             is_trigger='yes'
         )
-        
+
+        # Test ordering
         foods = Food.objects.all()
         self.assertEqual(foods[0].date, date.today())
         self.assertTrue(foods[0].eaten_at > foods[1].eaten_at)
@@ -101,6 +105,7 @@ class FoodModelTests(TestCase):
             )
             invalid_food.full_clean()
 
+
 class FoodViewTests(TestCase):
     def setUp(self):
         self.client = Client()
@@ -109,7 +114,7 @@ class FoodViewTests(TestCase):
             email='test@example.com',
             password='testpass123'
         )
-        
+
         self.food = Food.objects.create(
             user=self.user,
             date=date.today(),
@@ -121,7 +126,7 @@ class FoodViewTests(TestCase):
             is_trigger='unsure',
             notes='Test food notes'
         )
-        
+
         self.list_url = reverse('foods:list')
         self.add_url = reverse('foods:add')
         self.edit_url = reverse('foods:edit', args=[self.food.pk])
@@ -130,22 +135,24 @@ class FoodViewTests(TestCase):
     def test_login_required(self):
         """Test all views require login"""
         response = self.client.get(self.list_url)
-        self.assertEqual(response.status_code, 302)  # Redirects to login
-        
+        self.assertEqual(response.status_code, 302)
+
         response = self.client.get(self.add_url)
         self.assertEqual(response.status_code, 302)
-        
+
         response = self.client.get(self.edit_url)
         self.assertEqual(response.status_code, 302)
-        
+
         response = self.client.get(self.delete_url)
         self.assertEqual(response.status_code, 302)
 
     def test_list_view(self):
         """Test food list view"""
-        self.client.login(username='testuser', password='testpass123')
+        self.client.login(
+            username='testuser', password='testpass123'
+            )
         response = self.client.get(self.list_url)
-        
+
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'foods/list.html')
         self.assertContains(response, 'Test Food')
@@ -154,12 +161,12 @@ class FoodViewTests(TestCase):
     def test_add_food(self):
         """Test adding a new food entry"""
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Test GET request
         response = self.client.get(self.add_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'foods/add.html')
-        
+
         # Test POST request
         current_time = timezone.now().time()
         response = self.client.post(self.add_url, {
@@ -172,8 +179,8 @@ class FoodViewTests(TestCase):
             'is_trigger': 'yes',
             'notes': 'New test food notes'
         })
-        
-        self.assertEqual(response.status_code, 302)  # Redirects on success
+
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(Food.objects.count(), 2)
         new_food = Food.objects.filter(food_name='New Test Food').first()
         self.assertIsNotNone(new_food)
@@ -184,12 +191,12 @@ class FoodViewTests(TestCase):
     def test_edit_food(self):
         """Test editing an existing food entry"""
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Test GET request
         response = self.client.get(self.edit_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'foods/edit.html')
-        
+
         # Test POST request
         response = self.client.post(self.edit_url, {
             'date': date.today(),
@@ -201,7 +208,7 @@ class FoodViewTests(TestCase):
             'is_trigger': 'no',
             'notes': 'Updated notes'
         })
-        
+
         self.assertEqual(response.status_code, 302)  # Redirects on success
         updated_food = Food.objects.get(pk=self.food.pk)
         self.assertEqual(updated_food.meal_type, 'dinner')
@@ -212,16 +219,17 @@ class FoodViewTests(TestCase):
     def test_delete_food(self):
         """Test deleting a food entry"""
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Test GET request (confirmation page)
         response = self.client.get(self.delete_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'foods/delete.html')
-        
+
         # Test POST request (actual deletion)
         response = self.client.post(self.delete_url)
         self.assertEqual(response.status_code, 302)  # Redirects on success
         self.assertEqual(Food.objects.count(), 0)
+
 
 class FoodFormTests(TestCase):
     def test_valid_form(self):
@@ -253,7 +261,7 @@ class FoodFormTests(TestCase):
         }
         form = FoodForm(data=form_data)
         self.assertFalse(form.is_valid())
-        
+
         # Test with invalid choices
         form_data = {
             'date': date.today(),
@@ -266,11 +274,11 @@ class FoodFormTests(TestCase):
         }
         form = FoodForm(data=form_data)
         self.assertFalse(form.is_valid())
-        
+
         # Test with missing required fields
         form_data = {
             'notes': 'Test notes'
         }
         form = FoodForm(data=form_data)
         self.assertFalse(form.is_valid())
-        self.assertTrue(len(form.errors) >= 7)  # All fields except notes are required
+        self.assertTrue(len(form.errors) >= 7)

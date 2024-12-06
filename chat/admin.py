@@ -15,4 +15,3 @@ class MessageAdmin(admin.ModelAdmin):
     list_filter = ('is_bot', 'created_at')
     search_fields = ('content', 'conversation__title')
     date_hierarchy = 'created_at'
-    

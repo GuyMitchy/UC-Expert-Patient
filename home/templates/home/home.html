@@ -24,7 +24,7 @@
         <div class="grid gap-8 md:grid-cols-3">
             <!-- Symptoms -->
             <div class="md:border-r md:border-gray-200 md:pr-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Recent Symptoms</h3>
+                <h1 class="text-lg font-semibold text-gray-900 mb-3">Recent Symptoms</h1>
                 {% if dashboard.recent_symptoms %}
                 <div class="space-y-2">
                     {% for symptom in dashboard.recent_symptoms %}
@@ -46,7 +46,7 @@
 
             <!-- Medications -->
             <div class="md:border-r md:border-gray-200 md:px-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Active Medications</h3>
+                <h1 class="text-lg font-semibold text-gray-900 mb-3">Active Medications</h1>
                 {% if dashboard.active_medications %}
                 <div class="space-y-2">
                     {% for med in dashboard.active_medications %}
@@ -63,7 +63,7 @@
 
             <!-- Foods -->
             <div class="md:pl-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Recent Foods</h3>
+                <h1 class="text-lg font-semibold text-gray-900 mb-3">Recent Foods</h1>
                 {% if dashboard.recent_foods %}
                 <div class="space-y-2">
                     {% for food in dashboard.recent_foods %}

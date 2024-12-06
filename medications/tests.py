@@ -7,6 +7,7 @@ from .models import Medication
 from .forms import MedicationForm
 from datetime import date
 
+
 class MedicationModelTests(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(
@@ -14,7 +15,7 @@ class MedicationModelTests(TestCase):
             email='test@example.com',
             password='testpass123'
         )
-        
+
         self.medication = Medication.objects.create(
             user=self.user,
             name='MESALAZINE_ORAL',
@@ -27,10 +28,13 @@ class MedicationModelTests(TestCase):
 
     def test_medication_creation(self):
         """Test medication model creation and string representation"""
-        self.assertEqual(str(self.medication), 
-                       f"Mesalazine (Oral) - 40mg")
+        self.assertEqual(
+            str(self.medication), "Mesalazine (Oral) - 40mg"
+            )
         self.assertEqual(self.medication.user, self.user)
-        self.assertEqual(self.medication.get_name_display(), 'Mesalazine (Oral)')
+        self.assertEqual(
+            self.medication.get_name_display(), 'Mesalazine (Oral)'
+            )
         self.assertEqual(self.medication.dosage, '40mg')
         self.assertEqual(self.medication.get_frequency_display(), 'Daily')
         self.assertTrue(self.medication.active)
@@ -47,7 +51,7 @@ class MedicationModelTests(TestCase):
             active=False
         )
         medications = Medication.objects.all()
-        self.assertEqual(medications[0], self.medication)  # Active medication first
+        self.assertEqual(medications[0], self.medication)
         self.assertEqual(medications[1], inactive_med)
 
     def test_future_date_validation(self):
@@ -77,6 +81,7 @@ class MedicationModelTests(TestCase):
             )
             invalid_med.full_clean()
 
+
 class MedicationViewTests(TestCase):
     def setUp(self):
         self.client = Client()
@@ -96,20 +101,24 @@ class MedicationViewTests(TestCase):
         )
         self.list_url = reverse('medications:list')
         self.add_url = reverse('medications:add')
-        self.edit_url = reverse('medications:edit', args=[self.medication.pk])
-        self.delete_url = reverse('medications:delete', args=[self.medication.pk])
+        self.edit_url = reverse(
+            'medications:edit', args=[self.medication.pk]
+            )
+        self.delete_url = reverse(
+            'medications:delete', args=[self.medication.pk]
+            )
 
     def test_login_required(self):
         """Test all views require login"""
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, 302)  # Redirects to login
-        
+
         response = self.client.get(self.add_url)
         self.assertEqual(response.status_code, 302)
-        
+
         response = self.client.get(self.edit_url)
         self.assertEqual(response.status_code, 302)
-        
+
         response = self.client.get(self.delete_url)
         self.assertEqual(response.status_code, 302)
 
@@ -117,7 +126,7 @@ class MedicationViewTests(TestCase):
         """Test medication list view"""
         self.client.login(username='testuser', password='testpass123')
         response = self.client.get(self.list_url)
-        
+
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'medications/list.html')
         self.assertContains(response, 'Mesalazine (Oral)')
@@ -127,12 +136,12 @@ class MedicationViewTests(TestCase):
     def test_add_medication(self):
         """Test adding a new medication"""
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Test GET request
         response = self.client.get(self.add_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'medications/add.html')
-        
+
         # Test POST request
         response = self.client.post(self.add_url, {
             'name': 'PREDNISOLONE',
@@ -142,7 +151,7 @@ class MedicationViewTests(TestCase):
             'active': True,
             'notes': 'New test medication'
         })
-        
+
         self.assertEqual(response.status_code, 302)  # Redirects on success
         self.assertEqual(Medication.objects.count(), 2)
         new_med = Medication.objects.filter(name='PREDNISOLONE').first()
@@ -153,12 +162,12 @@ class MedicationViewTests(TestCase):
     def test_edit_medication(self):
         """Test editing an existing medication"""
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Test GET request
         response = self.client.get(self.edit_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'medications/edit.html')
-        
+
         # Test POST request
         response = self.client.post(self.edit_url, {
             'name': 'PREDNISOLONE',
@@ -168,7 +177,7 @@ class MedicationViewTests(TestCase):
             'active': False,
             'notes': 'Updated notes'
         })
-        
+
         self.assertEqual(response.status_code, 302)  # Redirects on success
         updated_med = Medication.objects.get(pk=self.medication.pk)
         self.assertEqual(updated_med.name, 'PREDNISOLONE')
@@ -179,16 +188,17 @@ class MedicationViewTests(TestCase):
     def test_delete_medication(self):
         """Test deleting a medication"""
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Test GET request (confirmation page)
         response = self.client.get(self.delete_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'medications/delete.html')
-        
+
         # Test POST request (actual deletion)
         response = self.client.post(self.delete_url)
         self.assertEqual(response.status_code, 302)  # Redirects on success
         self.assertEqual(Medication.objects.count(), 0)
+
 
 class MedicationFormTests(TestCase):
     def test_valid_form(self):
@@ -216,7 +226,7 @@ class MedicationFormTests(TestCase):
         }
         form = MedicationForm(data=form_data)
         self.assertFalse(form.is_valid())
-        
+
         # Test with invalid choices
         form_data = {
             'name': 'INVALID_MED',
@@ -227,11 +237,11 @@ class MedicationFormTests(TestCase):
         }
         form = MedicationForm(data=form_data)
         self.assertFalse(form.is_valid())
-        
+
         # Test with missing required fields
         form_data = {
             'notes': 'Test notes'
         }
         form = MedicationForm(data=form_data)
         self.assertFalse(form.is_valid())
-        self.assertTrue(len(form.errors) >= 4)  # name, dosage, frequency, start_date are required
+        self.assertTrue(len(form.errors) >= 4)

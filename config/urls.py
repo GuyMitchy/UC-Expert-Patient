@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-urlpatterns = [   
-    path('admin/', admin.site.urls), 
+urlpatterns = [
+    path('admin/', admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path('summernote/', include('django_summernote.urls')),
     path('', include('home.urls')),
@@ -27,10 +27,17 @@ urlpatterns = [
     path('medications/', include('medications.urls')),
     path('foods/', include('foods.urls')),
     path('chat/', include('chat.urls')),
-    path('privacy/', TemplateView.as_view(template_name='pages/privacy.html'), name='privacy'),
-    path('terms/', TemplateView.as_view(template_name='pages/terms.html'), name='terms'),
-    path('disclaimer/', TemplateView.as_view(template_name='pages/disclaimer.html'), name='disclaimer'),
-    path('data-protection/', TemplateView.as_view(template_name='pages/data_protection.html'), name='data-protection'),
-    path('about/', TemplateView.as_view(template_name='pages/about.html'), name='about'),
-    path('guide/', TemplateView.as_view(template_name='pages/guide.html'), name='guide'),
+    path('privacy/', TemplateView.as_view(
+        template_name='pages/privacy.html'), name='privacy'),
+    path('terms/', TemplateView.as_view(
+        template_name='pages/terms.html'), name='terms'),
+    path('disclaimer/', TemplateView.as_view(
+        template_name='pages/disclaimer.html'), name='disclaimer'),
+    path('data-protection/', TemplateView.as_view(
+        template_name='pages/data_protection.html'),
+        name='data-protection'),
+    path('about/', TemplateView.as_view(
+        template_name='pages/about.html'), name='about'),
+    path('guide/', TemplateView.as_view(
+        template_name='pages/guide.html'), name='guide'),
 ]

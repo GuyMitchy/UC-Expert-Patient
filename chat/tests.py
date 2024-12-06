@@ -73,9 +73,12 @@ class ChatModelTests(TestCase):
 
     def test_conversation_get_absolute_url(self):
         """Test get_absolute_url method"""
-        expected_url = reverse('chat:detail',
-                kwargs={'pk': self.conversation.pk})
-        self.assertEqual(self.conversation.get_absolute_url(), expected_url)
+        expected_url = reverse(
+            'chat:detail', kwargs={'pk': self.conversation.pk}
+            )
+        self.assertEqual(
+            self.conversation.get_absolute_url(), expected_url
+            )
 
 
 class ChatViewTests(TestCase):
@@ -152,11 +155,10 @@ class ChatViewTests(TestCase):
         # Verify welcome message was created
         welcome_message = Message.objects.filter(
             conversation=new_conversation,
-            is_bot=True
-        ).first()
+            is_bot=True).first()
         self.assertIsNotNone(welcome_message)
-        self.assertTrue("I'm your UC Expert assistant" 
-                in welcome_message.content)
+        self.assertTrue("I'm your UC Expert assistant"
+                        in welcome_message.content)
 
     def test_detail_view(self):
         """Test conversation detail view"""
@@ -229,7 +231,7 @@ class ChatViewTests(TestCase):
         )
 
         self.client.login(username='testuser', password='testpass123')
-        
+
         # Try to access other user's conversation
         response = self.client.get(
             reverse('chat:detail', args=[other_conversation.pk])

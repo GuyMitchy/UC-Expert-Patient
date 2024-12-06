@@ -6,14 +6,14 @@ from .rag_setup import UCExpertRAG
 class RAGManager:
     """Singleton manager for RAG system"""
     _instance = None
-    
+
     @classmethod
     def get_instance(cls):
         """Get or create RAG instance"""
         if cls._instance is None:
             cls._instance = UCExpertRAG()
         return cls._instance
-    
+
     @classmethod
     def cleanup(cls):
         """Clean up RAG resources"""
@@ -21,8 +21,10 @@ class RAGManager:
             cls._instance.cleanup()
             cls._instance = None
 
+
 # Register cleanup for Django shutdown
 atexit.register(RAGManager.cleanup)
+
 
 # manager.py
 def with_rag(func):

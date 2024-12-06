@@ -1616,6 +1616,10 @@ Passes all tests.
 
 ![W3S](./static/readme_images/test_results/w3.png)
 
+#### Lighthouse
+
+The project scores well on lighthouse. Accessbility warnings on the dashboard for headers not in ascending order, and 4/8 buttons on the cards have low contrast between the text and background. The header issue is is becasue teh dashboard is a table I I considered making the text more bold but decided to keep it as is for styling purposes.
+
 <br>
 <br>
 </details>

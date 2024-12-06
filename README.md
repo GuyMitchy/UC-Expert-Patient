@@ -1536,7 +1536,7 @@ See tests/test_auth.py
 <br>
 <br>
 
-![Auth Tests](./static/readme_images/test%20results/auth_test.png)
+![Auth Tests](./static/readme_images/test_results/auth_test.png)
 
 ##### Symptoms App
 
@@ -1550,7 +1550,7 @@ See symptoms/tests.py
 <br>
 <br>
 
-![Symptom Tests](./static/readme_images/test%20results/symptom_test.png)
+![Symptom Tests](./static/readme_images/test_results/symptom_test.png)
 
 ##### Medications App
 
@@ -1566,7 +1566,7 @@ See medications/tests.py
 <br>
 <br>
 
-![Medication Tests](./static/readme_images/test%20results/medications_test.png)
+![Medication Tests](./static/readme_images/test_results/medications_test.png)
 
 ##### Food Diary App
 
@@ -1582,7 +1582,7 @@ See foods/tests.py
 <br>
 <br>
 
-![Food Tests](./static/readme_images/test%20results/foods_test.png)
+![Food Tests](./static/readme_images/test_results/foods_test.png)
 
 ##### Chat App
 
@@ -1597,7 +1597,7 @@ See chat/tests.py
 <br>
 <br>
 
-![Chat Tests](./static/readme_images/test%20results/chat_test.png)
+![Chat Tests](./static/readme_images/test_results/chat_test.png)
 
 <br>
 </details>
@@ -1608,6 +1608,13 @@ See chat/tests.py
 #### PEP8
 
 I used flake8 to test PEP8 adherence. My code passes on all fronts apart from the RAG_setup.py template prompt. I chose not to split the strings here as the prompt readabilty suffers and makes edits cumbersome. 
+
+
+#### W3C Markup Validator
+
+Passes all tests.
+
+![W3S](./static/readme_images/test_results/w3.png)
 
 <br>
 <br>

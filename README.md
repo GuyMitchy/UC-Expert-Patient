@@ -1407,6 +1407,103 @@ ADD IMAGE HERE
 <br>
 </details>
 
+### Tech Stack and Security Considerations
+
+<details>
+<summary>Tech Stack</summary>
+<br>
+
+#### Backend
+
+- Django 5.1.3: Primary web framework
+- Python: Core programming language
+- PostgreSQL: Production database
+- SQLite: Development database
+- OpenAI API (GPT-4): LLM for chat responses
+- Pinecone: Vector database for RAG system
+- Django AllAuth: Authentication system
+
+#### Frontend
+
+- HTML5: Semantic markup
+- Tailwind CSS: Utility-first styling
+- JavaScript: Interactive elements
+- WhiteNoise: Static file serving
+
+#### Development Tools
+
+- dj-database-url: Database configuration
+- python-dotenv: Environment management
+- Django Debug Toolbar: Development debugging
+
+#### RAG System Components
+
+- LangChain: RAG implementation framework
+- OpenAI Embeddings: Document vectorization
+- Pinecone Vector Store: Vector storage and retrieval
+- RecursiveCharacterTextSplitter: Document chunking
+- ChatPromptTemplate: Response generation
+
+#### Deployment
+
+- Heroku: Cloud platform hosting
+- Gunicorn: WSGI HTTP Server
+- WhiteNoise: Static file serving in production
+
+<br>
+<br>
+</details>
+
+<details>
+<summary>Security Considerations</summary>
+<br>
+
+#### Authentication & Authorization
+
+- Email-based authentication using Django AllAuth
+- Login required mixins for all views
+- User-specific querysets ensuring data isolation
+- CSRF protection enabled globally
+- Secure password hashing with Django's auth system
+
+#### Data Protection
+
+- User data segregation through ForeignKey relationships
+- Database access controlled through Django ORM
+- Sensitive settings stored as environment variables
+- Debug mode disabled in production
+
+#### API Security
+
+- OpenAI API key secured in environment variables
+- Pinecone API key protected in environment variables
+- RAG system access controlled through decorators
+
+#### Form Security
+
+- Server-side validation on all forms
+- Client-side validation for better UX on date entry
+- XSS protection through Django's template system
+- Secure file upload handling
+
+#### Deployment Security
+
+- SECRET_KEY stored in environment variables
+- ALLOWED_HOSTS configured for production
+- Secure HTTPS connection enforced
+- WhiteNoise for secure static file serving
+
+Chat System Security
+
+- RAG responses limited to verified medical information
+- Emergency protocols for severe symptoms
+- User data privacy in conversation context
+- Proper error handling and logging
+
+<br>
+<br>
+</details>
+
 ### Added Features
 
 <details>

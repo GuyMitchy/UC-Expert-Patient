@@ -88,10 +88,9 @@ It can be found here https://github.com/GuyMitchy/Expert-Patient
 - Verified basic Django structure
 - Validated database relationships
 - Assessed UX/UI concepts
-<br>
+
 <br>
 </details>
-
 
 <details>
 <summary>The Outcomes</summary>
@@ -152,10 +151,9 @@ The project requirements were taken from the assesment criteria located here (ht
 </details>
 
 <details>
-<summary>User Stories</summary>
-
-#### GitHub User Story Populator Utility
-To efficiently manage the user story development process, I created a utility to automatically generate GitHub issues from user stories in .yaml format (https://github.com/GuyMitchy/github-user-story-populator).
+<summary>GitHub User Story Populator Utility</summary>
+<br>
+To efficiently manage the user story development process I created a utility to automatically generate GitHub issues from user stories in .yaml format (https://github.com/GuyMitchy/github-user-story-populator).
 
 This automated approach allowed for:
 
@@ -163,10 +161,14 @@ This automated approach allowed for:
 - Automatic label application (Must Have, Should Have, etc.)
 - Creation of task checkboxes for acceptance criteria
 - Improved development workflow
+<br>
+<br>
+</details>
 
-#### User Stories
 <details>
-<summary> user_stories.yaml</summary>
+<summary>User Stories</summary>
+
+ #### user_stories.yaml
 
 ```yaml
 stories:

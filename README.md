@@ -2,7 +2,7 @@
 
 UC Expert is a comprehensive Django-based web application designed to help patients with Ulcerative Colitis (UC) manage their condition effectively. It provides tools for tracking symptoms, medications, food triggers, and offers AI-powered chat support for UC-related questions which are answered solely within the context of provided information.
 
-![Responsive Mockup](placeholder for mockup image)
+![Responsive Mockup](./static/readme_images/Expert-patient-mockup.png)
 
 ## Pre-Development
 
@@ -1316,8 +1316,11 @@ Destructive:
 - Register as a new user with password verification
 - Styled register page
 - Styled sign out page with confirmation
+- Welcome message
 
-ADD IMAGE HERE
+![Sign In](./static/readme_images/sign_in.png)
+![Register](./static/readme_images/sign_up.png)
+![Welcome Message](./static/readme_images/welcome.png)
 <br>
 <br>
 </details>
@@ -1327,8 +1330,13 @@ ADD IMAGE HERE
 <br> 
 
 - Permanent navigation bar with links to dashboard and all list pages for each feature.
+- Mobile burger menu for hidden navigation
+- Sliding mobile navigation menu
 
-ADD IMAGE HERE
+![Desktop Navbar](./static/readme_images/navbar.png)
+![Mobile Nav Menu](./static/readme_images/mobile_nav_menu.png)
+![Mobile Burger Menu](./static/readme_images/burger.png)
+
 
 <br>
 </details>
@@ -1343,7 +1351,8 @@ ADD IMAGE HERE
 - Edit and delete functionality
 - Historical list view of symptoms
 
-ADD IMAGE HERE
+![Symtom List](./static/readme_images/symptom_list.png)
+![Add Symptom](./static/readme_images/add_symptom.png)
 <br>
 <br>
 </details>
@@ -1358,7 +1367,8 @@ ADD IMAGE HERE
 - Medication history view
 - Edit and delete functionality
 
-ADD IMAGE HERE
+![Medication List](./static/readme_images/medication_list.png)
+![Add Medication](./static/readme_images/add_medication.png)
 <br>
 <br>
 </details>
@@ -1374,7 +1384,8 @@ ADD IMAGE HERE
 - View food history
 - Edit and delete functionality
 
-ADD IMAGE HERE
+![Food Diary List](./static/readme_images/food_list.png)
+![Add Food](./static/readme_images/add_food.png)
 <br>
 <br>
 </details>

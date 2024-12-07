@@ -582,6 +582,11 @@ stories:
 <summary>Symptom Tracking System</summary>
 <br>
 
+This system will enable UC patients to maintain a comprehensive log of their symptoms for monitoring disease progression and sharing with healthcare providers. The structured format ensures consistent tracking of critical health indicators.
+<br>
+
+#### Model
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -609,7 +614,8 @@ Required Fields:
 <details>
 <summary>Medication Management System</summary>
 <br>
- 
+This system will help patients track their UC medication regimen, ensuring accurate records of current and historical treatments. It supports all major UC medication categories and various dosing schedules.
+<br>
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -641,6 +647,9 @@ Required Fields:
 <details>
 <summary>Food Diary System</summary>
 <br>
+
+This system allows patients to monitor their diet and identify potential trigger foods. It includes detailed timing and portion information to help establish patterns between diet and symptoms.
+<br>
  
 ```python
 Required Fields:
@@ -664,7 +673,8 @@ Required Fields:
 
 <details>
 <summary>AI Chat System Requirements</summary>
-
+A context-aware chat system that provides personalized UC management guidance based on user data and verified medical information.
+<br>
 
 #### Conversation Management
 ```python

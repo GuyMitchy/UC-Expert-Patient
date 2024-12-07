@@ -39,7 +39,8 @@ ALLOWED_HOSTS = ['8000-guymitchy-ucexpertpatie-sv6c12l37dh.ws.codeinstitute-ide.
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com",
+    "https://techsini.com/multi-mockup/index.php",
 ]
 # Application definition
 

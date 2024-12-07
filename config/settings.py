@@ -14,11 +14,9 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
-import atexit
 
 
 load_dotenv()
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +35,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.path.exists('.env')
 print(f"Debug mode is set to: {DEBUG}")
 
-ALLOWED_HOSTS = ['8000-guymitchy-ucexpertpatie-sv6c12l37dh.ws.codeinstitute-ide.net','.herokuapp.com']
+ALLOWED_HOSTS = ['8000-guymitchy-ucexpertpatie-sv6c12l37dh.ws.codeinstitute-ide.net', '.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",

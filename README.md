@@ -2,7 +2,7 @@
 
 UC Expert is a comprehensive Django-based web application designed to help patients with Ulcerative Colitis (UC) manage their condition effectively. It provides tools for tracking symptoms, medications, food triggers, and offers AI-powered chat support for UC-related questions which are answered solely within the context of provided information.
 
-![Responsive Mockup](placeholder for mockup image)
+![Responsive Mockup](./static/readme_images/Expert-patient-mockup.png)
 
 ## Pre-Development
 
@@ -88,10 +88,9 @@ It can be found here https://github.com/GuyMitchy/Expert-Patient
 - Verified basic Django structure
 - Validated database relationships
 - Assessed UX/UI concepts
-<br>
+
 <br>
 </details>
-
 
 <details>
 <summary>The Outcomes</summary>
@@ -152,10 +151,9 @@ The project requirements were taken from the assesment criteria located here (ht
 </details>
 
 <details>
-<summary>User Stories</summary>
-
-#### GitHub User Story Populator Utility
-To efficiently manage the user story development process, I created a utility to automatically generate GitHub issues from user stories in .yaml format (https://github.com/GuyMitchy/github-user-story-populator).
+<summary>GitHub User Story Populator Utility</summary>
+<br>
+To efficiently manage the user story development process I created a utility to automatically generate GitHub issues from user stories in .yaml format (https://github.com/GuyMitchy/github-user-story-populator).
 
 This automated approach allowed for:
 
@@ -163,10 +161,14 @@ This automated approach allowed for:
 - Automatic label application (Must Have, Should Have, etc.)
 - Creation of task checkboxes for acceptance criteria
 - Improved development workflow
+<br>
+<br>
+</details>
 
-#### User Stories
 <details>
-<summary> user_stories.yaml</summary>
+<summary>User Stories</summary>
+
+ #### user_stories.yaml
 
 ```yaml
 stories:
@@ -496,7 +498,6 @@ stories:
       - "Write Python unit tests for models"
       - "Create view tests for all CRUD operations"
       - "Implement form validation tests"
-      - "Add integration tests for key workflows"
       - "Create JavaScript tests (if applicable)"
       - "Document manual testing procedures"
       - "Include testing coverage report"
@@ -1317,8 +1318,11 @@ Destructive:
 - Register as a new user with password verification
 - Styled register page
 - Styled sign out page with confirmation
+- Welcome message
 
-ADD IMAGE HERE
+![Sign In](./static/readme_images/sign_in.png)
+![Register](./static/readme_images/sign_up.png)
+![Welcome Message](./static/readme_images/welcome.png)
 <br>
 <br>
 </details>
@@ -1328,8 +1332,13 @@ ADD IMAGE HERE
 <br> 
 
 - Permanent navigation bar with links to dashboard and all list pages for each feature.
+- Mobile burger menu for hidden navigation
+- Sliding mobile navigation menu
 
-ADD IMAGE HERE
+![Desktop Navbar](./static/readme_images/navbar.png)
+![Mobile Nav Menu](./static/readme_images/mobile_nav_menu.png)
+![Mobile Burger Menu](./static/readme_images/burger.png)
+
 
 <br>
 </details>
@@ -1344,7 +1353,8 @@ ADD IMAGE HERE
 - Edit and delete functionality
 - Historical list view of symptoms
 
-ADD IMAGE HERE
+![Symtom List](./static/readme_images/symptom_list.png)
+![Add Symptom](./static/readme_images/add_symptom.png)
 <br>
 <br>
 </details>
@@ -1359,7 +1369,8 @@ ADD IMAGE HERE
 - Medication history view
 - Edit and delete functionality
 
-ADD IMAGE HERE
+![Medication List](./static/readme_images/medication_list.png)
+![Add Medication](./static/readme_images/add_medication.png)
 <br>
 <br>
 </details>
@@ -1375,7 +1386,8 @@ ADD IMAGE HERE
 - View food history
 - Edit and delete functionality
 
-ADD IMAGE HERE
+![Food Diary List](./static/readme_images/food_list.png)
+![Add Food](./static/readme_images/add_food.png)
 <br>
 <br>
 </details>
@@ -1477,27 +1489,149 @@ TALK ABOUT HOW AGILE WAS USED HERE - Project board etc.
 
 
 
-## Testing
+## Testing and Validation
 
 <details>
 <summary>Manual Testing</summary>
 <br>
 
-Comprehensive manual testing was carried out, it included:
-- Cross-browser compatibility
-- Responsive design verification
-- Form validation
-- Data persistence
-- AI chat functionality
-- Security testing
+Manual testing was conducted on all features across different browsers:
+
+- Chrome
+- Firefox
+- Safari
+- Edge
+
+Test scenarios included:
+
+- Form submissions with valid/invalid data
+- Navigation and routing
+- User flow through medical/food data entry
+- Chat interface responsiveness
+- Error message display
+- Mobile responsiveness
+
+
+##### LLM Integration Testing
+For the chatbot functionality, which uses OpenAI's API:
+
+- Initial prototype testing was conducted using a local LLM to verify the conversation flow and context management
+- Production testing is conducted manually and selectively due to API costs
+
+- Regular manual testing is performed on key conversation paths to ensure:
+
+    - Appropriate medical advice is given
+    - Context from user's symptoms and medications is properly incorporated
+    - Emergency situations are correctly identified and handled
+    - Response formatting and presentation is consistent
 <br>
 <br>
 </details>
 
 <details>
-<summary>Guideline Complaince Testing</summary>
+<summary>Automated Testing</summary>
+<br>
 
-ADD GUIDELINE TESTS HERE
+I implemented comprehensive automated testing using Django's testing framework. Each app has its own test suite focusing on specific functionality:
+
+
+##### User Authentication and Registration
+
+See tests/test_auth.py
+
+- Signup page functionality
+- User registration process
+- Login and logout functionality
+- Password validation rules
+- Email requirement validation
+- Authentication state redirects
+- Form validation messages
+<br>
+<br>
+
+![Auth Tests](./static/readme_images/test_results/auth_test.png)
+
+##### Symptoms App
+
+See symptoms/tests.py
+
+- Model creation and validation
+- Future date prevention
+- CRUD operations (Create, Read, Update, Delete)
+- User-specific data access
+- Form submission handling
+<br>
+<br>
+
+![Symptom Tests](./static/readme_images/test_results/symptom_test.png)
+
+##### Medications App
+
+See medications/tests.py
+
+- Model creation and validation
+- Medication choice field validation
+- Active/inactive status tracking
+- Future date prevention
+- CRUD operations
+- User data isolation
+- Form field validation
+<br>
+<br>
+
+![Medication Tests](./static/readme_images/test_results/medications_test.png)
+
+##### Food Diary App
+
+See foods/tests.py
+
+- Model creation and validation
+- Meal type choice validation
+- Discomfort scale validation
+- Trigger food status tracking
+- Date/time field validation
+- CRUD operations
+- User data isolation
+<br>
+<br>
+
+![Food Tests](./static/readme_images/test_results/foods_test.png)
+
+##### Chat App
+
+See chat/tests.py
+
+- Conversation model validation
+- Message ordering
+- User message creation
+- Bot message mocking
+- CRUD operations for conversations
+- User data isolation
+<br>
+<br>
+
+![Chat Tests](./static/readme_images/test_results/chat_test.png)
+
+<br>
+</details>
+
+<details>
+<summary>Vaildation</summary>
+
+#### PEP8
+
+I used flake8 to test PEP8 adherence. My code passes on all fronts apart from the RAG_setup.py template prompt. I chose not to split the strings here as the prompt readabilty suffers and makes edits cumbersome. 
+
+
+#### W3C Markup Validator
+
+Passes all tests.
+
+![W3S](./static/readme_images/test_results/w3.png)
+
+#### Lighthouse
+
+The project scores well on lighthouse. Accessbility warnings on the dashboard for headers not in ascending order, and 4/8 buttons on the cards have low contrast between the text and background. The header issue is is becasue teh dashboard is a table I I considered making the text more bold but decided to keep it as is for styling purposes.
 
 <br>
 <br>

@@ -1,12 +1,13 @@
-from django.views.generic import ListView, CreateView, DetailView, DeleteView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from .models import Conversation, Message
 from knowledge.manager import with_rag
+from django.contrib import messages
 
 
 class ConversationListView(LoginRequiredMixin, ListView):
@@ -17,27 +18,31 @@ class ConversationListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Conversation.objects.filter(user=self.request.user)
 
+
 class ConversationCreateView(LoginRequiredMixin, CreateView):
     model = Conversation
     template_name = 'chat/new_conversation.html'
     fields = ['title']
-    
+
     def get_success_url(self):
         return reverse_lazy('chat:detail', kwargs={'pk': self.object.pk})
-    
+
     def form_valid(self, form):
         # Set the user before saving
         form.instance.user = self.request.user
         response = super().form_valid(form)
-        
+
         # Create welcome message
         Message.objects.create(
             conversation=self.object,
-            content="Hello! I'm your UC Expert assistant. I can help answer questions about Ulcerative Colitis, your symptoms, and medications. What would you like to know?",
+            content="Hello! I'm your UC Expert assistant."
+            "I can help answer questions about Ulcerative Colitis, "
+            "your symptoms, and medications. What would you like to know?",
             is_bot=True
         )
-        
+
         return response
+
 
 class ConversationDetailView(LoginRequiredMixin, DetailView):
     model = Conversation
@@ -51,7 +56,8 @@ class ConversationDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['messages'] = self.object.message_set.all()
         return context
-    
+
+
 class ConversationDeleteView(LoginRequiredMixin, DeleteView):
     model = Conversation
     template_name = 'chat/delete.html'
@@ -64,6 +70,7 @@ class ConversationDeleteView(LoginRequiredMixin, DeleteView):
         messages.success(self.request, 'Conversation deleted successfully.')
         return super().delete(request, *args, **kwargs)
 
+
 @login_required
 @with_rag
 def send_message(request, conversation_id, rag=None):
@@ -72,7 +79,9 @@ def send_message(request, conversation_id, rag=None):
         return HttpResponse('Method not allowed', status=405)
 
     try:
-        conversation = get_object_or_404(Conversation, id=conversation_id, user=request.user)
+        conversation = get_object_or_404(
+            Conversation, id=conversation_id, user=request.user
+            )
         user_message = request.POST.get('message', '').strip()
 
         if not user_message:
@@ -87,41 +96,60 @@ def send_message(request, conversation_id, rag=None):
 
         # Build user context
         user_context = "User Context:\n"
-        
+
         # Add Conversation History - last 10 messages
-        previous_messages = conversation.message_set.order_by('-created_at')[:10][::-1]
+        previous_messages = conversation.message_set.order_by(
+            '-created_at'
+            )[:10][::-1]
         conversation_history = "\nConversation History:\n"
         for msg in previous_messages:
             role = "User" if not msg.is_bot else "Assistant"
             conversation_history += f"{role}: {msg.content}\n"
-        
+
         # Get symptoms
         try:
             recent_symptoms = request.user.symptom_set.all()
             if recent_symptoms:
                 user_context += "\nRecent Symptoms:\n"
                 for symptom in recent_symptoms:
-                    user_context += f"- {symptom.type} on {symptom.date.strftime('%Y-%m-%d')}: {symptom.description} (Severity: {symptom.severity})\n"
+                    symptom_date = symptom.date.strftime('%Y-%m-%d')
+                    user_context += (
+                        f"- {symptom.type} on {symptom_date}: "
+                        f"{symptom.description} "
+                        f"(Severity: {symptom.severity})\n"
+                    )
         except AttributeError:
             user_context += "\nNo symptoms recorded.\n"
 
-        # Get medications
+            # Get medications
         try:
-            active_medications = request.user.medication_set.filter(active=True)
+            active_medications = request.user.medication_set.filter(
+                active=True
+                )
             if active_medications:
                 user_context += "\nCurrent Medications:\n"
                 for med in active_medications:
-                    user_context += f"- Started {med.start_date.strftime('%Y-%m-%d')}: {med.get_name_display()} ({med.dosage}, {med.get_frequency_display()}, {med.notes})\n"
+                    med_date = med.start_date.strftime('%Y-%m-%d')
+                    user_context += (
+                        f"- Started {med_date}: {med.get_name_display()} "
+                        f"({med.dosage}, {med.get_frequency_display()}, "
+                        f"{med.notes})\n"
+                    )
         except AttributeError:
             user_context += "\nNo medications recorded.\n"
-            
-        # Try to get food entries if they exist
+
+# Try to get food entries if they exist
         try:
             recent_foods = request.user.food_set.all()
             if recent_foods:
                 user_context += "\nRecent Food Entries:\n"
                 for food in recent_foods:
-                    user_context += f"- Food diary entry:{food.eaten_at.strftime('%Y-%m-%d %H:%M')}: {food.get_meal_type_display()} - {food.food_name} ({food.portion_size}) is_trigger:{food.is_trigger}"
+                    food_date = food.eaten_at.strftime('%Y-%m-%d %H:%M')
+                    user_context += (
+                        f"- Food diary entry:{food_date}: "
+                        f"{food.get_meal_type_display()} - {food.food_name} "
+                        f"({food.portion_size}) is_trigger:{food.is_trigger}"
+                    )
                     if food.notes:
                         user_context += f" Notes: {food.notes}"
                     user_context += "\n"
@@ -142,9 +170,13 @@ def send_message(request, conversation_id, rag=None):
             is_bot=True
         )
 
-        messages_html = render_to_string('chat/message.html', {'message': user_message_obj})
-        messages_html += render_to_string('chat/message.html', {'message': bot_message})
-        
+        messages_html = render_to_string(
+            'chat/message.html', {'message': user_message_obj}
+            )
+        messages_html += render_to_string(
+            'chat/message.html', {'message': bot_message}
+            )
+
         return HttpResponse(messages_html)
 
     except Exception as e:

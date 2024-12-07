@@ -4,23 +4,23 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 from datetime import date
 
+
 def validate_past_date(value):
     if value > date.today():
         raise ValidationError('Date cannot be in the future.')
+
 
 class Medication(models.Model):
     FREQUENCY_CHOICES = [
         ('daily', 'Daily'),
         ('twice_daily', 'Twice Daily'),
-        ('three_times_daily', 'Three Times Daily'),  
-        ('four_times_daily', 'Four Times Daily'),    
+        ('three_times_daily', 'Three Times Daily'),
+        ('four_times_daily', 'Four Times Daily'),
         ('weekly', 'Weekly'),
         ('every_other_week', 'Every Other Week'),
         ('monthly', 'Monthly'),
         ('as_needed', 'As Needed'),
     ]
-
-
 
     MEDICATION_CHOICES = [
         ('5-ASAs', (
@@ -57,7 +57,9 @@ class Medication(models.Model):
         ))
     ]
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+        )
     name = models.CharField(max_length=50, choices=MEDICATION_CHOICES)
     dosage = models.CharField(max_length=50)
     frequency = models.CharField(max_length=20, choices=FREQUENCY_CHOICES)

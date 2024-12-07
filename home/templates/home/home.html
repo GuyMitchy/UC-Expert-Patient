@@ -4,8 +4,8 @@
 {% block content %}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     {% if user.is_authenticated %}
-    <div class="mb-6 text-center">
-        <h1 class="text-4xl font-semibold text-gray-900">UC Expert Dashboard</h1>
+    <div class="mb-8 text-center">
+        <h1 class="text-4xl text-gray-900">UC Expert Dashboard</h1>
     </div>
     <div class="flex-grow">
         {% if messages %}
@@ -24,7 +24,7 @@
         <div class="grid gap-8 md:grid-cols-3">
             <!-- Symptoms -->
             <div class="md:border-r md:border-gray-200 md:pr-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Recent Symptoms</h3>
+                <h1 class="text-lg font-semibold text-gray-900 mb-3">Recent Symptoms</h1>
                 {% if dashboard.recent_symptoms %}
                 <div class="space-y-2">
                     {% for symptom in dashboard.recent_symptoms %}
@@ -46,7 +46,7 @@
 
             <!-- Medications -->
             <div class="md:border-r md:border-gray-200 md:px-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Active Medications</h3>
+                <h1 class="text-lg font-semibold text-gray-900 mb-3">Active Medications</h1>
                 {% if dashboard.active_medications %}
                 <div class="space-y-2">
                     {% for med in dashboard.active_medications %}
@@ -63,7 +63,7 @@
 
             <!-- Foods -->
             <div class="md:pl-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Recent Foods</h3>
+                <h1 class="text-lg font-semibold text-gray-900 mb-3">Recent Foods</h1>
                 {% if dashboard.recent_foods %}
                 <div class="space-y-2">
                     {% for food in dashboard.recent_foods %}
@@ -104,7 +104,7 @@
                 <i data-lucide="message-square" class="w-12 h-12 md:w-16 h-16"></i>
             </div>
             <div class="flex-grow">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Chat with UC Companion</h2>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Chat with UC Companion</h2>
                 <ul class="text-gray-600 mb-4 space-y-2">
                     <li class="flex items-center">
                         <span class="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
@@ -139,7 +139,7 @@
                 <i data-lucide="activity" class="w-12 h-12 md:w-16 h-16"></i>
             </div>
             <div class="flex-grow">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Symptom Tracker</h2>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Symptom Tracker</h2>
                 <ul class="text-gray-600 mb-4 space-y-2">
                     <li class="flex items-center">
                         <span class="w-1 h-1 bg-green-600 rounded-full mr-2"></span>
@@ -174,7 +174,7 @@
                 <i data-lucide="pill" class="w-12 h-12 md:w-16 h-16"></i>
             </div>
             <div class="flex-grow">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Medication Log</h2>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Medication Log</h2>
                 <ul class="text-gray-600 mb-4 space-y-2">
                     <li class="flex items-center">
                         <span class="w-1 h-1 bg-purple-600 rounded-full mr-2"></span>
@@ -209,7 +209,7 @@
                 <i data-lucide="utensils" class="w-12 h-12 md:w-16 h-16"></i>
             </div>
             <div class="flex-grow">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Food Diary</h2>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Food Diary</h2>
                 <ul class="text-gray-600 mb-4 space-y-2">
                     <li class="flex items-center">
                         <span class="w-1 h-1 bg-yellow-600 rounded-full mr-2"></span>

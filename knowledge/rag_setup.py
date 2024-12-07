@@ -9,20 +9,23 @@ from typing import List
 import os
 import gc
 
+
 class UCExpertRAG:
     def __init__(self):
         self.docs_path = os.path.join('knowledge', 'docs')
-        self.embeddings = OpenAIEmbeddings(openai_api_key=os.getenv('OPENAI_API_KEY'))
+        self.embeddings = OpenAIEmbeddings(
+            openai_api_key=os.getenv('OPENAI_API_KEY')
+            )
         self.llm = ChatOpenAI(model="gpt-4")
-        
+
         # Set search parameters
         self.fetch_k = 10
-        self.final_k = 5 
+        self.final_k = 5
         self.lambda_mult = 0.7
-        
+
         # Initialize Pinecone once
-        pc = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
-        
+        _ = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
+
         # Initialize vector store
         self.vector_store = PineconeVectorStore(
             index_name="ucexpert",
@@ -38,7 +41,7 @@ class UCExpertRAG:
         2. You provide first-line healthcare support for UC patients.
         3. You personalize advice based on the user's symptoms, medications, Foods, and the conversation history.
         4. You ONLY discuss medications the user is currently taking or has taken.
-        5. You may make meal suggestions based on the users food diary. 
+        5. You may make meal suggestions based on the users food diary.
 
         Context: {context}
         User Information: {user_info}
@@ -61,9 +64,9 @@ class UCExpertRAG:
         - Always prioritize patient safety over information sharing
 
         Remember: You reflect ONLY the provided context - never add external information."""
-        
+
         self.prompt = ChatPromptTemplate.from_template(template)
-        
+
         # Only initialize documents if vector store is empty
         if not self._check_if_documents_exist():
             self.initialize_documents()
@@ -84,7 +87,7 @@ class UCExpertRAG:
             loader = DirectoryLoader(self.docs_path, glob="*.md")
             documents = loader.load()
             print(f"Found {len(documents)} documents")
-            
+
             text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=250,
                 chunk_overlap=25,
@@ -92,17 +95,17 @@ class UCExpertRAG:
             )
             splits = text_splitter.split_documents(documents)
             print(f"Created {len(splits)} text chunks")
-            
+
             # Add documents to vector store
             self.vector_store.add_documents(splits)
-            
+
             # Clean up
             del documents
             del splits
             gc.collect()
-                
+
             print("Documents initialized successfully")
-            
+
         except Exception as e:
             print(f"Error initializing documents: {str(e)}")
             raise
@@ -116,13 +119,13 @@ class UCExpertRAG:
                 self.embeddings = None
             if hasattr(self, 'llm'):
                 self.llm = None
-            
+
             # Force garbage collection multiple times
             import gc
             gc.collect(generation=2)  # Force full collection
             gc.collect()
             gc.collect()
-            
+
             print("Memory cleanup completed")
         except Exception as e:
             print(f"Error during cleanup: {str(e)}")
@@ -146,7 +149,7 @@ class UCExpertRAG:
             relevant_docs = self.get_diverse_documents(question)
             if not relevant_docs:
                 return "I'm sorry, I don't have enough information to answer that question."
-                
+
             try:
                 context = "\n\n".join([doc.page_content for doc in relevant_docs])
                 formatted_prompt = self.prompt.format(
@@ -158,7 +161,7 @@ class UCExpertRAG:
 
                 response = self.llm.invoke(formatted_prompt)
                 result = ' '.join(response.content.split())
-                
+
                 return result
             finally:
                 # Clean up

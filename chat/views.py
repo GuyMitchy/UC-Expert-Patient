@@ -144,11 +144,10 @@ def send_message(request, conversation_id, rag=None):
             if recent_foods:
                 user_context += "\nRecent Food Entries:\n"
                 for food in recent_foods:
-                    food_date = food.eaten_at.strftime('%Y-%m-%d %H:%M')
                     user_context += (
-                        f"- Food diary entry:{food_date}: "
-                        f"{food.get_meal_type_display()} - {food.food_name} "
-                        f"({food.portion_size}) is_trigger:{food.is_trigger}"
+                        f"- Food diary entry:{food.date}:{food.eaten_at}, "
+                        f"{food.get_meal_type_display()} - {food.food_name}, "
+                        f"({food.portion_size}) portion, digestive discomfort:{food.discomfort}, is_trigger:{food.is_trigger}"
                     )
                     if food.notes:
                         user_context += f" Notes: {food.notes}"

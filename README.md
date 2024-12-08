@@ -708,6 +708,7 @@ Required Fields:
   - Efficient retrieval
 
 - Context Management:
+  - Verified medical UC knowledge
   - User symptom history
   - Current medications
   - Recent food entries

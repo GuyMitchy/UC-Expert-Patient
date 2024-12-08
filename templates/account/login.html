@@ -6,87 +6,88 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-[65vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-md">
         <!-- Header -->
         <div>
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                 {% trans "Sign In" %}
-            </h2>            
+            </h2>
             <p class="mt-2 text-center text-sm text-gray-600">
                 {% blocktrans %}
-                Don't have an account yet? 
+                Don't have an account yet?
                 <a href="{{ signup_url }}" class="font-medium text-blue-600 hover:text-blue-500">
                     Sign up
                 </a>
                 {% endblocktrans %}
             </p>
-            
+
         </div>
 
-        <!-- Form -->        
+        <!-- Form -->
         <form class="mt-8 space-y-6" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
-                
+
             <!-- Error Messages -->
             {% if form.errors %}
-                <div class="rounded-md bg-red-50 p-4 mb-4">
-                    <div class="flex">
-                        <div class="text-sm text-red-700">
-                            {% for error in form.non_field_errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
-                        </div>
+            <div class="rounded-md bg-red-50 p-4 mb-4">
+                <div class="flex">
+                    <div class="text-sm text-red-700">
+                        {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
                     </div>
                 </div>
-            {% endif %}   
+            </div>
+            {% endif %}
 
-                <!-- Login Fields -->
-                <div class="rounded-md shadow-sm -space-y-px">
-                    <div>
-                        <label for="id_login" class="sr-only">{% trans "Email" %}</label>
-                        <input id="id_login" name="login" type="email" required 
-                              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                              placeholder="{% trans 'Email address' %}">
-                        {% if form.login.errors %}
-                            <p class="text-red-500 text-xs mt-1">{{ form.login.errors.0 }}</p>
-                        {% endif %}
-                    </div>
-                    <div>
-                        <label for="id_password" class="sr-only">{% trans "Password" %}</label>
-                        <input id="id_password" name="password" type="password" required
-                              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                              placeholder="{% trans 'Password' %}">
-                        {% if form.password.errors %}
-                            <p class="text-red-500 text-xs mt-1">{{ form.password.errors.0 }}</p>
-                        {% endif %}
-                    </div>
+            <!-- Login Fields -->
+            <div class="rounded-md shadow-sm -space-y-px">
+                <div>
+                    <label for="id_login" class="sr-only">{% trans "Email" %}</label>
+                    <input id="id_login" name="login" type="email" required
+                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                        placeholder="{% trans 'Email address' %}">
+                    {% if form.login.errors %}
+                    <p class="text-red-500 text-xs mt-1">{{ form.login.errors.0 }}</p>
+                    {% endif %}
                 </div>
+                <div>
+                    <label for="id_password" class="sr-only">{% trans "Password" %}</label>
+                    <input id="id_password" name="password" type="password" required
+                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                        placeholder="{% trans 'Password' %}">
+                    {% if form.password.errors %}
+                    <p class="text-red-500 text-xs mt-1">{{ form.password.errors.0 }}</p>
+                    {% endif %}
+                </div>
+            </div>
 
-                <!-- Remember Me  -->
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input id="id_remember" name="remember" type="checkbox"
-                              class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                        <label for="id_remember" class="ml-2 block text-sm text-gray-900">
-                            {% trans "Remember me" %}
-                        </label>
-                    </div>
+            <!-- Remember Me  -->
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input id="id_remember" name="remember" type="checkbox"
+                        class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                    <label for="id_remember" class="ml-2 block text-sm text-gray-900">
+                        {% trans "Remember me" %}
+                    </label>
+                </div>
 
 
                 {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
 
                 <!-- Submit Button -->
                 <div>
-                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <button type="submit"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <span class="absolute left-0 inset-y-0 flex items-center pl-3"></span>
                         {% trans "Sign In" %}
                     </button>
                 </div>
-              </div>
-          </form>
-        
+            </div>
+        </form>
 
-{% endblock content %}
+
+        {% endblock content %}

@@ -11,6 +11,7 @@ Expert Patient is a comprehensive Django-based web application designed to help 
 <br>
 I settled on a challenging goal: create a comprehensive Bowel Disease management tool that currently focuses only on Ulcerative Colitis, incorporating advanced AI chat capabilities through a RAG (Retrieval Augmented Generation) system. While RAG might seem "overkill" for the initial scope, it was chosen for:
 <br>
+
 - Learning opportunity in AI integration
 - Future scalability for multiple medical conditions
 - Potential for modular reuse
@@ -27,6 +28,7 @@ Once the UC part of the app is complete it can be easily scaled for patients wit
 <br>
 After having conversation with the medical director of InVita intellignece, Mark Sullivan, I noticed a misalignment between doctors and their patients on a particular idea. Mark explained to me how doctors value "Expert Patients". Having a patient who understands their condition well is beneficial to the doctor, as what is reported to them tends to be more accurate and relevant. I did some research among family, friends and peers, and learned that this notion is not realised by many people suffering from some form of affliction that is regularly monitored by their doctor. They feel as though, if anything, they are pushed away from understsnding the exact workings of their condition, and are simply told what to monitor and how to do it. This works well for many dilligent patients, but reseacrch suggested that some feel a disconnect. They want to understand their illness in depth, but may feel "stupid" when speaking to a doctor regarding recent developments in symptoms or when they bring up things they may think are of note. 
 <br>
+<br>
 UC expert was born of my own experience in this area and response I received from others. It aims to turn patients into experts on their condition by allowing them to interact with an AI, regarding not just general information on the disease, but specific information relating to their current symptoms and state of their condition. They can ask the "stupid" questions they may prefer not to ask their doctor, gain re-assurance on particular issues, gain a deeper understanding of what may be causing them and have a record of symptoms they can then talk more confidently with their doctor about. The AI must re-direct to a mecical professional when the users interaction warrants it.
 <br>
 <br>
@@ -36,9 +38,10 @@ UC expert was born of my own experience in this area and response I received fro
 <details>
 <summary>The Prototype Introduction</summary>
 <br>
- Before I started the capstone project I decided to build a prototype using AI. This is a methodology I have adopted that allows me to ideate, validate, and test in a rapid and cutting edge manner. The new capabilities of LLM's and IDE's with native LLM integration allow for a this novel approach, which provides many advantages.
+Before I started the capstone project I decided to build a prototype using AI. This is a methodology I have adopted that allows me to ideate, validate, and test in a rapid and cutting edge manner. The new capabilities of LLM's and IDE's with native LLM integration allow for a this novel approach, which provides many advantages.
  <br>
-  In order to do so I undertake initial research on the technologies required to build the app I have in mind, as you would expect. However, I then use this research to develop a comprehensive pseudocode style plan that will prompt an IDE native LLM to build the app. Once the prototype is complete I can quickly alter elements, iterate on possible features or improve existing ones, all while testing it's capabilities to see if it is performing as I expect. This allows me to interact with any product idea I have very quickly. It leads to rapid itterations and more detailed plans including refactoring before I have even written a line of code. I can then use the prototype as a basis to develop the app with minimal AI assitance, as I did with this project. It is a great way to learn a new technology. You gain an understanding of it's architecture and core pinciples without worrying about having to learn the detailed syntax of a particular function, that upon later testing turns out to be reduntant or unused by the user. 
+ <br>
+In order to do so I undertake initial research on the technologies required to build the app I have in mind, as you would expect. However, I then use this research to develop a comprehensive pseudocode style plan that will prompt an IDE native LLM to build the app. Once the prototype is complete I can quickly alter elements, iterate on possible features or improve existing ones, all while testing it's capabilities to see if it is performing as I expect. This allows me to interact with any product idea I have very quickly. It leads to rapid itterations and more detailed plans including refactoring before I have even written a line of code. I can then use the prototype as a basis to develop the app with minimal AI assitance, as I did with this project. It is a great way to learn a new technology. You gain an understanding of it's architecture and core pinciples without worrying about having to learn the detailed syntax of a particular function, that upon later testing turns out to be reduntant or unused by the user. 
 <br>
 <br>
 </details>
@@ -51,14 +54,12 @@ UC expert was born of my own experience in this area and response I received fro
 - Studied RAG system implementations by watching videos and reading langchain documentation.
 - Explored Django best practices and watched tutorials on django architecture and implementation.
 - Investigated AI integration options (Local/API and Model choice).
-
 <br>
 </details>
 
 
 <details>
 <summary>AI-Assisted Learning</summary>
-<br>
 
 - Used Claude AI for development planning.
 - Leveraged Cursor.directory for Django best practice prompts.
@@ -70,7 +71,6 @@ UC expert was born of my own experience in this area and response I received fro
     - Tailwind CSS styling
     - Database ERD
 
-<br>
 </details>
 
 
@@ -92,7 +92,7 @@ It can be found here https://github.com/GuyMitchy/Expert-Patient
 - Verified basic Django structure
 - Validated database relationships
 - Assessed UX/UI concepts
-<br>
+
 </details>
 
 <details>

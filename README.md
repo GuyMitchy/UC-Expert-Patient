@@ -1522,6 +1522,9 @@ Allows users to quickly view their recent data. I did not identify this as a use
 - Status indicators for active medications and recent symptoms
 
 ADD IMAGE HERE
+<br>
+<br>
+</details>
 
 <details>
 <summary>Food model Adjustments</summary>
@@ -1531,8 +1534,12 @@ ADD IMAGE HERE
 These adjustments allow the user to more accurately assess their reaction to particular foods and aid the AI in discerning between foods that may or may not be triggering symptoms"
 <br>
 <br>
-<br>
 </details>
+
+<details>
+<summary>SuperUser Admin Button</summary>
+
+"Admin" button added to navbar for superusers only that allows easy navigation to admin panel without having to alter URL endpoint.
 
 <details>
 <summary>Emergent Report Creation</summary>

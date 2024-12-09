@@ -1558,7 +1558,7 @@ Allows users to quickly view their recent data. I did not identify this as a use
 - Quick access cards to main features
 - Status indicators for active medications and recent symptoms
 
-ADD IMAGE HERE
+![Recent Dashboard](./static/readme_images/recent.png)
 <br>
 <br>
 </details>
@@ -1578,10 +1578,13 @@ These adjustments allow the user to more accurately assess their reaction to par
 
 "Admin" button added to navbar for superusers only that allows easy navigation to admin panel without having to alter URL endpoint.
 
+![Admin Btn](./static/readme_images/admin_btn.png)
 <details>
 <summary>Emergent Report Creation</summary>
 
 I had originally outlined report creation as a "Won't Have" feature, but upon testing the RAG sytem I identified the capabilty of the AI to dynamically generate reports based on the user context it is given.
+
+![AI Report](./static/readme_images/ai_report.png)
 
 ### Future Features
 

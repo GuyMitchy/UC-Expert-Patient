@@ -11,18 +11,15 @@
         </p>
 
         <div class="bg-gray-50 p-4 rounded-md mb-6">
-            <p class="font-medium">{{ object.get_type_display }}</p>
-            {% if object.description %}
-            <p class="text-sm text-gray-600 mt-2">{{ object.description }}</p>
-            {% endif %}
-            
-            
+            <p class="font-medium">{{ food.food_name }}</p>
+            <p class="font-medium">{{ food.date }}</p>
+            <p class="font-medium">{{ food.eaten_at }}</p>
         </div>
 
         <form method="POST">
             {% csrf_token %}
             <div class="flex justify-end space-x-4">
-                <a href="{% url 'symptoms:list' %}"
+                <a href="{% url 'foods:list' %}"
                     class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
                     Cancel
                 </a>

@@ -11,6 +11,7 @@ Expert Patient is a comprehensive Django-based web application designed to help 
 <br>
 I settled on a challenging goal: create a comprehensive Bowel Disease management tool that currently focuses only on Ulcerative Colitis, incorporating advanced AI chat capabilities through a RAG (Retrieval Augmented Generation) system. While RAG might seem "overkill" for the initial scope, it was chosen for:
 <br>
+<br>
 
 - Learning opportunity in AI integration
 - Future scalability for multiple medical conditions
@@ -54,7 +55,7 @@ In order to do so I undertake initial research on the technologies required to b
 - Studied RAG system implementations by watching videos and reading langchain documentation.
 - Explored Django best practices and watched tutorials on django architecture and implementation.
 - Investigated AI integration options (Local/API and Model choice).
-<br>
+
 </details>
 
 
@@ -125,8 +126,7 @@ Once the prototype was complete and my assemment on viabilty was made I chose to
 - Allow users to interact with a chatbot regarding their condition, in order to become an expert patient.
 - Focus on creating a reliable, easy-to-use health management tool.
 - Enable data-driven conversations with healthcare providers by having a record of their condition.
-<br>
-<br>
+
 </details>
 
 <details>
@@ -141,8 +141,7 @@ Once the prototype was complete and my assemment on viabilty was made I chose to
 - Have the AI understand my specific condition
 - Trust the AI's information
 - Have the AI to maintain conversation context
-<br>
-<br>
+
 </details>
 
 <details>
@@ -164,8 +163,7 @@ This automated approach allowed for:
 - Automatic label application (Must Have, Should Have, etc.)
 - Creation of task checkboxes for acceptance criteria
 - Improved development workflow
-<br>
-<br>
+
 </details>
 
 <details>
@@ -573,8 +571,7 @@ stories:
 - Password validation
 - Session management
 - Access control to personal data
-<br>
-<br>
+
 </details>
 
 
@@ -607,8 +604,7 @@ Required Fields:
     - Very Severe
 - Description (TextField)
 ```
-<br>
-<br>
+
 </details>
 
 <details>
@@ -616,6 +612,7 @@ Required Fields:
 <br>
 This system will help patients track their UC medication regimen, ensuring accurate records of current and historical treatments. It supports all major UC medication categories and various dosing schedules.
 <br>
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -639,8 +636,7 @@ Required Fields:
 - Active Status (BooleanField)
 - Notes (TextField)
 ```
-<br>
-<br>
+
 </details>
 
 
@@ -666,14 +662,14 @@ Required Fields:
 - Is Trigger (BooleanField)
 - Notes (TextField)
 ```
-<br>
-<br>
+
 </details>
 
 
 <details>
 <summary>AI Chat System Requirements</summary>
-A context-aware chat system that provides personalized UC management guidance based on user data and verified medical information.
+<br>
+A context-aware chat system that provides personalized UC management guidance based on user data and verified medical information. It must manage persistent messages across multiple conversations
 <br>
 
 #### Conversation Management
@@ -714,8 +710,6 @@ Required Fields:
   - Recent food entries
   - Conversation history
 
-<br>
-<br>
 </details>
 
 
@@ -745,8 +739,7 @@ Required Fields:
 - Tailwind breakpoints:
   - md: 768px
   - lg: 1024px
-<br>
-<br>
+
 </details>
 
 
@@ -774,10 +767,8 @@ Required Fields:
 - Error notifications
 - Success feedback
 
-<br>
-<br>
-</details>
 
+</details>
 
 <details>
 <summary>Future Content/Features</summary>
@@ -789,8 +780,7 @@ Required Fields:
 - Automated meal planning
 - Community support features
 - Disease state report creation
-<br>
-<br>
+
 </details>
 
 ### Structure
@@ -806,8 +796,7 @@ Required Fields:
 - Data entry forms(add, delete and edit) for each feature
 - Historical list pages for each feature.
 - Chat windows for each conversation with persistent chat history.
-<br>
-<br>
+
 </details>
 
 
@@ -871,14 +860,15 @@ Required Fields:
   - Message History
   - Message Input Area
   - Back to conversations button - links to list view
-<br>
-<br>
+
 </details>
 
 
 <details>
 <summary>Database Relationships</summary>
 <br>
+
+The application will use Django's built-in authentication system and implement the following database structure:
 
 ```
 User
@@ -888,6 +878,47 @@ User
 └── Conversations (One-to-Many)
     └── Messages (One-to-Many)
 ```
+
+#### User (Django's built-in User model)
+
+- Acts as the central model for user authentication and relationships
+- Each user can have multiple records in other models
+
+
+#### Symptoms: One-to-Many relationship with User
+
+- Each user can log multiple symptoms
+- Records type, severity, date, and description
+- Include validation to prevent future dates
+
+#### Medications: One-to-Many relationship with User
+
+- Tracks multiple medications per user
+- Stores medication details including name, dosage, frequency
+- Include active/inactive status and start date
+
+#### Foods: One-to-Many relationship with User
+
+- Allows users to maintain a food diary
+- Records meal type, portion size, and trigger status
+- Include timestamps for precise tracking
+
+
+#### Conversations: One-to-Many relationship with User
+
+- Each user can have multiple chat conversations
+- Stores conversation metadata and title
+
+
+#### Messages: One-to-Many relationship with Conversation
+
+- Stores individual messages within conversations
+- Differentiates between user and bot messages
+- Maintains chronological order
+
+
+All models include appropriate timestamps and custom string representations for admin interface clarity.
+
 <br>
 <br>
 </details>
@@ -1893,7 +1924,7 @@ The application was deployed on Heroku using the following method:
 <details>
 <summary>Live Link</summary>
 <br>
-The live site can be found here: [Link to be added]
+The live site can be found here: [https://8000-guymitchy-ucexpertpatie-sv6c12l37dh.ws.codeinstitute-ide.net/]
 <br>
 <br>
 </details>

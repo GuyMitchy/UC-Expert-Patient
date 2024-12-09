@@ -1789,6 +1789,25 @@ The project scores well on lighthouse. Accessbility warnings on the dashboard fo
       ACCOUNT_USERNAME_REQUIRED = True  # Changed to True to require username at signup
       ACCOUNT_EMAIL_VERIFICATION = 'none'
    - Result: Users now create a username during registration which is displayed in the welcome message, while still maintaining email-only login functionality. This provides a more personalized user experience while keeping the simplified email-based authentication.
+
+7. Bug - WCG-AG validation error with Lucide icons:
+   - Initial issue WCG validation error: "Attribute `stroke-width` not allowed on element `i`"
+   - Problem identified: Direct SVG attributes on `<i>` elements violate HTML5 standards, and CSS solutions don't work because Lucide dynamically replaces elements via JavaScript
+   - Solution: Implemented a two-part fix:
+      1. Added specific class to target icon:
+          ```html
+          <i data-lucide="activity" class="w-14 h-14 thin-icon"></i>
+          ```
+      2. Added custom Lucide initialization in base template:
+          ```javascript
+          lucide.createIcons({
+              selector: '.thin-icon',
+              attrs: {
+                  'stroke-width': '1.3'
+              }
+          });
+    ```
+- **Result:** Successfully applies thinner stroke width to specific icons while maintaining HTML validity and proper WAI-ARIA compliance, without affecting other Lucide icons on the site.
 <br>
 <br>
 </details>

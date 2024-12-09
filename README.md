@@ -1,6 +1,6 @@
 # Expert Patient - UC Expert - Ulcerative Colitis Patient Management System
 
-Expert Patient is a comprehensive Django-based web application designed to help patients with Bowel disease (Currently only Ulcerative Colitis (UC)) manage their condition effectively. It provides tools for tracking symptoms, medications, food triggers, and offers AI-powered chat support for UC-related questions which are answered solely within the context of provided information.
+Expert Patient is a comprehensive Django-based web application designed to help patients with Bowel disease (Currently only Ulcerative Colitis (UC)) manage their condition effectively. It provides tools for tracking symptoms, medications, food triggers, and offers AI-powered chat support for UC-related questions which are answered solely within the context of provided medical knowledge and the users current logged disease state.
 
 ![Responsive Mockup](./static/readme_images/Expert-patient-mockup.png)
 
@@ -613,6 +613,8 @@ Required Fields:
 This system will help patients track their UC medication regimen, ensuring accurate records of current and historical treatments. It supports all major UC medication categories and various dosing schedules.
 <br>
 
+#### Model
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -647,6 +649,8 @@ Required Fields:
 This system allows patients to monitor their diet and identify potential trigger foods. It includes detailed timing and portion information to help establish patterns between diet and symptoms.
 <br>
  
+ #### Model
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -672,7 +676,8 @@ Required Fields:
 A context-aware chat system that provides personalized UC management guidance based on user data and verified medical information. It must manage persistent messages across multiple conversations
 <br>
 
-#### Conversation Management
+#### Conversation Management Model
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -680,7 +685,7 @@ Required Fields:
 - Created/Updated timestamps
 ```
 
-#### Message Management
+#### Message Management Model
 ```python
 Required Fields:
 - Conversation (ForeignKey)

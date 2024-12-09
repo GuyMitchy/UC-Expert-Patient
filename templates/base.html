@@ -33,6 +33,10 @@
                         href="{% url 'foods:list' %}">Foods</a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
                         href="{% url 'chat:list' %}">Chat</a>
+                    {% if user.is_superuser %}
+                    <a class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+                        href="{% url 'admin:index' %}">Admin</a>
+                    {% endif %}
                 </nav>
 
                 <!-- Welcome Message -->

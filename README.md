@@ -1,6 +1,6 @@
-# UC Expert - Ulcerative Colitis Patient Management System
+# Expert Patient - UC Expert - Ulcerative Colitis Patient Management System
 
-UC Expert is a comprehensive Django-based web application designed to help patients with Ulcerative Colitis (UC) manage their condition effectively. It provides tools for tracking symptoms, medications, food triggers, and offers AI-powered chat support for UC-related questions which are answered solely within the context of provided information.
+Expert Patient is a comprehensive Django-based web application designed to help patients with Bowel disease (Currently only Ulcerative Colitis (UC)) manage their condition effectively. It provides tools for tracking symptoms, medications, food triggers, and offers AI-powered chat support for UC-related questions which are answered solely within the context of provided information.
 
 ![Responsive Mockup](./static/readme_images/Expert-patient-mockup.png)
 
@@ -9,19 +9,21 @@ UC Expert is a comprehensive Django-based web application designed to help patie
 <details>
 <summary>The Idea</summary>
 <br>
-I settled on a challenging goal: create a comprehensive Ulcerative Colitis management tool incorporating advanced AI chat capabilities through a RAG (Retrieval Augmented Generation) system. While RAG might seem "overkill" for the initial scope, it was chosen for:
+I settled on a challenging goal: create a comprehensive Bowel disease management tool that currently focuses only on Ulcerative Colitis, incorporating advanced AI chat capabilities through a RAG (Retrieval Augmented Generation) system. While RAG might seem "overkill" for the initial scope, it was chosen for:
 
 - Learning opportunity in AI integration
 - Future scalability for multiple medical conditions
 - Potential for modular reuse
 - Enhanced user support capabilities
 - Control over LLM responses
+
+Once the UC part of the app is complete it can be easily scaled for patients with other bowel diseases such as Chron's Disease or Microscopic Colitis.
 <br>
 <br>
 </details>
 
 <details>
-<summary>Why UC Expert?</summary>
+<summary>Why Expert Patient?</summary>
 <br>
 After having conversation with the medical director of InVita intellignece, Mark Sullivan, I noticed a misalignment between doctors and their patients on a particular idea. Mark explained to me how doctors value "Expert Patients". Having a patient who understands their condition well is beneficial to the doctor, as what is reported to them tends to be more accurate and relevant. I did some research among family, friends and peers, and learned that this notion is not realised by many people suffering from some form of affliction that is regularly monitored by their doctor. They feel as though, if anything, they are pushed away from understsnding the exact workings of their condition, and are simply told what to monitor and how to do it. This can work fine for many dilligent patients, but some stated thay feel a disconnect. They want to understand their illness in depth, but may feel "stupid" when speaking to a doctor regarding recent developments in symptoms or things they may think are of note. 
 
@@ -34,7 +36,7 @@ UC expert was born of my own experience in this area and response I received fro
 <details>
 <summary>The Prototype Introduction</summary>
 <br>
- Before I started the real project I decided to build a prototype using AI. This is a methodology I have adopted that allows me to ideate, validate, and test in a rapid and cutting edge manner. The new capabilities of LLM's and IDE's with native LLM integration allow for a this novel approach, which provides many advantages. I do initial research on the technologies required to build the app I have in mind, as you would expect. However, I then use this research to develop a comprehensive pseudocode style plan that will prompt an IDE native LLM to build the app. Once the prototype is complete I can quickly alter elements, iterate on possible features or improve existing ones, all while testing it's capabilities to see if it is performing as I expect. This allows me to interact with any product idea I have very quickly. It leads to rapid itterations and more detailed plans including refactoring before I have even written a line of code. I can then use the prototype as a basis to develop the app with minimal AI assitance, as I did with this project. It is a great way to learn a new technology. You gain an understanding of it's architecture and core pinciples without worrying about having to learn the detailed syntax of a particular function, that upon later testing turns out to be reduntant or unused by the user. 
+ Before I started the capstone project I decided to build a prototype using AI. This is a methodology I have adopted that allows me to ideate, validate, and test in a rapid and cutting edge manner. The new capabilities of LLM's and IDE's with native LLM integration allow for a this novel approach, which provides many advantages. I do initial research on the technologies required to build the app I have in mind, as you would expect. However, I then use this research to develop a comprehensive pseudocode style plan that will prompt an IDE native LLM to build the app. Once the prototype is complete I can quickly alter elements, iterate on possible features or improve existing ones, all while testing it's capabilities to see if it is performing as I expect. This allows me to interact with any product idea I have very quickly. It leads to rapid itterations and more detailed plans including refactoring before I have even written a line of code. I can then use the prototype as a basis to develop the app with minimal AI assitance, as I did with this project. It is a great way to learn a new technology. You gain an understanding of it's architecture and core pinciples without worrying about having to learn the detailed syntax of a particular function, that upon later testing turns out to be reduntant or unused by the user. 
 <br>
 <br>
 </details>
@@ -119,7 +121,7 @@ Once the prototype was complete and my assemment on viabilty was made I chose to
 <br>
 
 - Help UC patients track and manage their condition effectively by tracking symptoms, medications and Foods.
-- Allow users to interact with a chatbot regarding their condition in order to become an expert patient.
+- Allow users to interact with a chatbot regarding their condition, in order to become an expert patient.
 - Focus on creating a reliable, easy-to-use health management tool.
 - Enable data-driven conversations with healthcare providers by having a record of their condition.
 <br>
@@ -314,15 +316,15 @@ stories:
     labels: ["Wont Have", "Developer"]
     acceptance_criteria:
       - "Medication reminders/scheduling"
+      - "Disease state report creation"
       - "Direct healthcare provider communication"
       - "File upload for medical documents"
-      - "Medication interaction checking"
       - "Integration with medical devices/apps"
       - "Real-time symptom alerts"
       - "Automated meal planning"
       - "Social features or community support"
       - "Integration with electronic health records"
-
+      - "Expansion for other bowel diseases"
 
      
   # LO1: Agile Planning and Design
@@ -536,8 +538,6 @@ stories:
       - "Implement proper error handling"
       - "Document deployment process"
       - "Configure static file serving"
-      - "Set up proper logging"
-      - "Implement backup procedures"
 
   # LO7: Custom Data Models
   - type: Feature
@@ -551,7 +551,6 @@ stories:
       - "Design models to fit project needs"
       - "Implement proper model relationships"
       - "Add custom model methods"
-      - "Create model managers where needed"
       - "Document model architecture"
       - "Implement proper validation"
       - "Add custom querysets if required"
@@ -744,6 +743,7 @@ Required Fields:
 - Mobile-first approach
 - Tailwind breakpoints:
   - md: 768px
+  - lg: 1024px
 <br>
 <br>
 </details>
@@ -829,10 +829,6 @@ Required Fields:
 - Logout Option
 
 #### Dashboard (Home)
-- Recent Activity Overview
-  - Latest Symptoms (3)
-  - Active Medications (3)
-  - Recent Foods (3)
 - Quick Access Cards
   - Symptom Tracker
   - Medication Log
@@ -1062,7 +1058,6 @@ graph TD
    - Redirect to Dashboard
 
 2. Dashboard Navigation
-   - Overview of recent data
    - Access to main features
 
 3. Feature Workflows
@@ -1518,32 +1513,44 @@ Chat System Security
 ### Added Features
 
 <details>
-<summary>Dashboard</summary>
+<summary>Recent Data in Dashboard</summary>
 
-This was an additional feature added towards the end of development. I did not identify the need for it in my plan, but decided to add it as it allows users to quickly view their recent data.
+Allows users to quickly view their recent data. I did not identify this as a user need but it was easy to add after development was complete.
 
 - Overview of recent symptoms, medications, and food entries
 - Quick access cards to main features
 - Status indicators for active medications and recent symptoms
 
 ADD IMAGE HERE
+
+<details>
+<summary>Food model Adjustments</summary>
+
+ "Disgestive discomfort" field and "Unsure" trigger choice option for "is_trigger" field.
+
+These adjustments allow the user to more accurately assess their reaction to particular foods and aid the AI in discerning between foods that may or may not be triggering symptoms"
+<br>
 <br>
 <br>
 </details>
+
+<details>
+<summary>Emergent Report Creation</summary>
+
+I had originally outlined report creation as a "Won't Have" feature, but upon testing the RAG sytem I identified the capabilty of the AI to dynamically generate reports based on the user context it is given.
 
 ### Future Features
 
 <details>
 <summary>All</summary>
 
-- Medication reminders/scheduling (Rag system can currently work out when medication should be taken based on frequency and start date)
-- Direct healthcare provider communication
+- Medication reminders/schedulin
+- Direct healthcare provider communication/access
 - File upload for medical documents
 - Medication interaction checking
 - Automated meal planning
 - Social features/community support
 - Integration with electronic health records
-- Symtom report creation
 <br>
 <br>
 </details>
@@ -1731,7 +1738,7 @@ See chat/tests.py
 I used flake8 to test PEP8 adherence. My code passes on all fronts apart from the RAG_setup.py template prompt. I chose not to split the strings here as the prompt readabilty suffers and makes edits cumbersome. 
 
 
-#### W3C Markup Validator
+#### WCAG Markup Validator
 
 Passes all tests.
 
@@ -1739,8 +1746,13 @@ Passes all tests.
 
 #### Lighthouse
 
-The project scores well on lighthouse. Accessbility warnings on the dashboard for headers not in ascending order, and 4/8 buttons on the cards have low contrast between the text and background. The header issue is is becasue teh dashboard is a table I I considered making the text more bold but decided to keep it as is for styling purposes.
+The project scores well on lighthouse on all pages.
 
+Areas for improvement: 
+Accessbility warnings on the dashboard - 4/8 buttons on the cards have low contrast between the text and background. I considered making the text more bold but decided to keep it as is for styling purposes.
+
+
+![Lighthouse Report](./static/readme_images/test_results/lighthouse.png)
 <br>
 <br>
 </details>

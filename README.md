@@ -1768,18 +1768,20 @@ The project scores well on lighthouse. Accessbility warnings on the dashboard fo
    - Future improvement: Move RAG initialisation to chat window load to decrease wait time for first message response.
 
 4. Bug - "Midnight":  
-  - Intital issue: "midnight" shows as time for all food entries, followed by the correct user entered time"
-  - Solution: Altered datetime field in model to date field only
-  - Result: Only user entered time appears
+   - Intital issue: "midnight" shows as time for all food entries, followed by the correct user entered time"
+   - Solution: Altered datetime field in model to date field only
+   - Result: Only user entered time appears
 
 5. Memory Usage Optimization:
-  - Initial issue: Memory usage exceeding Heroku's 500MB limit (reaching ~650-680MB) during chat interactions, with memory increasing after each message despite cleanup.
-  - Problem identified: Documents were being reinitialized on every message, causing memory accumulation.
-  - Solution: Modified RAG system to initialize documents only once when vector store is empty, moved template initialization to correct location in init, and implemented more aggressive cleanup.
-  - Result: Proper cleanup after each message, prevention of document reinitialization, better memory management.
-  - Future improvement:  Implement batch processing for document chunks or add a timeout mechanism to reinitialize RAG system after periods of inactivity.
+   - Initial issue: Memory usage exceeding Heroku's 500MB limit (reaching ~650-680MB) during chat interactions, with memory increasing after each message despite cleanup.
+   - Problem identified: Documents were being reinitialized on every message, causing memory accumulation.
+   - Solution: Modified RAG system to initialize documents only once when vector store is empty, moved template initialization to correct location in init, and implemented more aggressive cleanup.
+   - Result: Proper cleanup after each message, prevention of document reinitialization, better memory management.
+   - Future improvement:  Implement batch processing for document chunks or add a timeout mechanism to reinitialize RAG system after periods of inactivity.
 
-
+6. Bug - "Email prefix instead of Username in welcome message:
+   - Intital issue: Email prefix instead of username is displayed in welcome message
+   - Problem identified: Removing username from django AllAuth is causing it to use email prefix when using {user.username}
 <br>
 <br>
 </details>

@@ -88,10 +88,9 @@ It can be found here https://github.com/GuyMitchy/Expert-Patient
 - Verified basic Django structure
 - Validated database relationships
 - Assessed UX/UI concepts
-<br>
+
 <br>
 </details>
-
 
 <details>
 <summary>The Outcomes</summary>
@@ -152,10 +151,9 @@ The project requirements were taken from the assesment criteria located here (ht
 </details>
 
 <details>
-<summary>User Stories</summary>
-
-#### GitHub User Story Populator Utility
-To efficiently manage the user story development process, I created a utility to automatically generate GitHub issues from user stories in .yaml format (https://github.com/GuyMitchy/github-user-story-populator).
+<summary>GitHub User Story Populator Utility</summary>
+<br>
+To efficiently manage the user story development process I created a utility to automatically generate GitHub issues from user stories in .yaml format (https://github.com/GuyMitchy/github-user-story-populator).
 
 This automated approach allowed for:
 
@@ -163,10 +161,14 @@ This automated approach allowed for:
 - Automatic label application (Must Have, Should Have, etc.)
 - Creation of task checkboxes for acceptance criteria
 - Improved development workflow
+<br>
+<br>
+</details>
 
-#### User Stories
 <details>
-<summary> user_stories.yaml</summary>
+<summary>User Stories</summary>
+
+ #### user_stories.yaml
 
 ```yaml
 stories:
@@ -580,6 +582,11 @@ stories:
 <summary>Symptom Tracking System</summary>
 <br>
 
+This system will enable UC patients to maintain a comprehensive log of their symptoms for monitoring disease progression and sharing with healthcare providers. The structured format ensures consistent tracking of critical health indicators.
+<br>
+
+#### Model
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -607,7 +614,8 @@ Required Fields:
 <details>
 <summary>Medication Management System</summary>
 <br>
- 
+This system will help patients track their UC medication regimen, ensuring accurate records of current and historical treatments. It supports all major UC medication categories and various dosing schedules.
+<br>
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -639,6 +647,9 @@ Required Fields:
 <details>
 <summary>Food Diary System</summary>
 <br>
+
+This system allows patients to monitor their diet and identify potential trigger foods. It includes detailed timing and portion information to help establish patterns between diet and symptoms.
+<br>
  
 ```python
 Required Fields:
@@ -662,7 +673,8 @@ Required Fields:
 
 <details>
 <summary>AI Chat System Requirements</summary>
-
+A context-aware chat system that provides personalized UC management guidance based on user data and verified medical information.
+<br>
 
 #### Conversation Management
 ```python
@@ -696,6 +708,7 @@ Required Fields:
   - Efficient retrieval
 
 - Context Management:
+  - Verified medical UC knowledge
   - User symptom history
   - Current medications
   - Recent food entries
@@ -1401,6 +1414,103 @@ Destructive:
 - Personalized responses based on user data
 
 ADD IMAGE HERE
+<br>
+<br>
+</details>
+
+### Tech Stack and Security Considerations
+
+<details>
+<summary>Tech Stack</summary>
+<br>
+
+#### Backend
+
+- Django 5.1.3: Primary web framework
+- Python: Core programming language
+- PostgreSQL: Production database
+- SQLite: Development database
+- OpenAI API (GPT-4): LLM for chat responses
+- Pinecone: Vector database for RAG system
+- Django AllAuth: Authentication system
+
+#### Frontend
+
+- HTML5: Semantic markup
+- Tailwind CSS: Utility-first styling
+- JavaScript: Interactive elements
+- WhiteNoise: Static file serving
+
+#### Development Tools
+
+- dj-database-url: Database configuration
+- python-dotenv: Environment management
+- Django Debug Toolbar: Development debugging
+
+#### RAG System Components
+
+- LangChain: RAG implementation framework
+- OpenAI Embeddings: Document vectorization
+- Pinecone Vector Store: Vector storage and retrieval
+- RecursiveCharacterTextSplitter: Document chunking
+- ChatPromptTemplate: Response generation
+
+#### Deployment
+
+- Heroku: Cloud platform hosting
+- Gunicorn: WSGI HTTP Server
+- WhiteNoise: Static file serving in production
+
+<br>
+<br>
+</details>
+
+<details>
+<summary>Security Considerations</summary>
+<br>
+
+#### Authentication & Authorization
+
+- Email-based authentication using Django AllAuth
+- Login required mixins for all views
+- User-specific querysets ensuring data isolation
+- CSRF protection enabled globally
+- Secure password hashing with Django's auth system
+
+#### Data Protection
+
+- User data segregation through ForeignKey relationships
+- Database access controlled through Django ORM
+- Sensitive settings stored as environment variables
+- Debug mode disabled in production
+
+#### API Security
+
+- OpenAI API key secured in environment variables
+- Pinecone API key protected in environment variables
+- RAG system access controlled through decorators
+
+#### Form Security
+
+- Server-side validation on all forms
+- Client-side validation for better UX on date entry
+- XSS protection through Django's template system
+- Secure file upload handling
+
+#### Deployment Security
+
+- SECRET_KEY stored in environment variables
+- ALLOWED_HOSTS configured for production
+- Secure HTTPS connection enforced
+- WhiteNoise for secure static file serving
+
+Chat System Security
+
+- RAG responses limited to verified medical information
+- Emergency protocols for severe symptoms
+- User data privacy in conversation context
+- Proper error handling and logging
+
 <br>
 <br>
 </details>

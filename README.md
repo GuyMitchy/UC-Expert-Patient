@@ -1779,9 +1779,16 @@ The project scores well on lighthouse. Accessbility warnings on the dashboard fo
    - Result: Proper cleanup after each message, prevention of document reinitialization, better memory management.
    - Future improvement:  Implement batch processing for document chunks or add a timeout mechanism to reinitialize RAG system after periods of inactivity.
 
-6. Bug - "Email prefix instead of Username in welcome message:
+6. Bug - Email prefix instead of Username in welcome message:
    - Intital issue: Email prefix instead of username is displayed in welcome message
-   - Problem identified: Removing username from django AllAuth is causing it to use email prefix when using {user.username}
+   - Problem identified: Setting "ACCOUNT_USERNAME_REQUIRED = False" in AllAuth settings is causing django to use email prefix when using {user.username} instead of the username.
+   - Solution: Modified AllAuth settings in settings.py to:
+      ```python
+      ACCOUNT_AUTHENTICATION_METHOD = 'email'  # Keep email-only login
+      ACCOUNT_EMAIL_REQUIRED = True
+      ACCOUNT_USERNAME_REQUIRED = True  # Changed to True to require username at signup
+      ACCOUNT_EMAIL_VERIFICATION = 'none'
+   - Result: Users now create a username during registration which is displayed in the welcome message, while still maintaining email-only login functionality. This provides a more personalized user experience while keeping the simplified email-based authentication.
 <br>
 <br>
 </details>

@@ -1,6 +1,6 @@
 # Expert Patient - UC Expert - Ulcerative Colitis Patient Management System
 
-Expert Patient is a comprehensive Django-based web application designed to help patients with Bowel disease (Currently only Ulcerative Colitis (UC)) manage their condition effectively. It provides tools for tracking symptoms, medications, food triggers, and offers AI-powered chat support for UC-related questions which are answered solely within the context of provided information.
+Expert Patient is a comprehensive Django-based web application designed to help patients with Bowel disease (Currently only Ulcerative Colitis (UC)) manage their condition effectively. It provides tools for tracking symptoms, medications, food triggers, and offers AI-powered chat support for UC-related questions which are answered solely within the context of provided medical knowledge and the users current logged disease state.
 
 ![Responsive Mockup](./static/readme_images/Expert-patient-mockup.png)
 
@@ -27,7 +27,7 @@ Once the UC part of the app is complete it can be easily scaled for patients wit
 <details>
 <summary>Why Expert Patient?</summary>
 <br>
-After having conversation with the medical director of InVita intellignece, Mark Sullivan, I noticed a misalignment between doctors and their patients on a particular idea. Mark explained to me how doctors value "Expert Patients". Having a patient who understands their condition well is beneficial to the doctor, as what is reported to them tends to be more accurate and relevant. I did some research among family, friends and peers, and learned that this notion is not realised by many people suffering from some form of affliction that is regularly monitored by their doctor. They feel as though, if anything, they are pushed away from understsnding the exact workings of their condition, and are simply told what to monitor and how to do it. This works well for many dilligent patients, but reseacrch suggested that some feel a disconnect. They want to understand their illness in depth, but may feel "stupid" when speaking to a doctor regarding recent developments in symptoms or when they bring up things they may think are of note. 
+After having conversation with the medical director of InVita intelligence at my bootcamp orientation, I noticed a misalignment between doctors and their patients on a particular idea. Mark explained to me how doctors value "Expert Patients". Having a patient who understands their condition well is beneficial to the doctor, as what is reported to them tends to be more accurate and relevant. I did some research among family, friends and peers, and learned that this notion is not realised by many people suffering from some form of affliction that is regularly monitored by their doctor. They feel as though, if anything, they are pushed away from understsnding the exact workings of their condition, and are simply told what to monitor and how to do it. This works well for many dilligent patients, but reseacrch suggested that some feel a disconnect. They want to understand their illness in depth, but may feel "stupid" when speaking to a doctor regarding recent developments in symptoms or when they bring up things they may think are of note. 
 <br>
 <br>
 UC expert was born of my own experience in this area and response I received from others. It aims to turn patients into experts on their condition by allowing them to interact with an AI, regarding not just general information on the disease, but specific information relating to their current symptoms and state of their condition. They can ask the "stupid" questions they may prefer not to ask their doctor, gain re-assurance on particular issues, gain a deeper understanding of what may be causing them and have a record of symptoms they can then talk more confidently with their doctor about. The AI must re-direct to a mecical professional when the users interaction warrants it.
@@ -613,6 +613,8 @@ Required Fields:
 This system will help patients track their UC medication regimen, ensuring accurate records of current and historical treatments. It supports all major UC medication categories and various dosing schedules.
 <br>
 
+#### Model
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -647,6 +649,8 @@ Required Fields:
 This system allows patients to monitor their diet and identify potential trigger foods. It includes detailed timing and portion information to help establish patterns between diet and symptoms.
 <br>
  
+ #### Model
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -672,7 +676,8 @@ Required Fields:
 A context-aware chat system that provides personalized UC management guidance based on user data and verified medical information. It must manage persistent messages across multiple conversations
 <br>
 
-#### Conversation Management
+#### Conversation Management Model
+
 ```python
 Required Fields:
 - User (ForeignKey)
@@ -680,7 +685,7 @@ Required Fields:
 - Created/Updated timestamps
 ```
 
-#### Message Management
+#### Message Management Model
 ```python
 Required Fields:
 - Conversation (ForeignKey)
@@ -1229,6 +1234,7 @@ erDiagram
 - Clear visual feedback for user actions
 - Consistent use of Tailwind CSS for styling
 - Familiar chat window with colour coded message boxes
+- Nunito sans font for professional look
 
 </details>
 
@@ -1255,13 +1261,18 @@ Message Colors:
 ```
 
 #### Typography
-Using Tailwind's default font stack:
-```css
-- Headings: font-bold
-- Body Text: font-normal
-- Navigation: font-medium
-- Form Labels: font-medium
-```
+
+I will use Nunito Sans as the primary font for UC Expert due to its excellent readability and professional appearance. As a medical support application, it is crucial to select typography that would be both accessible and trustworthy.
+Nunito Sans offers several characteristics that make it ideal for this application:
+
+Clean, modern letterforms that maintain legibility at various sizes
+Well-balanced characters that reduce eye strain during extended reading
+Professional appearance that reinforces the medical nature of the application
+Excellent rendering across different devices and screen sizes
+Strong accessibility characteristics for users with visual impairments
+
+The font will implemented site-wide to maintain consistency across all pages and components, contributing to a cohesive and professional user experience.
+This choice aligns with the application's goal of providing clear, accessible health information while maintaining a professional medical aesthetic.
 <br>
 <br>
 </details>
@@ -1351,12 +1362,15 @@ Destructive:
 
 <br>
 
-- Persistent user accounts with authentication
-- Styled login page 
-- Register as a new user with password verification
-- Styled register page
-- Styled sign out page with confirmation
-- Welcome message
+Provides secure access to personal medical data through user-specific accounts.
+
+Fulfills "User Authentication System" user story
+
+- ✓ Can register for an account
+- ✓ Can log in securely
+- ✓ Can log out
+- ✓ Can only access own medical data
+- ✓ Has persistent data across sessions
 
 ![Sign In](./static/readme_images/sign_in.png)
 ![Register](./static/readme_images/sign_up.png)
@@ -1385,11 +1399,17 @@ Destructive:
 <summary>Symptom Tracking</summary>
 <br>
 
-- Log symptoms with type, severity, and description
-- Date-based tracking
-- Visual severity indicators
-- Edit and delete functionality
-- Historical list view of symptoms
+Allows users to monitor and record their UC symptoms with detailed information and severity tracking.
+
+Fulfills "Symptom Logging System" user story:
+
+- ✓ Can select from predefined symptom types (pain, blood, urgency, fatigue, joint pain, other)
+- ✓ Can rate severity on a 1-5 scale
+- ✓ Can add descriptive notes about symptoms
+- ✓ Can set the date of symptoms
+- ✓ Can view a list of recorded symptoms
+- ✓ Can edit or delete existing symptom entries
+
 
 ![Symtom List](./static/readme_images/symptom_list.png)
 ![Add Symptom](./static/readme_images/add_symptom.png)
@@ -1400,12 +1420,18 @@ Destructive:
 <details>
 <summary>Medication Management</summary>
 <br>
+
+Enables tracking of all UC medications with detailed information about dosage, frequency, and active status.
  
-- Comprehensive medication database
-- Track active and previous medications
-- Record dosage and frequency
-- Medication history view
-- Edit and delete functionality
+Fulfills "Medication Management System" user story:
+
+- ✓ Can add new medications with name, dosage, and frequency
+- ✓ Can specify medication start date
+- ✓ Can mark medications as active/inactive
+- ✓ Can add notes about medications
+- ✓ Can view complete medication history
+- ✓ Can edit medication details
+- ✓ Can delete medication entries
 
 ![Medication List](./static/readme_images/medication_list.png)
 ![Add Medication](./static/readme_images/add_medication.png)
@@ -1416,13 +1442,17 @@ Destructive:
 <details>
 <summary>Food Diary</summary>
 <br>
+Comprehensive food tracking system that helps identify trigger foods and track reactions.
 
-- Log meals with date and time
-- Identify trigger foods
-- Track portion sizes
-- Add notes about reactions
-- View food history
-- Edit and delete functionality
+Fulfills "Food Diary Management" user story:
+
+- ✓ Can log meals with date and time
+- ✓ Can specify food items consumed
+- ✓ Can rate digestive comfort after meals (1-5 scale)
+- ✓ Can note specific reactions to foods
+- ✓ Can view food diary history
+- ✓ Can identify trigger foods through history
+- ✓ Can edit or delete food diary entries
 
 ![Food Diary List](./static/readme_images/food_list.png)
 ![Add Food](./static/readme_images/add_food.png)
@@ -1434,13 +1464,59 @@ Destructive:
 <summary>AI Chat Support</summary>
 <br>
 
-- UC-specific knowledge base
-- Context-aware responses
-- Emergency guidance for severe symptoms
-- Conversation history as context
-- Personalized responses based on user data
+An intelligent chat system that provides personalized UC management support using the user's health data and medical knowledge documents for context.
 
-ADD IMAGE HERE
+Fulfills "Basic AI Chat Support" user story:
+
+- ✓ Can start new conversations with custom titles
+- ✓ Can receive responses based on verified UC information
+- ✓ Can view chat history
+- ✓ Receives emergency guidance for severe symptoms
+- ✓ Gets redirected to healthcare providers when appropriate
+- ✓ Can access previous conversations
+
+Fulfills "Personalized AI Responses" user story:
+
+- ✓ AI references user's current medications in responses
+- ✓ AI considers user's symptom history when giving advice
+- ✓ AI provides personalized recommendations based on user data
+- ✓ AI maintains medical context throughout conversation
+- ✓ AI flags concerning symptom patterns
+- ✓ AI avoids contradicting user's current treatment plan
+
+Fulfills "Conversation Management" user story:
+
+- ✓ Can create titled conversations
+- ✓ Can view list of all conversations
+- ✓ Can navigate between different conversations
+- ✓ Can see timestamp for each message
+- ✓ Can identify bot vs user messages
+
+Fulfills "AI Knowledge Verification" user story:
+
+- ✓ AI clearly indicates when information is not available
+- ✓ AI provides consistent answers to similar questions
+- ✓ AI acknowledges medical disclaimer when appropriate
+- ✓ AI maintains professional medical terminology
+- ✓ AI correctly categorizes symptom severity
+
+Fulfills "AI Chat Context Management" user story:
+
+- ✓ AI remembers previous questions in conversation
+- ✓ AI can reference earlier parts of conversation
+- ✓ AI maintains consistent advice throughout chat
+- ✓ AI can clarify previous responses
+- ✓ AI can update responses based on new information
+
+![Conversation List](./static/readme_images/conversation_list.png)
+![New Conversation](./static/readme_images/new_conversation.png)
+![General UC Chat](./static/readme_images/general_uc_chat.png)
+![Emergency Chat](./static/readme_images/emergency_chat.png)
+![Symtom and Food Chat](./static/readme_images/symptom_and_food_chat.png)
+![Medication Chat](./static/readme_images/medication_chat.png)
+![Prompt Following Chat](./static/readme_images/prompt_following_chat.png)
+![Edge Chat](./static/readme_images/edge_testing_chat.png)
+
 <br>
 <br>
 </details>
@@ -1531,7 +1607,7 @@ ADD IMAGE HERE
 - Secure HTTPS connection enforced
 - WhiteNoise for secure static file serving
 
-Chat System Security
+#### Chat System Security
 
 - RAG responses limited to verified medical information
 - Emergency protocols for severe symptoms
@@ -1547,13 +1623,13 @@ Chat System Security
 <details>
 <summary>Recent Data in Dashboard</summary>
 
-Allows users to quickly view their recent data. I did not identify this as a user need but it was easy to add after development was complete.
+Allows users to quickly view their recent data. I intially did not identify this as a user need but during sprint 3 I was making good headway and decided it was an easy feature to add so went along with it.
 
 - Overview of recent symptoms, medications, and food entries
 - Quick access cards to main features
 - Status indicators for active medications and recent symptoms
 
-ADD IMAGE HERE
+![Recent Dashboard](./static/readme_images/recent.png)
 <br>
 <br>
 </details>
@@ -1573,12 +1649,21 @@ These adjustments allow the user to more accurately assess their reaction to par
 
 "Admin" button added to navbar for superusers only that allows easy navigation to admin panel without having to alter URL endpoint.
 
+![Admin Btn](./static/readme_images/admin_btn.png)
+</details>
+
 <details>
 <summary>Emergent Report Creation</summary>
 
 I had originally outlined report creation as a "Won't Have" feature, but upon testing the RAG sytem I identified the capabilty of the AI to dynamically generate reports based on the user context it is given.
 
+![AI Report](./static/readme_images/ai_report.png)
+
+</details>
+
 ### Future Features
+
+</details>
 
 <details>
 <summary>All</summary>
@@ -1635,13 +1720,95 @@ I used Git for version control. I protected the main branch and tried to only wo
 
 <details>
 <summary>Methodology</summary>
+<br>
+I took an agile approach towards the development of this project. I created user stories from defined user needs and created issues and a project board on GitHub. The user stories were given labels relating to MoSCoW Prioritisation. I approached the development of UC Expert through 5 distinct sprints, each focusing on specific aspects of the application. While the sprint breakdown below appears highly structured, the actual development process was more dynamic and responsive. Following agile principles, particularly the value of "Responding to change over following a plan" from the Agile Manifesto, I adapted my development approach as new challenges and requirements emerged. The sprint structure presented here is a retrospective organization of the development journey, showing how the project evolved through iterative development and continuous problem-solving.
 
-TALK ABOUT HOW AGILE WAS USED HERE - Project board etc.
+This approach aligns closely with agile principles, particularly:
+
+- Embracing changing requirements, even late in development
+- Delivering working software frequently
+- Technical excellence and good design
+- Regular adaptation to changing circumstances
+
+Starting with a core vision of a comprehensive UC management system, I built the project incrementally, tackling technical challenges as they arose. For example, the food diary evolved to include more sophisticated tracking options based on development insights, and the AI implementation underwent several optimizations as deployment challenges became apparent. This organic, responsive development style allowed me to create a more robust and user-focused application than a rigid, pre-planned approach might have achieved.
+
+</details>
+
+<details>
+<summary>Sprints</summary>
+
+#### Sprint 1: Foundation & Authentication
+
+I began with setting up the project foundations and user authentication. My first priority was ensuring users could securely access their personal health data. I:
+
+- Set up the Django project with initial configurations
+- Implemented AllAuth for secure authentication
+- Created custom login/signup templates
+- Built a responsive base template with navigation
+- Configured email-based login for better security
+- Set up proper CSRF protections and security settings
+
+#### Sprint 2: Core Feature Development - Symptoms & Medications
+
+With authentication in place, I moved on to building the core health tracking features. During this sprint, I:
+
+- Built the complete symptom logging system with CRUD functionality
+- Developed the medication management system
+- Created reusable templates for consistent user experience
+- Implemented comprehensive form handling with validation
+- Focused on following Django's "fat models, thin views, stupid templates" philosophy - (This is where I refactored the form handling logic from templates to forms.py files)
+- Added user feedback systems for all operations
+
+#### Sprint 3: Food Diary & Enhanced Features
+
+Next, I developed the food diary system and enhanced the user interface. I:
+
+- Implemented the food diary with trigger food tracking
+- Added discomfort level monitoring for food entries
+- Built a dashboard showing recent entries from all trackers (This is an added feature not identified in my plan)
+- Enhanced the UI with responsive cards
+- Added quick-add buttons for improved user experience
+- Implemented consistent styling across all features
+
+#### Sprint 4: AI Integration & Optimization
+The most complex feature was the AI chat system. During this sprint, I:
+
+- Implemented the RAG (Retrieval-Augmented Generation) system
+- Built conversation management features
+- Optimized memory usage for deployment
+- Created a system for contextual responses based on user data
+- Added loading states for better user experience
+- Implemented proper error handling for the AI system
+
+#### Sprint 5: Cleanup, Testing & Polish (Dec 8-9)
+
+In the final sprint, I focused on polishing the application and ensuring everything met high standards. I:
+
+- Set up admin panels for all apps
+- Added footer links and legal templates
+- Creating automated tests for each app apart from the RAG knowledge app
+- Ran the deployed app through validation checkers
+- Made accessibility improvements
+- Corrected header element ordering
+- Added aria labels to buttons
+- Fixed various styling issues
+- Added superuser access to admin panel
+- Updated landing page text and messaging
+- Added admin panel access from the navbar for superusers
+
+Throughout development, I maintained an agile approach, regularly committing changes and iterating based on testing and user experience considerations. Each sprint built upon the previous ones, gradually transforming UC Expert from a basic health tracker into a comprehensive patient support system. 
 <br>
 <br>
 </details>
 
+<details>
+<summary>Project Board</summary>
+<br>
+I created a backlog colummn for my project board and populated it with all of my user stories. I worked on groups of related stories sequentially according to my sprint strategy, moving them across the board until all criteria were satisfied.
 
+![Project Board](./static/readme_images/project_board.png)
+
+</details>
 
 ## Testing and Validation
 
@@ -1957,12 +2124,3 @@ The live site can be found here: [https://8000-guymitchy-ucexpertpatie-sv6c12l37
 
 </details>
 
-
-
-The project uses Django's "fat models, skinny views, stupid templates" philosophy for clean, maintainable code.
-
-
-Bugs/future 
-
-
-Fist time you open the menu it isnt animated

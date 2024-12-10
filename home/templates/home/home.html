@@ -10,9 +10,9 @@
     <div class="flex-grow">
         {% if messages %}
         {% for message in messages %}
-        {% if message.tags == 'success'%}
+        {% if message.tags == 'success' %}
         <div
-            class="message mb-4 p-4 rounded-md bg-green-100 text-green-700 transition-opacity duration-500 text-center">
+            class="message mb-4 p-4 rounded-md bg-green-100 text-green-700 transition-opacity duration-300 text-center">
             {{ message }}
         </div>
         {% endif %}
@@ -527,7 +527,7 @@
 </div>
 <script>
     function switchTab(tabName) {
-        // Only UC tab is active, so we don't need the switching functionality
+        // Only UC tab is active, so i don't need the switching functionality
         return false;
     }
 </script>

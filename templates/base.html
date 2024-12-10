@@ -143,13 +143,11 @@
             const menuContent = mobileMenu.querySelector('div:last-child');
 
             if (mobileMenu.classList.contains('hidden')) {
-                // Show menu
                 mobileMenu.classList.remove('hidden');
                 setTimeout(() => {
                     menuContent.classList.remove('transform', 'translate-x-full');
                 }, 10);
             } else {
-                // Hide menu
                 menuContent.classList.add('transform', 'translate-x-full');
                 setTimeout(() => {
                     mobileMenu.classList.add('hidden');

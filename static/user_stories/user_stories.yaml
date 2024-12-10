@@ -119,34 +119,6 @@ stories:
       - "AI correctly categorizes symptom severity"
 
   - type: Feature
-    title: "Food Pattern Analysis"
-    as_a: "UC patient"
-    i_want: "to understand how food affects my condition"
-    so_that: "I can make better dietary choices and prevent symptom flare-ups"
-    priority: "Could Have"
-    labels: ["Could Have", "User"]
-    acceptance_criteria:
-      - "Can view foods grouped by reaction severity"
-      - "Can see correlation between foods and symptoms"
-      - "Can mark foods as 'safe' or 'trigger'"
-      - "Can add notes about food combinations"
-      - "Can track portion sizes and their effects"
-
-  - type: Feature
-    title: "Food Diary Reports"
-    as_a: "UC patient"
-    i_want: "to share my food diary with healthcare providers"
-    so_that: "they can better understand my dietary triggers and adjust treatment plans accordingly"
-    priority: "Could Have"
-    labels: ["Could Have", "User"]
-    acceptance_criteria:
-      - "Can generate food diary summaries"
-      - "Can filter diary entries by date range"
-      - "Can highlight problematic foods"
-      - "Can include symptom correlations"
-      - "Can export diary in readable format"
-
-  - type: Feature
     title: "AI Chat Context Management"
     as_a: "UC patient"
     i_want: "the AI to maintain conversation context"

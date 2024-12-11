@@ -2064,10 +2064,48 @@ Accessbility warnings on the dashboard - 4/8 buttons on the cards have low contr
 <details>
 <summary>Current Limitations</summary>
 
-#### Current Limitations
+#### Tailwind CDN
 
-1. Tailwind cdn for development only.
-  - Talwind cdn is not reccomended for production purposes. Since this is a development project I haven't installed tailwind using the CLI or set up the tailwind config.js, I will continue using the CDN for now.
+Tailwind cdn is not reccomended for production purposes. Since this is a development project I haven't installed tailwind using the CLI or set up the tailwind config.js, I will continue using the CDN for now.
+
+#### AI Knowledge Management
+The current implementation of the AI assistant has several limitations that could be improved:
+
+- Knowledge Base Structure:
+
+  - The core knowledge is stored in a single markdown file, which could be better organized into specialized sections
+  - Medical information could be separated into distinct categories (medications, symptoms, treatments, etc.)
+  - Better structuring would improve the AI's ability to retrieve relevant information
+
+
+- RAG Implementation:
+
+  - Current chunk size (250 characters) and overlap (25 characters) settings may need optimization
+  - The retrieval system fetches a fixed number of documents (k=5) which might not be optimal for all query types
+  - More sophisticated relevance scoring could improve response accuracy
+
+
+- Context Management:
+
+  - The conversation history is limited to the last 10 messages
+  - User context is built linearly without semantic understanding of the relationship between different data points
+  - The prompt template could be refined to better utilize the retrieved documents
+
+
+- Response Generation:
+
+  - The system uses a relatively simple prompting strategy that could be enhanced
+  - No specific handling for different types of medical queries (emergency vs general information)
+  - Limited ability to synthesize information from multiple knowledge sources
+
+
+These limitations could be addressed in future updates through:
+
+- Restructuring the knowledge base into specialized documents
+- Implementing dynamic chunk sizing based on content type
+- Developing more sophisticated retrieval strategies
+- Enhancing the prompt engineering for better context utilization
+- Adding specialized handling for different types of medical queries
 
 </details>
 
@@ -2155,6 +2193,27 @@ The live site can be found here: [https://8000-guymitchy-ucexpertpatie-sv6c12l37
 - dj-database-url for database configuration
 - python-dotenv for environment management
 
-
 </details>
 
+## Conclusion
+
+<details>
+<summary>Conclusion</summary>
+
+
+The development of UC Expert has been a significant technical achievement, particularly in implementing a functioning RAG (Retrieval Augmented Generation) system that successfully incorporates user-specific database information as context for AI responses. This integration demonstrates the potential for combining traditional database-driven applications with modern AI capabilities.
+<br>
+The project provided invaluable experience with Django's architecture and capabilities. Working with Django's powerful ORM, class-based views, and form handling has built a strong foundation for future development. The modular nature of Django applications became particularly apparent through this project, suggesting exciting possibilities for expansion, such as a dedicated doctor's portal that would allow healthcare providers authorized access to specific patient data.
+<br>
+Through the development process, I gained practical experience in:
+
+- Developing prototype systems with AI
+- Creating a detailed and structured development plan
+- Applying AGILE principles to a real development scenario
+- Building complex database relationships
+- Implementing secure authentication systems
+- Implementing CRUD functionality
+- Managing AI integrations with traditional web applications
+- Developing maintainable, scalable code structures
+
+This project has been an exceptional learning experience, providing me with reusable patterns and solutions that I can apply to future development work. From the RAG system architecture to the implementation of complex database relationships, each component has enhanced my understanding of building sophisticated web applications. These skills and experiences have significantly expanded my skils as a developer, enabling me to tackle more complex and ambitious projects in the future.

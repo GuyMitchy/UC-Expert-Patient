@@ -2164,7 +2164,7 @@ The application was deployed on Heroku using the following method:
 <details>
 <summary>Live Link</summary>
 <br>
-The live site can be found here: [https://8000-guymitchy-ucexpertpatie-sv6c12l37dh.ws.codeinstitute-ide.net/]
+The live site can be found here: [https://uc-expert-capstone-faa6ac93197a.herokuapp.com/]
 <br>
 <br>
 </details>

@@ -1623,7 +1623,7 @@ Fulfills "AI Chat Context Management" user story:
 <details>
 <summary>Recent Data in Dashboard</summary>
 <br>
-Allows users to quickly view their recent data. I intially did not identify this as a user need but during sprint 3 I was making good headway and decided it was an easy feature to add so went along with it.
+Allows users to quickly view their recent data. I initially did not identify this as a user need but during sprint 3 I was making good headway and decided it was an easy feature to add so went along with it.
 
 - Overview of recent symptoms, medications, and food entries
 - Quick access cards to main features
@@ -1692,8 +1692,8 @@ I used Git for version control. I protected the main branch and tried to only wo
 
 ##### Feature Branches
 
-- Main - Set up intial Django prject structure, Urls and settings
-- Database-and-deploy - For switching from sqlLite to Postgres and intial deploy
+- Main - Set up initial Django prject structure, Urls and settings
+- Database-and-deploy - For switching from sqlLite to Postgres and initial deploy
 - home-branch - For home app features
 - foods-app - For foods app features
 - medication-app - For medication app features
@@ -2012,8 +2012,8 @@ Accessbility warnings on the dashboard - 4/8 buttons on the cards have low contr
    - Result: Improved reliability and scalability
 
 3. Slow inital load time:
-   - Initial issue: Website was slow to load home page due to vector database intialisition on access.
-   - Solution: Moved database intialisation to send message function.
+   - Initial issue: Website was slow to load home page due to vector database initialisition on access.
+   - Solution: Moved database initialisation to send message function.
    - Result: Improved code organization, seperation of concerns, maintainability and readabilty.
    - Future improvement: Move RAG initialisation to chat window load to decrease wait time for first message response.
 
@@ -2123,7 +2123,7 @@ The application was deployed on Heroku using the following method:
    - OpenAI API key
    - Pinecone account and API key
 
-2. Intial Setup:
+2. Initial Setup:
    - Configure GitHub integration in Heroku dashboard
    - Set up Postgres database through Code institute
    - Configure Pinecone vector database

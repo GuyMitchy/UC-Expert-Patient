@@ -2159,6 +2159,8 @@ The application was deployed on Heroku using the following method:
    # Deploy
    git push heroku main
    ```
+</details>
+
 <details>
 <summary>Live Link</summary>
 <br>
@@ -2199,9 +2201,10 @@ The live site can be found here: [https://8000-guymitchy-ucexpertpatie-sv6c12l37
 
 <details>
 <summary>Conclusion</summary>
-
+<br>
 
 The development of UC Expert has been a significant technical achievement, particularly in implementing a functioning RAG (Retrieval Augmented Generation) system that successfully incorporates user-specific database information as context for AI responses. This integration demonstrates the potential for combining traditional database-driven applications with modern AI capabilities.
+<br>
 <br>
 The project provided invaluable experience with Django's architecture and capabilities. Working with Django's powerful ORM, class-based views, and form handling has built a strong foundation for future development. The modular nature of Django applications became particularly apparent through this project, suggesting exciting possibilities for expansion, such as a dedicated doctor's portal that would allow healthcare providers authorized access to specific patient data.
 <br>

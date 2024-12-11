@@ -1699,6 +1699,7 @@ I used Git for version control. I protected the main branch and tried to only wo
 - medication-app - For medication app features
 - symptom-app - For symptom app features
 - chat-and-rag - For RAG sytem development and chat app features
+- testing - For automated tests and fixes based off of test results
 
 ##### Styling Branches
 

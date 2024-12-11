@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="max-w-7xl mx-auto px-2 xs:px-4 sm:px-6 lg:px-8 py-12 min-w-0 overflow-x-hidden">
     {% if user.is_authenticated %}
     <div class="mb-8 text-center">
         <h1 class="text-4xl text-gray-900">UC Expert Dashboard</h1>
@@ -256,7 +256,7 @@
 
     <div class="max-w-screen w-full space-y-8">
         <!-- Hero Section -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
             <div class="text-center">
                 <h1 class="flex items-center gap-2 justify-center text-4xl font-medium text-gray-900 mb-4">
                     <i data-lucide="activity" class="thin-icon w-12 h-12"></i> Expert Patient
@@ -265,11 +265,11 @@
                 <span class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-lg text-sm font-semibold mb-4">
                     Your Personal Bowel Disease Health Companion
                 </span>
-                <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                <p class="text-l text-gray-600 mt-4 mb-8 max-w-2xl mx-auto">
                     Transform your health journey with intelligent tracking, personalized AI insights, and expert guidance
                     tailored to your specific condition.
                 </p>
-                <p class="text-xl text-gray-600 mb-4 max-w-2xl mx-auto">Become an Expert Patient</p>
+                <p class="text-l text-gray-600 mb-4 max-w-2xl mx-auto">Become an Expert Patient</p>
 
                 <div class="space-x-4">
                     <a href="{% url 'account_login' %}"
@@ -490,7 +490,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="font-semibold text-gray-900">Amanda Patel</h3>
-                            <p class="text-gray-500 text-sm">Chrone Disease Patient</p>
+                            <p class="text-gray-500 text-sm">Crohn's Disease Patient</p>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-4">

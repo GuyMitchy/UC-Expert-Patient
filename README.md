@@ -1081,10 +1081,8 @@ graph TD
    except Exception as e:
        # Error handling and logging
    ```
-<br>
-<br>
-</details>
 
+</details>
 
 <details>
 <summary>User Flow</summary>
@@ -1106,8 +1104,7 @@ graph TD
    - Start/Continue Conversation
    - Receive Contextual Responses
    - Emergency Guidance When Needed
-<br>
-<br>
+
 </details>
 
 ### Skeleton
@@ -1279,11 +1276,11 @@ Message Colors:
 I will use Nunito Sans as the primary font for UC Expert due to its excellent readability and professional appearance. As a medical support application, it is crucial to select typography that would be both accessible and trustworthy.
 Nunito Sans offers several characteristics that make it ideal for this application:
 
-Clean, modern letterforms that maintain legibility at various sizes
-Well-balanced characters that reduce eye strain during extended reading
-Professional appearance that reinforces the medical nature of the application
-Excellent rendering across different devices and screen sizes
-Strong accessibility characteristics for users with visual impairments
+- Clean, modern letterforms that maintain legibility at various sizes
+- Well-balanced characters that reduce eye strain during extended reading
+- Professional appearance that reinforces the medical nature of the application
+- Excellent rendering across different devices and screen sizes
+- Strong accessibility characteristics for users with visual impairments
 
 The font will implemented site-wide to maintain consistency across all pages and components, contributing to a cohesive and professional user experience.
 This choice aligns with the application's goal of providing clear, accessible health information while maintaining a professional medical aesthetic.
@@ -1533,7 +1530,6 @@ Fulfills "AI Chat Context Management" user story:
 
 <details>
 <summary>Tech Stack</summary>
-<br>
 
 #### Backend
 
@@ -1642,8 +1638,8 @@ Allows users to quickly view their recent data. I intially did not identify this
 <summary>Food model Adjustments</summary>
 <br>
  "Disgestive discomfort" field and "Unsure" trigger choice option for "is_trigger" field.
-
-These adjustments allow the user to more accurately assess their reaction to particular foods and aid the AI in discerning between foods that may or may not be triggering symptoms"
+<br>
+These adjustments allow the user to more accurately assess their reaction to particular foods and aid the AI in discerning between foods that may or may not be triggering symptoms.
 <br>
 <br>
 </details>
@@ -1811,6 +1807,7 @@ Throughout development, I maintained an agile approach, regularly committing cha
 <br>
 I created a backlog colummn for my project board and populated it with all of my user stories. I worked on groups of related stories sequentially according to my sprint strategy, moving them across the board until all criteria were satisfied.
 <br>
+
 ![Project Board](./static/readme_images/project_board.png)
 
 </details>
@@ -1828,20 +1825,61 @@ Manual testing was conducted on all features across different browsers:
 - Safari
 - Edge
 
-Test scenarios included:
+Key test scenarios were executed across all browsers:
 
-- Form submissions with valid/invalid data
-- Navigation and routing
-- User flow through medical/food data entry
-- Chat interface responsiveness
-- Error message display
-- Mobile responsiveness
+Form Submissions:
+
+- Tested all forms with valid and invalid data
+- Verified error message display and validation
+- Confirmed successful submission behaviors
+
+Navigation and Routing:
+
+- Tested all navigation links and menu items
+- Verified proper URL routing and page loading
+- Confirmed browser back/forward button behavior
+
+Medical/Food Data Entry:
+
+- Verified symptom logging functionality
+- Tested medication tracking features
+- Confirmed food diary entry and retrieval
+- Checked data validation and error handling
+
+Chat Interface:
+
+- Tested conversation creation and management
+- Verified message sending and receiving
+- Confirmed chat history persistence
+- Checked AI response generation
+
+Error Handling:
+
+- Tested form validation error messages
+- Verified server error handling
+- Confirmed user feedback mechanisms
+
+Mobile Responsiveness:
+
+- Tested all features on various screen sizes
+- Verified responsive design breakpoints
+- Confirmed touch interactions on mobile devices
+
+
+JavaScript functionality was manually tested across all browsers:
+
+- Mobile Menu Toggle: Verified menu opens/closes correctly on mobile devices and tested responsive behavior across different screen sizes
+- Chat Window Auto-scroll: Confirmed chat window automatically scrolls to newest messages and tested with varying message lengths and rapid message sending
+- Lucide Icons: Verified all icons render correctly throughout the application with proper sizing and colors
+- Success Message Animation (Home Page): Tested success message appearance and automatic timeout when logging in and signing out
+
+All JavaScript features were found to be working as intended across tested platforms.
 
 
 ##### LLM Integration Testing
 For the chatbot functionality, which uses OpenAI's API:
 
-- Initial prototype testing was conducted using a local LLM to verify the conversation flow and context management
+- Comprehensive initial prototype testing was conducted using a local LLM to verify the conversation flow and context management
 - Production testing is conducted manually and selectively due to API costs
 
 - Regular manual testing is performed on key conversation paths to ensure:
@@ -1871,8 +1909,6 @@ See tests/test_auth.py
 - Email requirement validation
 - Authentication state redirects
 - Form validation messages
-<br>
-<br>
 
 ![Auth Tests](./static/readme_images/test_results/auth_test.png)
 
@@ -1885,8 +1921,6 @@ See symptoms/tests.py
 - CRUD operations (Create, Read, Update, Delete)
 - User-specific data access
 - Form submission handling
-<br>
-<br>
 
 ![Symptom Tests](./static/readme_images/test_results/symptom_test.png)
 
@@ -1901,8 +1935,6 @@ See medications/tests.py
 - CRUD operations
 - User data isolation
 - Form field validation
-<br>
-<br>
 
 ![Medication Tests](./static/readme_images/test_results/medications_test.png)
 
@@ -1917,8 +1949,6 @@ See foods/tests.py
 - Date/time field validation
 - CRUD operations
 - User data isolation
-<br>
-<br>
 
 ![Food Tests](./static/readme_images/test_results/foods_test.png)
 
@@ -1932,8 +1962,6 @@ See chat/tests.py
 - Bot message mocking
 - CRUD operations for conversations
 - User data isolation
-<br>
-<br>
 
 ![Chat Tests](./static/readme_images/test_results/chat_test.png)
 
@@ -1945,8 +1973,9 @@ See chat/tests.py
 
 #### PEP8
 
-I used flake8 to test PEP8 adherence. My code passes on all fronts apart from the RAG_setup.py template prompt. I chose not to split the strings here as the prompt readabilty suffers and edits are made cumbersome. 
+I used flake8 to test PEP8 adherence. My code passes on all fronts apart from the RAG_setup.py template prompt having lines over 80 characters. I chose not to split the strings here as the prompt readabilty suffers and edits are made cumbersome. Code created by django fails on many fronts.
 
+![PEP8](./static/readme_images/pep8.png)
 
 #### WCAG Markup Validator
 
@@ -1959,7 +1988,7 @@ Passes all tests.
 The project scores well on lighthouse on all pages.
 
 Areas for improvement: 
-Accessbility warnings on the dashboard - 4/8 buttons on the cards have low contrast between the text and background. I considered making the text more bold but decided to keep it as is for styling purposes.
+Accessbility warnings on the dashboard - 4/8 buttons on the cards have low contrast between the text and background. Making the text more bold would fix this but I decided to keep it as is for styling purposes.
 
 
 ![Lighthouse Report](./static/readme_images/test_results/lighthouse.png)

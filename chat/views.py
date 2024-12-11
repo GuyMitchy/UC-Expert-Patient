@@ -147,7 +147,9 @@ def send_message(request, conversation_id, rag=None):
                     user_context += (
                         f"- Food diary entry:{food.date}:{food.eaten_at}, "
                         f"{food.get_meal_type_display()} - {food.food_name}, "
-                        f"({food.portion_size}) portion, digestive discomfort:{food.discomfort}, is_trigger:{food.is_trigger}"
+                        f"({food.portion_size}) portion,"
+                        f"digestive discomfort:{food.discomfort},"
+                        f"is_trigger:{food.is_trigger}"
                     )
                     if food.notes:
                         user_context += f" Notes: {food.notes}"

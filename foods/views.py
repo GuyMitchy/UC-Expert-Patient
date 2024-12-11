@@ -10,11 +10,11 @@ from django.utils import timezone
 class FoodListView(LoginRequiredMixin, ListView):
     """
     View for displaying a list of food entries for the logged-in user.
-    
+
     Inherits from:
         LoginRequiredMixin: Ensures user authentication
         ListView: Handles listing of Food objects
-    
+
     Attributes:
         model: Food model
         template_name: Path to the list template
@@ -31,11 +31,11 @@ class FoodListView(LoginRequiredMixin, ListView):
 class FoodCreateView(LoginRequiredMixin, CreateView):
     """
     View for creating new food entries.
-    
+
     Inherits from:
         LoginRequiredMixin: Ensures user authentication
         CreateView: Handles creation of Food objects
-    
+
     Attributes:
         model: Food model
         form_class: Form class for food creation
@@ -61,11 +61,11 @@ class FoodCreateView(LoginRequiredMixin, CreateView):
 class FoodUpdateView(LoginRequiredMixin, UpdateView):
     """
     View for updating existing food entries.
-    
+
     Inherits from:
         LoginRequiredMixin: Ensures user authentication
         UpdateView: Handles updating of Food objects
-    
+
     Attributes:
         model: Food model
         form_class: Form class for food updating
@@ -88,11 +88,11 @@ class FoodUpdateView(LoginRequiredMixin, UpdateView):
 class FoodDeleteView(LoginRequiredMixin, DeleteView):
     """
     View for deleting food entries.
-    
+
     Inherits from:
         LoginRequiredMixin: Ensures user authentication
         DeleteView: Handles deletion of Food objects
-    
+
     Attributes:
         model: Food model
         template_name: Path to the deletion confirmation template

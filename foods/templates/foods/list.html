@@ -23,8 +23,8 @@
         <ul class="divide-y divide-gray-200">
             {% for food in foods %}
             <li class="px-6 py-4">
-                <div class="flex items-center justify-between">
-                    <div>
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div class="flex-1">
                         <p class="text-lg font-medium text-gray-900">
                             {{ food.food_name }}
                         </p>
@@ -37,29 +37,53 @@
                         {% if food.notes %}
                         <p class="text-sm mt-2 text-gray-600">{{ food.notes }}</p>
                         {% endif %}
+
+                        <!-- Status indicators - Now responsive -->
+                        <div class="flex flex-wrap gap-2 mt-3 md:hidden">
+                            <!-- Trigger Status -->
+                            {% if food.is_trigger == 'yes' %}
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full bg-red-100 text-red-800">Trigger</span>
+                            {% elif food.is_trigger == 'no' %}
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-800">Safe</span>
+                            {% else %}
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Unsure</span>
+                            {% endif %}
+
+                            <!-- Discomfort Level -->
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full {% if food.discomfort >= '3' %}bg-red-100 text-red-800{% elif food.discomfort >= '2' %}bg-yellow-100 text-yellow-800{% else %}bg-green-100 text-green-800{% endif %}">
+                                Discomfort: {{ food.discomfort }}
+                            </span>
+                        </div>
                     </div>
 
-                    <div class="flex items-center space-x-4">
-                        <!-- Trigger Status -->
-                        {% if food.is_trigger == 'yes' %}
-                        <span
-                            class="inline-flex items-center px-3 py-1 rounded-full bg-red-100 text-red-800">Trigger</span>
-                        {% elif food.is_trigger == 'no' %}
-                        <span
-                            class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-800">Safe</span>
-                        {% else %}
-                        <span
-                            class="inline-flex items-center px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Unsure</span>
-                        {% endif %}
+                    <div class="flex items-center justify-between mt-4 md:mt-0">
+                        <!-- Desktop status indicators -->
+                        <div class="hidden md:flex md:items-center md:space-x-4">
+                            <!-- Trigger Status -->
+                            {% if food.is_trigger == 'yes' %}
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full bg-red-100 text-red-800">Trigger</span>
+                            {% elif food.is_trigger == 'no' %}
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-800">Safe</span>
+                            {% else %}
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Unsure</span>
+                            {% endif %}
 
-                        <!-- Discomfort Level -->
-                        <span
-                            class="inline-flex items-center px-3 py-1 rounded-full {% if food.discomfort >= '3' %}bg-red-100 text-red-800{% elif food.discomfort >= '2' %}bg-yellow-100 text-yellow-800{% else %}bg-green-100 text-green-800{% endif %}">
-                            Discomfort: {{ food.discomfort }}
-                        </span>
+                            <!-- Discomfort Level -->
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full {% if food.discomfort >= '3' %}bg-red-100 text-red-800{% elif food.discomfort >= '2' %}bg-yellow-100 text-yellow-800{% else %}bg-green-100 text-green-800{% endif %}">
+                                Discomfort: {{ food.discomfort }}
+                            </span>
+                        </div>
 
-                        <!-- Edit/Delete buttons if you have them -->
-                        <div class="flex space-x-2">
+                        <!-- Edit/Delete buttons -->
+                        <div class="flex space-x-2 ml-0 md:ml-4">
                             <a href="{% url 'foods:edit' food.pk %}" class="text-blue-600 hover:text-blue-800"
                                 aria-label="Edit">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,10 +105,9 @@
             {% endfor %}
         </ul>
     </div>
-</div>
-{% else %}
-<div class="text-center py-12 bg-white rounded-lg shadow">
-    <p class="text-gray-500">No meals added yet.</p>
-</div>
-{% endif %}
-{% endblock %}
+    {% else %}
+    <div class="text-center py-12 bg-white rounded-lg shadow">
+        <p class="text-gray-500">No meals added yet.</p>
+    </div>
+    {% endif %}
+    {% endblock %}

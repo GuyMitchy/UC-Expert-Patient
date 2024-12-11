@@ -1115,9 +1115,26 @@ graph TD
 <summary>Wireframes</summary>
 <br>
 
-![Desktop](static/readme_images/desktop_wireframe.png)
+#### Home page
 
+Desktop
+![Desktop](static/readme_images/desktop_wireframe.png)
+Mobile
 ![Mobile](static/readme_images/mobile_wireframe.png)
+
+#### Symptoms List (Same structure for medications, foods, and chat)
+
+Desktop
+![Desktop](static/readme_images/symptoms_desktop.png)
+Mobile
+![Mobile](static/readme_images/symptoms_mobile.png)
+
+#### Chat Window
+Desktop
+![Desktop](static/readme_images/chat_desktop.png)
+Mobile
+![Mobile](static/readme_images/chat_mobile.png)
+
 <br>
 <br>
 </details>

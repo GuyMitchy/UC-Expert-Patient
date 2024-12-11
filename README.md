@@ -1869,12 +1869,11 @@ Mobile Responsiveness:
 JavaScript functionality was manually tested across all browsers:
 
 - Mobile Menu Toggle: Verified menu opens/closes correctly on mobile devices and tested responsive behavior across different screen sizes
-- Chat Window Auto-scroll: Confirmed chat window automatically scrolls to newest messages and tested with varying message lengths and rapid message sending
+- Chat Window Auto-scroll: Confirmed chat window automatically scrolls to newest messages
 - Lucide Icons: Verified all icons render correctly throughout the application with proper sizing and colors
-- Success Message Animation (Home Page): Tested success message appearance and automatic timeout when logging in and signing out
+- Success Message Animation (Home Page Only): Tested success message appearance and automatic timeout when logging in and signing out
 
 All JavaScript features were found to be working as intended across tested platforms.
-
 
 ##### LLM Integration Testing
 For the chatbot functionality, which uses OpenAI's API:

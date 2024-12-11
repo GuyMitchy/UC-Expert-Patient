@@ -925,7 +925,7 @@ User
 All models include appropriate timestamps and custom string representations for admin interface clarity.
 
 <br>
-<br>
+
 </details>
 
 
@@ -1088,7 +1088,6 @@ graph TD
 
 <details>
 <summary>User Flow</summary>
-<br>
 
 1. Authentication
    - Register/Login
@@ -1116,9 +1115,26 @@ graph TD
 <summary>Wireframes</summary>
 <br>
 
-![Desktop](static/readme_images/desktop_wireframe.png)
+#### Home page
 
+Desktop
+![Desktop](static/readme_images/desktop_wireframe.png)
+Mobile
 ![Mobile](static/readme_images/mobile_wireframe.png)
+
+#### Symptoms List (Same structure for medications, foods, and chat)
+
+Desktop
+![Desktop](static/readme_images/symptoms_desktop.png)
+Mobile
+![Mobile](static/readme_images/symptoms_mobile.png)
+
+#### Chat Window
+Desktop
+![Desktop](static/readme_images/chat_desktop.png)
+Mobile
+![Mobile](static/readme_images/chat_mobile.png)
+
 <br>
 <br>
 </details>
@@ -1213,14 +1229,12 @@ erDiagram
 - Checkboxes
 - Text Areas
 
-### Feedback Elements
+#### Feedback Elements
 - Success Messages
 - Error Alerts
 - Loading States
 - Confirmation Dialogs
 
-<br>
-<br>
 </details>
 
 ### Surface
@@ -1311,8 +1325,6 @@ Destructive:
 - White text
 - Hover darkening
 
-<br>
-<br>
 </details>
 
 <details>
@@ -1326,8 +1338,7 @@ Destructive:
 - Multi-column layouts
 - Hover effects
 - Extended navigation
-<br>
-<br>
+
 </details>
 
 <details>
@@ -1348,8 +1359,7 @@ Destructive:
 - Sufficient font sizes
 - Adequate line spacing
 - Proper contrast ratios
-<br>
-<br>
+
 </details>
 
 
@@ -1517,8 +1527,6 @@ Fulfills "AI Chat Context Management" user story:
 ![Prompt Following Chat](./static/readme_images/prompt_following_chat.png)
 ![Edge Chat](./static/readme_images/edge_testing_chat.png)
 
-<br>
-<br>
 </details>
 
 ### Tech Stack and Security Considerations
@@ -1564,13 +1572,11 @@ Fulfills "AI Chat Context Management" user story:
 - Gunicorn: WSGI HTTP Server
 - WhiteNoise: Static file serving in production
 
-<br>
-<br>
+
 </details>
 
 <details>
 <summary>Security Considerations</summary>
-<br>
 
 #### Authentication & Authorization
 
@@ -1614,15 +1620,13 @@ Fulfills "AI Chat Context Management" user story:
 - User data privacy in conversation context
 - Proper error handling and logging
 
-<br>
-<br>
 </details>
 
 ### Added Features
 
 <details>
 <summary>Recent Data in Dashboard</summary>
-
+<br>
 Allows users to quickly view their recent data. I intially did not identify this as a user need but during sprint 3 I was making good headway and decided it was an easy feature to add so went along with it.
 
 - Overview of recent symptoms, medications, and food entries
@@ -1636,7 +1640,7 @@ Allows users to quickly view their recent data. I intially did not identify this
 
 <details>
 <summary>Food model Adjustments</summary>
-
+<br>
  "Disgestive discomfort" field and "Unsure" trigger choice option for "is_trigger" field.
 
 These adjustments allow the user to more accurately assess their reaction to particular foods and aid the AI in discerning between foods that may or may not be triggering symptoms"
@@ -1646,6 +1650,7 @@ These adjustments allow the user to more accurately assess their reaction to par
 
 <details>
 <summary>SuperUser Admin Button</summary>
+<br>
 
 "Admin" button added to navbar for superusers only that allows easy navigation to admin panel without having to alter URL endpoint.
 
@@ -1654,7 +1659,7 @@ These adjustments allow the user to more accurately assess their reaction to par
 
 <details>
 <summary>Emergent Report Creation</summary>
-
+<br>
 I had originally outlined report creation as a "Won't Have" feature, but upon testing the RAG sytem I identified the capabilty of the AI to dynamically generate reports based on the user context it is given.
 
 ![AI Report](./static/readme_images/ai_report.png)
@@ -1667,6 +1672,7 @@ I had originally outlined report creation as a "Won't Have" feature, but upon te
 
 <details>
 <summary>All</summary>
+<br>
 
 - Medication reminders/schedulin
 - Direct healthcare provider communication/access
@@ -1675,8 +1681,7 @@ I had originally outlined report creation as a "Won't Have" feature, but upon te
 - Automated meal planning
 - Social features/community support
 - Integration with electronic health records
-<br>
-<br>
+
 </details>
 
 
@@ -1684,7 +1689,7 @@ I had originally outlined report creation as a "Won't Have" feature, but upon te
 
 <details>
 <summary>Git</summary>
-
+<br>
 I used Git for version control. I protected the main branch and tried to only work on feature branches to aid in maintaining a clean commit history.
 
 #### Branching Strategy
@@ -1710,9 +1715,9 @@ I used Git for version control. I protected the main branch and tried to only wo
 
 ##### Cleanup Branch
 
--cleanup - Branch for cleaning up elements across all features
+- cleanup - Branch for cleaning up and polishing elements across all features
 <br>
-<br>
+
 </details>
 
 
@@ -1805,7 +1810,7 @@ Throughout development, I maintained an agile approach, regularly committing cha
 <summary>Project Board</summary>
 <br>
 I created a backlog colummn for my project board and populated it with all of my user stories. I worked on groups of related stories sequentially according to my sprint strategy, moving them across the board until all criteria were satisfied.
-
+<br>
 ![Project Board](./static/readme_images/project_board.png)
 
 </details>
@@ -1845,8 +1850,7 @@ For the chatbot functionality, which uses OpenAI's API:
     - Context from user's symptoms and medications is properly incorporated
     - Emergency situations are correctly identified and handled
     - Response formatting and presentation is consistent
-<br>
-<br>
+
 </details>
 
 <details>
@@ -1941,7 +1945,7 @@ See chat/tests.py
 
 #### PEP8
 
-I used flake8 to test PEP8 adherence. My code passes on all fronts apart from the RAG_setup.py template prompt. I chose not to split the strings here as the prompt readabilty suffers and makes edits cumbersome. 
+I used flake8 to test PEP8 adherence. My code passes on all fronts apart from the RAG_setup.py template prompt. I chose not to split the strings here as the prompt readabilty suffers and edits are made cumbersome. 
 
 
 #### WCAG Markup Validator
@@ -2024,10 +2028,9 @@ Accessbility warnings on the dashboard - 4/8 buttons on the cards have low contr
                   'stroke-width': '1.3'
               }
           });
-    ```
-- **Result:** Successfully applies thinner stroke width to specific icons while maintaining HTML validity and proper WAI-ARIA compliance, without affecting other Lucide icons on the site.
-<br>
-<br>
+          ```
+- Result: Successfully applies thinner stroke width to specific icons while maintaining HTML validity and proper WAI-ARIA compliance, without affecting other Lucide icons on the site.
+
 </details>
 
 <details>
@@ -2054,7 +2057,7 @@ The application was deployed on Heroku using the following method:
    - OpenAI API key
    - Pinecone account and API key
 
-2. Intial sStup:
+2. Intial Setup:
    - Configure GitHub integration in Heroku dashboard
    - Set up Postgres database through Code institute
    - Configure Pinecone vector database
@@ -2066,6 +2069,8 @@ The application was deployed on Heroku using the following method:
    - PINECONE_API_KEY
 
 3. Procfile and runtime
+  - Added Procfile to root with web: (for declaring web process type indicating receiving og HTTP traffic), gunciorn: (WSGI HTTP server), config:wsgi (Load the application from wsgi file in config directory)
+  - Add runtime.txt file to root specifying Python version 3.12
 
 3. Deployment Steps:
    - Set debug to false - I used this .env check to automate this:
@@ -2114,6 +2119,7 @@ The live site can be found here: [https://8000-guymitchy-ucexpertpatie-sv6c12l37
 - Ideation and problem-solving
 - Helped with RAG system development
 - Assisted in debugging and optimization
+- Assitance in template development
 
 ### Tools and Libraries
 - Django AllAuth for authentication

@@ -5,11 +5,15 @@
 
 <style>
     .hide-scrollbar {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;     /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
     }
+
     .hide-scrollbar::-webkit-scrollbar {
-        display: none;            /* Chrome, Safari and Opera */
+        display: none;
+        /* Chrome, Safari and Opera */
     }
 </style>
 
@@ -20,9 +24,14 @@
         <div class="bg-white shadow flex-shrink-0">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div class="flex justify-between items-center">
-                    <h1 class="text-xl font-mediumtext-gray-900">{{ conversation.title }}</h1>
-                    <a href="{% url 'chat:list' %}" class="text-blue-600 hover:text-blue-800">
+                    <h1 class="text-xl font-medium text-gray-900">{{ conversation.title }}</h1>
+                    <!-- Desktop version -->
+                    <a href="{% url 'chat:list' %}" class="hidden md:block text-blue-600 hover:text-blue-800">
                         Back to Conversations
+                    </a>
+                    <!-- Mobile version -->
+                    <a href="{% url 'chat:list' %}" class="md:hidden text-blue-600 hover:text-blue-800">
+                        Back
                     </a>
                 </div>
             </div>
@@ -44,20 +53,14 @@
         <!-- Message Input -->
         <div class="bg-white border-t border-gray-200 px-4 py-4">
             <div class="max-w-4xl mx-auto">
-                
-                <form hx-post="{% url 'chat:send_message' conversation.id %}" 
-                    hx-target="#chat-messages"
-                    hx-swap="beforeend"
-                    hx-indicator="#loading-spinner"
-                    class="flex space-x-4">
+
+                <form hx-post="{% url 'chat:send_message' conversation.id %}" hx-target="#chat-messages"
+                    hx-swap="beforeend" hx-indicator="#loading-spinner" class="flex space-x-4">
                     {% csrf_token %}
-                    <input type="text" 
-                        name="message" 
-                        placeholder="Type your message..."
+                    <input type="text" name="message" placeholder="Type your message..."
                         class="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         required>
-                    <button type="submit" 
-                            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
                         Send
                     </button>
                 </form>
@@ -65,12 +68,12 @@
         </div>
 
         <script>
-            document.body.addEventListener('htmx:beforeRequest', function(evt) {
+            document.body.addEventListener('htmx:beforeRequest', function (evt) {
                 const input = evt.detail.elt.querySelector('input[name="message"]');
                 input.disabled = true;
             });
 
-            document.body.addEventListener('htmx:afterRequest', function(evt) {
+            document.body.addEventListener('htmx:afterRequest', function (evt) {
                 if (evt.detail.successful) {
                     // Clear and re-enable the input field
                     const input = evt.detail.elt.querySelector('input[name="message"]');
@@ -85,11 +88,11 @@
             });
 
             // Initial scroll to bottom
-            window.onload = function() {
+            window.onload = function () {
                 const chatMessages = document.getElementById('chat-messages');
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             };
         </script>
 
 
-{% endblock %}
+        {% endblock %}

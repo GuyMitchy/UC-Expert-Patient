@@ -37,7 +37,7 @@ class ConversationCreateView(LoginRequiredMixin, CreateView):
             conversation=self.object,
             content="Hello! I'm your UC Expert assistant."
             "I can help answer questions about Ulcerative Colitis, "
-            "your symptoms, and medications. What would you like to know?",
+            "your symptoms, medications, lifestyle and diet. What would you like to know?",
             is_bot=True
         )
 

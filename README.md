@@ -785,6 +785,7 @@ Required Fields:
 - Automated meal planning
 - Community support features
 - Disease state report creation
+- Expanded knowledge documents
 
 </details>
 
@@ -2078,6 +2079,17 @@ The current implementation of the AI assistant has several limitations that coul
   - Medical information could be separated into distinct categories (medications, symptoms, treatments, etc.)
   - Better structuring would improve the AI's ability to retrieve relevant information
 
+- Knowledge Base Quality:
+  
+  - The quality of AI bot responses rely on the quality of the knowledge base
+  - No knowledge of the App and how to direct users in the knowledge base 
+
+- Ai Response Accuracy:
+
+- In general the AI responds according to it's prompt, but it can sometimes be overcautios and respond to a normal situation as an emergency situation.
+- The Ai sometimes adds "Assistant:" as a prefix to it's replies.
+- Rarely, if the user has entered no symptoms and asks about their symptoms, it may infer that the user is suffering from all common symptoms in the knowledge base.
+- The "You ONLY discuss medications the user is currently taking or has taken." prompt is followed inconsistently.
 
 - RAG Implementation:
 
@@ -2085,13 +2097,11 @@ The current implementation of the AI assistant has several limitations that coul
   - The retrieval system fetches a fixed number of documents (k=5) which might not be optimal for all query types
   - More sophisticated relevance scoring could improve response accuracy
 
-
 - Context Management:
 
   - The conversation history is limited to the last 10 messages
   - User context is built linearly without semantic understanding of the relationship between different data points
   - The prompt template could be refined to better utilize the retrieved documents
-
 
 - Response Generation:
 
@@ -2103,6 +2113,8 @@ The current implementation of the AI assistant has several limitations that coul
 These limitations could be addressed in future updates through:
 
 - Restructuring the knowledge base into specialized documents
+- Improving the quality of the knowledge base with more detailed information and knowledge of the app itself
+- Further testing and refinemnt of the prompt template
 - Implementing dynamic chunk sizing based on content type
 - Developing more sophisticated retrieval strategies
 - Enhancing the prompt engineering for better context utilization
